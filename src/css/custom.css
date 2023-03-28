@@ -14,6 +14,7 @@
   --ifm-color-primary-lighter: #9f3fff;
   --ifm-color-primary-lightest: #9f3fff;
   --search-local-highlight-color: #2f1f49;
+  --ifm-menu-color-background-active: #f6f8fa;
   --ifm-code-font-size: 95%;
   --ifm-breadcrumb-color-active: white;
   --ifm-breadcrumb-item-background-active: #2f1f49;
@@ -32,6 +33,7 @@
   --ifm-color-primary-lightest: #1de5ce;
 
   --ifm-heading-color: white;
+  --ifm-menu-color-background-active: #282a36;
   --ifm-breadcrumb-color-active: #2f1f49;
   --ifm-breadcrumb-item-background-active: #1de5ce;
 
