@@ -1,8 +1,17 @@
+---
+title: Control Flow - Loops and If Expressions in Noir Programming Language
+description:
+  Learn how to use loops and if expressions in the Noir programming language. Discover the syntax
+  and examples for for loops and if-else statements.
+keywords: [Noir programming language, loops, for loop, if-else statements, Rust syntax]
+---
+
 # Control Flow
 
 ## Loops
 
-Noir has one kind of loop: the `for` loop. `for` loops allow you to repeat a block of code multiple times.
+Noir has one kind of loop: the `for` loop. `for` loops allow you to repeat a block of code multiple
+times.
 
 The following block of code between the braces is run 10 times.
 
@@ -14,7 +23,8 @@ for i in 0..10 {
 
 ## If Expressions
 
-Noir supports `if-else` statements. The syntax is most similar to Rust's where it is not required for the statement's conditonal to be surrounded by parentheses.
+Noir supports `if-else` statements. The syntax is most similar to Rust's where it is not required
+for the statement's conditonal to be surrounded by parentheses.
 
 ```rust,noplaypen
 let a = 0;

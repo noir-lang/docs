@@ -1,6 +1,16 @@
+---
+title: Nargo - A Command Line Tool for Noir Programs
+description:
+  nargo is a command line tool for interacting with Noir programs (e.g. compiling, proving,
+  verifying and more). Learn how to install and use Nargo for your projects with this comprehensive
+  guide.
+keywords: [Nargo, command line tool, Noir programs, installation guide, how to use Nargo]
+---
+
 # Nargo
 
-`nargo` is a command line tool for interacting with Noir programs (e.g. compiling, proving, verifying and more).
+`nargo` is a command line tool for interacting with Noir programs (e.g. compiling, proving,
+verifying and more).
 
 Alternatively, the interactions can also be performed in [TypeScript](typescript.md).
 
@@ -19,7 +29,8 @@ Optionally you can also install [Noir VS Code extension] for syntax highlighting
 
 Paste and run the following in the terminal to extract and install the binary:
 
-> **macOS / Linux:** If you are prompted with `Permission denied` when running commands, prepend `sudo` and re-run it.
+> **macOS / Linux:** If you are prompted with `Permission denied` when running commands, prepend
+> `sudo` and re-run it.
 
 ##### macOS (Apple Silicon)
 
@@ -64,7 +75,8 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 ##### Linux (Bash)
 
-See [GitHub Releases](https://github.com/noir-lang/noir/releases/tag/nightly) for additional platform specific binaries.
+See [GitHub Releases](https://github.com/noir-lang/noir/releases/tag/nightly) for additional
+platform specific binaries.
 
 ```bash
 mkdir -p $HOME/.nargo/bin && \
@@ -80,9 +92,11 @@ source ~/.bashrc
 
 Check if the installation was successful by running `nargo --help`.
 
-> **macOS:** If you are prompted with an OS alert, right-click and open the _nargo_ executable from Finder. Close the new terminal popped up and `nargo` should now be accessible.
+> **macOS:** If you are prompted with an OS alert, right-click and open the _nargo_ executable from
+> Finder. Close the new terminal popped up and `nargo` should now be accessible.
 
-For a successful installation, you should see something similar to the following after running the command:
+For a successful installation, you should see something similar to the following after running the
+command:
 
 ```
 $ nargo --help
@@ -138,31 +152,32 @@ There are then two approaches to proceed, differing in how the proving backend i
 
 #### Option 2.2: Install Executable with Native Backend
 
-The [barretenberg] proving backend is written in C++, hence compiling it from source would first require certain dependencies to be installed.
+The [barretenberg] proving backend is written in C++, hence compiling it from source would first
+require certain dependencies to be installed.
 
 4. Install [CMake], [LLVM] and [OpenMP]:
 
 ##### macOS
 
-   Installing through [Homebrew] is recommended:
+Installing through [Homebrew] is recommended:
 
-   ```bash
-   brew install cmake llvm libomp
-   ```
+```bash
+brew install cmake llvm libomp
+```
 
 ##### Ubuntu (Linux)
 
-   ```bash
-   sudo apt update && sudo apt install clang lld cmake libomp-dev
-   ```
+```bash
+sudo apt update && sudo apt install clang lld cmake libomp-dev
+```
 
-   Other variants of Linux will need to adjust the commands for their package manager.
+Other variants of Linux will need to adjust the commands for their package manager.
 
 ##### Windows
 
-   ```sh
-   TBC
-   ```
+```sh
+TBC
+```
 
 5. Install Nargo by running:
 
@@ -200,7 +215,8 @@ The [barretenberg] proving backend is written in C++, hence compiling it from so
 
 [git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [rust]: https://www.rust-lang.org/tools/install
-[noir vs code extension]: https://marketplace.visualstudio.com/items?itemName=noir-lang.noir-programming-language-syntax-highlighter
+[noir vs code extension]:
+  https://marketplace.visualstudio.com/items?itemName=noir-lang.noir-programming-language-syntax-highlighter
 [barretenberg]: https://github.com/AztecProtocol/aztec-connect/tree/master/barretenberg
 [homebrew]: https://brew.sh/
 [cmake]: https://cmake.org/install/

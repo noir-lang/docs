@@ -1,7 +1,18 @@
+---
+title: Constrain Statement in Noir Programming Language
+description:
+  Learn about the constrain keyword in Noir, which can be used to explicitly constrain the predicate
+  or comparison expression that follows to be true, and what happens if the expression is false at
+  runtime.
+keywords:
+  [Noir programming language, constrain statement, predicate expression, comparison expression]
+---
+
 # Constrain Statement
 
-Noir includes a special keyword `constrain` which will explicitly constrain the predicate/comparison expression that follows to be true.
-If this expression is false at runtime, the program will fail to be proven.
+Noir includes a special keyword `constrain` which will explicitly constrain the predicate/comparison
+expression that follows to be true. If this expression is false at runtime, the program will fail to
+be proven.
 
 ### Constrain statement example
 
@@ -11,7 +22,8 @@ fn main(x : Field, y : Field) {
 }
 ```
 
-The above snippet compiles because `==` is a predicate operation. Conversely, the following will not compile:
+The above snippet compiles because `==` is a predicate operation. Conversely, the following will not
+compile:
 
 ```rust,noplaypen
 fn main(x : Field, y : Field) {
@@ -19,4 +31,5 @@ fn main(x : Field, y : Field) {
 }
 ```
 
-> The rationale behind this not compiling is due to ambiguity. It is not clear if the above should equate to `x + y == 0` or if it should check the truthiness of the result.
+> The rationale behind this not compiling is due to ambiguity. It is not clear if the above should
+> equate to `x + y == 0` or if it should check the truthiness of the result.

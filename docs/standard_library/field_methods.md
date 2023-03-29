@@ -1,19 +1,38 @@
+---
+title: Field Methods in Noir - to_le_bits, to_le_bytes, to_le_radix, to_be_radix, pow_32
+description:
+  Learn about common methods on Noir Field, including to_le_bits, to_le_bytes, to_le_radix,
+  to_be_radix, and pow_32, and see code examples.
+keywords:
+  [
+    Noir Field,
+    to_le_bits,
+    to_le_bytes,
+    to_le_radix,
+    to_be_radix,
+    pow_32,
+    Little Endian,
+    Big Endian,
+    Vector,
+    Exponent,
+  ]
+---
 
 # Field
 
-After declaring a Field, you can use these common methods on it [^migrationNote]:
+After declaring a Field, you can use these common methods on it [^migrationnote]:
 
 ## to_le_bits
 
 Transforms the field into an array of bits, Little Endian.
 
-``` rust
+```rust
 fn to_le_bits<N>(_x : Field, _bit_size: u32) -> [u1; N]
 ```
 
 example:
 
-``` rust
+```rust
 fn main() {
     let field = 2
     let bits = field.to_le_bits(32);
@@ -24,7 +43,7 @@ fn main() {
 
 Transforms into an array of bytes, Little Endian
 
-``` rust
+```rust
 fn to_le_bytes(_x : Field, byte_size: u32) -> [u8]
 ```
 
