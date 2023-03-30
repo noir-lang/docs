@@ -1,5 +1,5 @@
 ---
-title: Solidity Verifier - Verifying Noir Programs on the Blockchain
+title: Solidity Noir Verifier
 description:
   Learn how to run the verifier as a smart contract on the blockchain. Compile a Solidity verifier
   contract for your Noir program and deploy it on any EVM blockchain acting as a verifier smart
@@ -26,7 +26,7 @@ a local machine.
 Compile a Solidity verifier contract for your Noir program by running:
 
 ```sh
-nargo contract
+nargo codegen-verifier
 ```
 
 A new `contract` folder would then be generated in your project directory, containing the Solidity

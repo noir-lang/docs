@@ -1,5 +1,5 @@
 ---
-title: Understanding Noir Data Types - Primitive Types and Compound Types
+title: Noir Data Types
 description:
   Get a clear understanding of the two categories of Noir data types - primitive types and compound
   types. Learn about their characteristics, differences, and how to use them in your Noir

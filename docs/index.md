@@ -1,5 +1,5 @@
 ---
-title: Introducing Noir - A Domain Specific Language for Creating and Verifying Proofs
+title: Introducing Noir
 description:
   Learn about the public alpha release of Noir, a domain specific language heavily influenced by
   Rust that compiles to an intermediate language which can be compiled to an arithmetic circuit or a

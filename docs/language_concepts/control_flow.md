@@ -1,5 +1,5 @@
 ---
-title: Control Flow - Loops and If Expressions in Noir Programming Language
+title: Control Flow in Noir
 description:
   Learn how to use loops and if expressions in the Noir programming language. Discover the syntax
   and examples for for loops and if-else statements.

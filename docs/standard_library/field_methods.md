@@ -1,8 +1,8 @@
 ---
-title: Field Methods in Noir - to_le_bits, to_le_bytes, to_le_radix, to_be_radix, pow_32
+title: Field Methods in Noir
 description:
   Learn about common methods on Noir Field, including to_le_bits, to_le_bytes, to_le_radix,
-  to_be_radix, and pow_32, and see code examples.
+  to_be_radix, pow_32, etc, and see code examples.
 keywords:
   [
     Noir Field,

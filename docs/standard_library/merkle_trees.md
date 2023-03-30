@@ -1,5 +1,5 @@
 ---
-title: Understanding Merkle Trees in Noir - Check Membership and Compute Root from Leaf
+title: Merkle Trees in Noir
 description:
   Learn about Merkle Trees in Noir with this tutorial. Explore the basics of check membership and
   computing root from leaf, and implement them in your code with the help of code

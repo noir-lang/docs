@@ -1,5 +1,5 @@
 ---
-title: Comments in Noir Programming Language
+title: Noir Comments
 description:
   Learn how to write comments in Noir programming language. A comment is a line of code that is
   ignored by the compiler, but it can be read by programmers. Single-line and multi-line comments
