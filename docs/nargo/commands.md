@@ -1,3 +1,23 @@
+---
+title: Nargo - Noir CLI Commands for Noir Prover and Verifier
+description:
+  Noir CLI Commands for Noir Prover and Verifier to create, execute, prove and verify programs,
+  generate Solidity verifier smart contract and compile into JSON file containing ACIR
+  representation and ABI of circuit.
+keywords:
+  [
+    Nargo,
+    Noir CLI,
+    Noir Prover,
+    Noir Verifier,
+    generate Solidity verifier,
+    compile JSON file,
+    ACIR representation,
+    ABI of circuit,
+    TypeScript,
+  ]
+---
+
 # Commands
 
 ## `nargo help [subcommand]`
@@ -19,7 +39,8 @@ _Arguments_
 
 ## `nargo check`
 
-Generate the `Prover.toml` and `Verifier.toml` files for specifying prover and verifier in/output values of the Noir program respectively.
+Generate the `Prover.toml` and `Verifier.toml` files for specifying prover and verifier in/output
+values of the Noir program respectively.
 
 ## `nargo execute`
 
@@ -49,7 +70,8 @@ Generate a Solidity verifier smart contract for the program.
 
 ## `nargo compile <circuit_name>`
 
-Compile the program and its secret execution trace into a JSON file containing the ACIR representation, and the ABI of the circuit.
+Compile the program and its secret execution trace into a JSON file containing the ACIR
+representation, and the ABI of the circuit.
 
 _Arguments_
 

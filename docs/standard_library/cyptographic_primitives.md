@@ -1,3 +1,26 @@
+---
+title: Cryptographic primitives for Noir project
+description:
+  Learn about the cryptographic primitives ready to use for any Noir project, including sha256,
+  blake2s, pedersen, mimc_bn254 and mimc, scalar_mul::fixed_base, schnorr::verify_signature, and
+  ecdsa_secp256k1::verify_signature.
+keywords:
+  [
+    cryptographic primitives,
+    Noir project,
+    sha256,
+    blake2s,
+    pedersen,
+    mimc_bn254,
+    mimc,
+    scalar multiplication,
+    schnorr,
+    schnorr signatures,
+    ecdsa secp256k1,
+    ecdsa signatures,
+  ]
+---
+
 # Cryptographic primitives
 
 Some cryptographic primitives are already developed and ready-to-use for any Noir project:
@@ -37,7 +60,9 @@ fn main() {
 
 ## mimc_bn254 and mimc
 
-`mimc_bn254` is `mimc`, but with hardcoded parameters for the BN254 curve. You can use it by providing an array of Fields, and it returns a Field with the hash. You can use the `mimc` method if you're willing to input your own constants:
+`mimc_bn254` is `mimc`, but with hardcoded parameters for the BN254 curve. You can use it by
+providing an array of Fields, and it returns a Field with the hash. You can use the `mimc` method if
+you're willing to input your own constants:
 
 ```rust
 fn mimc<N>(x: Field, k: Field, constants: [Field; N], exp : Field) -> Field
@@ -61,7 +86,8 @@ fn main() {
 
 ## scalar_mul::fixed_base
 
-Performs scalar multiplication over the embedded curve whose coordinates are defined by the configured noir field. For the BN254 scalar field, this is BabyJubJub or Grumpkin.
+Performs scalar multiplication over the embedded curve whose coordinates are defined by the
+configured noir field. For the BN254 scalar field, this is BabyJubJub or Grumpkin.
 
 ```rust
 fn fixed_base(_input : Field) -> [Field; 2]

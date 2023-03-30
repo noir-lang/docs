@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Noir Documentation',
+  tagline: 'The Universal ZK Circuit Language',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -18,8 +18,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'Aztec Network',
+  projectName: 'new-docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -32,16 +32,24 @@ const config = {
     locales: ['en'],
   },
 
+  themes: [
+    // ... Your other themes.
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+      }),
+    ],
+  ],
+
   presets: [
     [
       '@docusaurus/preset-classic',
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          routeBasePath: '/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -55,19 +63,13 @@ const config = {
     ({
       // Replace with your project's social card
       navbar: {
-        title: 'Noir',
         logo: {
           alt: 'Noir Logo',
           src: 'img/logo.svg',
-          href: '/docs',
+          srcDark: 'img/logoDark.svg',
+          href: '/',
         },
         items: [
-          {
-            type: 'doc',
-            docId: 'index',
-            position: 'left',
-            label: 'Docs',
-          },
           {
             href: 'https://github.com/noir-lang',
             label: 'GitHub',
@@ -75,6 +77,13 @@ const config = {
           },
         ],
       },
+      metadata: [
+        {
+          name: 'Noir',
+          content:
+            'noir, programming, language, documentation, zk, zero-knowledge, l2, crypto, layer2, ethereum',
+        },
+      ],
       footer: {
         style: 'dark',
         links: [
@@ -83,7 +92,7 @@ const config = {
             items: [
               {
                 label: 'Docs',
-                to: '/docs/index',
+                to: '/index',
               },
             ],
           },

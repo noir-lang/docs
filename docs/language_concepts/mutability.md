@@ -1,8 +1,15 @@
+---
+title: Mutability in Noir Programming Language
+description:
+  Learn about mutable variables, constants, and globals in Noir programming language. Discover how
+  to declare, modify, and use them in your programs.
+keywords: [noir programming language, mutability in noir, mutable variables, constants, globals]
+---
+
 # Mutability
 
-Variables in noir can be declared mutable via the `mut` keyword.
-Mutable variables can be reassigned to via
-an assignment expression.
+Variables in noir can be declared mutable via the `mut` keyword. Mutable variables can be reassigned
+to via an assignment expression.
 
 ```rust,noplaypen
 let x = 2;
@@ -28,8 +35,8 @@ let MyStruct { x: mut y } = MyStruct { x: a }
 // y is now in scope
 ```
 
-Note that mutability in noir is local and everything is passed by value, so if a
-called function mutates its parameters then the parent function will keep the old value of the parameters.
+Note that mutability in noir is local and everything is passed by value, so if a called function
+mutates its parameters then the parent function will keep the old value of the parameters.
 
 ```rust,noplaypen
 fn main() -> Field {
@@ -45,7 +52,9 @@ fn helper(mut x: i32) {
 
 ### Constants
 
-A constant type is a value that does not change per circuit instance. This is different to a witness which changes per proof. If a constant type that is being used in your program is changed, then your circuit will also change.
+A constant type is a value that does not change per circuit instance. This is different to a witness
+which changes per proof. If a constant type that is being used in your program is changed, then your
+circuit will also change.
 
 Below we show how to declare a constant value:
 
@@ -72,7 +81,11 @@ fn main() {
 
 ### Globals
 
-Noir also supports global variables. However, they must be compile-time variables. If `comptime` is not explicitly written in the type annotation the compiler will implicitly specify the declaration as compile-time. They can then be used like any other compile-time variable inside functions. The global type can also be inferred by the compiler entirely. Globals can also be used to specify array annotations for function parameters and can be imported from submodules.
+Noir also supports global variables. However, they must be compile-time variables. If `comptime` is
+not explicitly written in the type annotation the compiler will implicitly specify the declaration
+as compile-time. They can then be used like any other compile-time variable inside functions. The
+global type can also be inferred by the compiler entirely. Globals can also be used to specify array
+annotations for function parameters and can be imported from submodules.
 
 Globals are currently limited to Field, integer, and bool literals.
 
@@ -102,7 +115,6 @@ mod mysubmodule {
 
 ### Why only local mutability?
 
-Witnesses in a proving system are immutable in nature.
-Noir aims to _closely_ mirror this setting without applying additional overhead to the user.
-Modeling a mutable reference is not as straightforward as on conventional architectures and
-would incur some possibly unexpected overhead.
+Witnesses in a proving system are immutable in nature. Noir aims to _closely_ mirror this setting
+without applying additional overhead to the user. Modeling a mutable reference is not as
+straightforward as on conventional architectures and would incur some possibly unexpected overhead.

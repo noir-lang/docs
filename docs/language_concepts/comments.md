@@ -1,6 +1,16 @@
+---
+title: Comments in Noir Programming Language
+description:
+  Learn how to write comments in Noir programming language. A comment is a line of code that is
+  ignored by the compiler, but it can be read by programmers. Single-line and multi-line comments
+  are supported in Noir.
+keywords: [Noir programming language, comments, single-line comments, multi-line comments]
+---
+
 # Comments
 
-A comment is a line in your codebase which the compiler ignores, however it can be read by programmers.
+A comment is a line in your codebase which the compiler ignores, however it can be read by
+programmers.
 
 Here is a single line comment:
 
@@ -14,6 +24,6 @@ Noir doesn't have multi-line comments, but you can emulate them via using `//` o
 
 ```rust,noplaypen
 // This is a multi line
-// comment, that is ignored by 
+// comment, that is ignored by
 // the compiler
 ```
