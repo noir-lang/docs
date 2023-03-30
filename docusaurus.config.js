@@ -72,7 +72,7 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/noir-lang',
+            href: 'https://github.com/noir-lang/docs',
             label: 'GitHub',
             position: 'right',
           },
@@ -88,15 +88,6 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Docs',
-                to: '/index',
-              },
-            ],
-          },
           {
             title: 'Community',
             items: [
@@ -115,7 +106,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/noir-lang',
+                href: 'https://github.com/noir-lang/docs',
               },
             ],
           },
