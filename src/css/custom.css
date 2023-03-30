@@ -46,3 +46,7 @@ html[data-theme='dark'] {
   --search-local-hit-active-color: #1b1b1d;
   --search-local-hit-color: white;
 }
+
+.katex-html {
+  display: none;
+}
