@@ -1,28 +1,65 @@
+---
+title: Understanding Noir Data Types - Primitive Types and Compound Types
+description:
+  Get a clear understanding of the two categories of Noir data types - primitive types and compound
+  types. Learn about their characteristics, differences, and how to use them in your Noir
+  programming.
+keywords:
+  [
+    noir,
+    data types,
+    primitive types,
+    compound types,
+    private types,
+    public types,
+    field type,
+    integer types,
+    boolean type,
+    array type,
+    tuple type,
+    struct type,
+  ]
+---
+
 # Data Types
 
 Every value in Noir has a type, which determines which operations are valid for it.
 
-All values in Noir are fundamentally composed of `Field` elements. For a more approachable developing experience, abstractions are added on top to introduce different data types in Noir.
+All values in Noir are fundamentally composed of `Field` elements. For a more approachable
+developing experience, abstractions are added on top to introduce different data types in Noir.
 
-Noir has two category of data types: primitive types (e.g. `Field`, integers, `bool`) and compound types that group primitive types (e.g. arrays, tuples, structs). Each value can either be private or public.
+Noir has two category of data types: primitive types (e.g. `Field`, integers, `bool`) and compound
+types that group primitive types (e.g. arrays, tuples, structs). Each value can either be private or
+public.
 
 ## Private & Public Types
 
-A **private value** is known only to the Prover, while a **public value** is known by both the Prover and Verifier. All primitive types (including individual fields of compound types) in Noir are private by default, and can be marked public when certain values are intended to be revealed to the Verifier.
+A **private value** is known only to the Prover, while a **public value** is known by both the
+Prover and Verifier. All primitive types (including individual fields of compound types) in Noir are
+private by default, and can be marked public when certain values are intended to be revealed to the
+Verifier.
 
-> **Note:** For public values defined in Noir programs paired with smart contract verifiers, once the proofs are verified on-chain the values can be considered known to everyone that has access to that blockchain.
+> **Note:** For public values defined in Noir programs paired with smart contract verifiers, once
+> the proofs are verified on-chain the values can be considered known to everyone that has access to
+> that blockchain.
 
-Public data types are treated no differently to private types apart from the fact that their values will be revealed in proofs generated. Simply changing the value of a public type will not change the circuit (where the same goes for changing values of private types as well).
+Public data types are treated no differently to private types apart from the fact that their values
+will be revealed in proofs generated. Simply changing the value of a public type will not change the
+circuit (where the same goes for changing values of private types as well).
 
 _Private values_ are also referred to as _witnesses_ sometimes.
 
-> **Note:** The terms private and public when applied to a type (e.g. `pub Field`) have a different meaning than when applied to a function (e.g. `pub fn foo() {}`).
+> **Note:** The terms private and public when applied to a type (e.g. `pub Field`) have a different
+> meaning than when applied to a function (e.g. `pub fn foo() {}`).
 >
-> The former is a visibility modifier for the Prover to interpret if a value should be made known to the Verifier, while the latter is a visibility modifier for the compiler to interpret if a function should be made accessible to external Noir programs like in other languages.
+> The former is a visibility modifier for the Prover to interpret if a value should be made known to
+> the Verifier, while the latter is a visibility modifier for the compiler to interpret if a
+> function should be made accessible to external Noir programs like in other languages.
 
 ### pub Modifier
 
-All data types in Noir are private by default. Types are explicitly declared as public using the `pub` modifier:
+All data types in Noir are private by default. Types are explicitly declared as public using the
+`pub` modifier:
 
 ```rust,noplaypen
 fn main(x : Field, y : pub Field) -> pub Field {
@@ -30,7 +67,9 @@ fn main(x : Field, y : pub Field) -> pub Field {
 }
 ```
 
-In this example, `x` is **private** while `y` and `x + y` (the return value) are **public**. Note that visibility is handled **per variable**, so it is perfectly valid to have one input that is private and another that is public.
+In this example, `x` is **private** while `y` and `x + y` (the return value) are **public**. Note
+that visibility is handled **per variable**, so it is perfectly valid to have one input that is
+private and another that is public.
 
 > **Note:** Public types can only be declared through parameters on `main`.
 
@@ -42,7 +81,9 @@ A primitive type represents a single value. They can be private or public.
 
 The field type corresponds to the native field type of the proving backend.
 
-The size of a Noir field depends on the elliptic curve's finite field for the proving backend adopted. For example, a field would be a 254-bit integer when paired with the default TurboPlonk backend that spans the Grumpkin curve.
+The size of a Noir field depends on the elliptic curve's finite field for the proving backend
+adopted. For example, a field would be a 254-bit integer when paired with the default TurboPlonk
+backend that spans the Grumpkin curve.
 
 Fields support integer arithmetic and are often used as the default numeric type in Noir:
 
@@ -52,15 +93,20 @@ fn main(x : Field, y : Field)  {
 }
 ```
 
-`x`, `y` and `z` are all private fields in this example. Using the `let` keyword we defined a new private value `z` constrained to be equal to `x + y`.
+`x`, `y` and `z` are all private fields in this example. Using the `let` keyword we defined a new
+private value `z` constrained to be equal to `x + y`.
 
-If proving efficiency is of priority, fields should be used as a default for solving problems. Smaller integer types (e.g. `u64`) incur extra range constraints.
+If proving efficiency is of priority, fields should be used as a default for solving problems.
+Smaller integer types (e.g. `u64`) incur extra range constraints.
 
 ### Integer Types
 
-An integer type is a range constrained field type. The Noir frontend currently supports unsigned, arbitrary-sized integer types.
+An integer type is a range constrained field type. The Noir frontend currently supports unsigned,
+arbitrary-sized integer types.
 
-An integer type is specified first with the letter `u`, indicating its unsigned nature, followed by its length in bits (e.g. `32`). For example, a `u32` variable can store a value in the range of \\([0,2^{32}-1]\\):
+An integer type is specified first with the letter `u`, indicating its unsigned nature, followed by
+its length in bits (e.g. `32`). For example, a `u32` variable can store a value in the range of
+\\([0,2^{32}-1]\\):
 
 ```rust,noplaypen
 fn main(x : Field, y : u32) {
@@ -68,9 +114,12 @@ fn main(x : Field, y : u32) {
 }
 ```
 
-`x`, `y` and `z` are all private values in this example. However, `x` is a field while `y` and `z` are unsigned 32-bit integers. If `y` or `z` exceeds the range \\([0,2^{32}-1]\\), proofs created will be rejected by the verifier.
+`x`, `y` and `z` are all private values in this example. However, `x` is a field while `y` and `z`
+are unsigned 32-bit integers. If `y` or `z` exceeds the range \\([0,2^{32}-1]\\), proofs created
+will be rejected by the verifier.
 
-> **Note:** The default TurboPlonk backend supports both even (e.g. `u16`, `u48`) and odd (e.g. `u5`, `u3`) sized integer types.
+> **Note:** The default TurboPlonk backend supports both even (e.g. `u16`, `u48`) and odd (e.g.
+> `u5`, `u3`) sized integer types.
 
 ### The Boolean Type
 
@@ -83,17 +132,22 @@ fn main() {
 }
 ```
 
-> **Note:** When returning a boolean value, it will show up as a value of 1 for `true` and 0 for `false` in _Verifier.toml_.
+> **Note:** When returning a boolean value, it will show up as a value of 1 for `true` and 0 for
+> `false` in _Verifier.toml_.
 
-The boolean type is most commonly used in conditionals like `if` expressions and `constrain` statements. More about conditionals is covered in the [Control Flow](./control_flow.md) and [Constrain Statement](./constrain.md) sections.
+The boolean type is most commonly used in conditionals like `if` expressions and `constrain`
+statements. More about conditionals is covered in the [Control Flow](./control_flow.md) and
+[Constrain Statement](./constrain.md) sections.
 
 ## Compound Types
 
-A compound type groups together multiple values into one type. Elements within a compound type can be private or public.
+A compound type groups together multiple values into one type. Elements within a compound type can
+be private or public.
 
 ### The Array Type
 
-An array is one way of grouping together values into one compound type. Array types can be inferred or explicitly specified via the syntax `[<Type>; <Size>]`:
+An array is one way of grouping together values into one compound type. Array types can be inferred
+or explicitly specified via the syntax `[<Type>; <Size>]`:
 
 ```rust,noplaypen
 fn main(x : Field, y : Field) {
@@ -115,11 +169,13 @@ fn main() {
 }
 ```
 
-All elements in an array must be of the same type (i.e. homogeneous). That is, an array cannot group a `Field` value and a `u8` value together for example.
+All elements in an array must be of the same type (i.e. homogeneous). That is, an array cannot group
+a `Field` value and a `u8` value together for example.
 
 ### The Tuple Type
 
-A tuple collects multiple values like an array, but with the added ability to collect values of different types:
+A tuple collects multiple values like an array, but with the added ability to collect values of
+different types:
 
 ```rust,noplaypen
 fn main() {
@@ -139,7 +195,9 @@ fn main() {
 }
 ```
 
-Another way to access tuple elements is via direct member access, using a period (`.`) followed by the index of the element we want to access. Index `0` corresponds to the first tuple element, `1` to the second and so on:
+Another way to access tuple elements is via direct member access, using a period (`.`) followed by
+the index of the element we want to access. Index `0` corresponds to the first tuple element, `1` to
+the second and so on:
 
 ```rust,noplaypen
 fn main() {
@@ -152,9 +210,11 @@ fn main() {
 
 ### Structs
 
-A struct also allows for grouping multiple values of different types. Unlike tuples, we can also name each field.
+A struct also allows for grouping multiple values of different types. Unlike tuples, we can also
+name each field.
 
-> **Note:** The usage of _field_ here refers to each element of the struct and is unrelated to the field type of Noir.
+> **Note:** The usage of _field_ here refers to each element of the struct and is unrelated to the
+> field type of Noir.
 
 Defining a struct requires giving it a name and listing each field within as `<Key>: <Type>` pairs:
 
@@ -166,7 +226,8 @@ struct Animal {
 }
 ```
 
-An instance of a struct can then be created with actual values in `<Key>: <Value>` pairs in any order. Struct fields are accessible using their given names:
+An instance of a struct can then be created with actual values in `<Key>: <Value>` pairs in any
+order. Struct fields are accessible using their given names:
 
 ```rust,noplaypen
 fn main() {
@@ -202,4 +263,5 @@ fn get_octopus() -> Animal {
 }
 ```
 
-The new variables can be bound with names different from the original struct field names, as showcased in the `legs --> feet` binding in the example above.
+The new variables can be bound with names different from the original struct field names, as
+showcased in the `legs --> feet` binding in the example above.

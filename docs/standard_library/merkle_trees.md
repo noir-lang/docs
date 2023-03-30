@@ -1,3 +1,21 @@
+---
+title: Understanding Merkle Trees in Noir - Check Membership and Compute Root from Leaf
+description:
+  Learn about Merkle Trees in Noir with this tutorial. Explore the basics of check membership and
+  computing root from leaf, and implement them in your code with the help of code
+keywords:
+  [
+    Merkle trees in Noir,
+    Noir programming language,
+    check membership,
+    computing root from leaf,
+    Noir Merkle tree implementation,
+    Merkle tree tutorial,
+    Merkle tree code examples,
+    Noir libraries,
+    pedersen hash.,
+  ]
+---
 
 # Merkle Trees
 
@@ -13,7 +31,7 @@ example:
 
 ```rust
 /**
- * 
+ *
     index = "0"
     priv_key = "0x000000000000000000000000000000000000000000000000000000616c696365"
     secret = "0x1929ea3ab8d9106a899386883d9428f8256cfedb3c4f6b66bf4aa4d28a79988f"
