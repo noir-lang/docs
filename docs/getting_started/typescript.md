@@ -36,7 +36,7 @@ Install [Yarn] and [Node.js].
 Install Noir dependencies in your project by running:
 
 ```bash
-$ yarn add @noir-lang/noir_wasm @noir-lang/barretenberg @noir-lang/aztec_backend
+yarn add @noir-lang/noir_wasm @noir-lang/barretenberg @noir-lang/aztec_backend
 ```
 
 And import the applicable functions into your TypeScript file by adding:
@@ -70,8 +70,8 @@ To begin proving and verifying a Noir program, it first needs to be compiled by 
 const compiled_program = compile(path.resolve(__dirname, '../circuits/src/main.nr'));
 ```
 
-The `compiled_program` returned by the function contains the [ACIR](../acir.md) and the Application
-Binary Interface (ABI) of your Noir program. They shall be stored for proving your program later:
+
+The `compiled_program` returned by the function contains the [ACIR](../advanced/acir.md) and the Application Binary Interface (ABI) of your Noir program. They shall be stored for proving your program later:
 
 ```ts
 // 1_mul.ts
