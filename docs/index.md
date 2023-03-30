@@ -18,14 +18,7 @@ keywords:
     Proving System,
     Smart Contract Language,
   ]
----
-
----
-
-id: index title: The Noir Programming Language slug: '/' tags:
-
-- Introductory
-
+slug: /
 ---
 
 This version of the book is being released with the public alpha. There will be a lot of features
