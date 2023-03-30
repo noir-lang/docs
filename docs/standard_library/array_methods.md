@@ -1,5 +1,5 @@
 ---
-title: Noir Array Methods - len, sort, fold, reduce, all, any
+title: Noir Array Methods
 description:
   Learn about the commonly used methods available for arrays in Noir, including len, sort, fold,
   reduce, all, and any.

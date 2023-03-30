@@ -1,5 +1,5 @@
 ---
-title: Supported Operations in Noir Programming Language
+title: Logical Operations in Noir
 description:
   Learn about the supported arithmetic and logical operations in the Noir programming language.
   Discover how to perform operations on concealed types, integers, and booleans.

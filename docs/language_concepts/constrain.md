@@ -1,5 +1,5 @@
 ---
-title: Constrain Statement in Noir Programming Language
+title: The Noir Constrain Statement
 description:
   Learn about the constrain keyword in Noir, which can be used to explicitly constrain the predicate
   or comparison expression that follows to be true, and what happens if the expression is false at

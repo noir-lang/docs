@@ -1,5 +1,5 @@
 ---
-title: Nargo - A Command Line Tool for Noir Programs
+title: Installation
 description:
   nargo is a command line tool for interacting with Noir programs (e.g. compiling, proving,
   verifying and more). Learn how to install and use Nargo for your projects with this comprehensive
@@ -38,8 +38,6 @@ Paste and run the following in the terminal to extract and install the binary:
 mkdir -p $HOME/.nargo/bin && \
 curl -o $HOME/.nargo/bin/nargo-aarch64-apple-darwin.tar.gz -L https://github.com/noir-lang/noir/releases/download/nightly/nargo-aarch64-apple-darwin.tar.gz && \
 tar -xvf $HOME/.nargo/bin/nargo-aarch64-apple-darwin.tar.gz -C $HOME/.nargo/bin/ && \
-mkdir -p "$HOME/Library/Application Support/noir-lang" && \
-cp -R $HOME/.nargo/bin/noir-lang/* "$HOME/Library/Application Support/noir-lang/" && \
 echo '\nexport PATH=$PATH:$HOME/.nargo/bin' >> ~/.zshrc && \
 source ~/.zshrc
 ```
@@ -50,8 +48,6 @@ source ~/.zshrc
 mkdir -p $HOME/.nargo/bin && \
 curl -o $HOME/.nargo/bin/nargo-x86_64-apple-darwin.tar.gz -L https://github.com/noir-lang/noir/releases/download/nightly/nargo-x86_64-apple-darwin.tar.gz && \
 tar -xvf $HOME/.nargo/bin/nargo-x86_64-apple-darwin.tar.gz -C $HOME/.nargo/bin/ && \
-mkdir -p "$HOME/Library/Application Support/noir-lang" && \
-cp -R $HOME/.nargo/bin/noir-lang/* "$HOME/Library/Application Support/noir-lang/" && \
 echo '\nexport PATH=$PATH:$HOME/.nargo/bin' >> ~/.zshrc && \
 source ~/.zshrc
 ```
@@ -64,8 +60,6 @@ Open PowerShell as Administrator and run:
 mkdir -f -p "$env:USERPROFILE\.nargo\bin\"; `
 Invoke-RestMethod -Method Get -Uri https://github.com/noir-lang/noir/releases/download/nightly/nargo-x86_64-pc-windows-msvc.zip -Outfile "$env:USERPROFILE\.nargo\bin\nargo-x86_64-pc-windows-msvc.zip"; `
 Expand-Archive -Path "$env:USERPROFILE\.nargo\bin\nargo-x86_64-pc-windows-msvc.zip" -DestinationPath "$env:USERPROFILE\.nargo\bin\"; `
-mkdir -f -p "$env:APPDATA\noir-lang"; `
-cp -R "$env:USERPROFILE\.nargo\bin\noir-lang\*" "$env:APPDATA\noir-lang\"; `
 $Reg = "Registry::HKLM\System\CurrentControlSet\Control\Session Manager\Environment"; `
 $OldPath = (Get-ItemProperty -Path "$Reg" -Name PATH).Path; `
 $NewPath = $OldPath + ’;’ + "$env:USERPROFILE\.nargo\bin\"; `
@@ -82,8 +76,6 @@ platform specific binaries.
 mkdir -p $HOME/.nargo/bin && \
 curl -o $HOME/.nargo/bin/nargo-x86_64-unknown-linux-gnu.tar.gz -L https://github.com/noir-lang/noir/releases/download/nightly/nargo-x86_64-unknown-linux-gnu.tar.gz && \
 tar -xvf $HOME/.nargo/bin/nargo-x86_64-unknown-linux-gnu.tar.gz -C $HOME/.nargo/bin/ && \
-mkdir -p $HOME/.config/noir-lang
-cp -r $HOME/.nargo/bin/noir-lang/* "$HOME/.config/noir-lang/"
 echo '\nexport PATH=$PATH:$HOME/.nargo/bin' >> ~/.bashrc && \
 source ~/.bashrc
 ```
@@ -100,26 +92,22 @@ command:
 
 ```
 $ nargo --help
-nargo 0.1
-Kevaundray Wedderburn <kevtheappdev@gmail.com>
+
 Noir's package manager
 
-USAGE:
-   nargo [SUBCOMMAND]
+Usage: nargo <COMMAND>
 
-FLAGS:
-   -h, --help       Prints help information
-   -V, --version    Prints version information
-
-SUBCOMMANDS:
-   build       Builds the constraint system
-   compile     Compile the program and its secret execution trace into ACIR format
-   contract    Creates the smart contract code for circuit
-   gates       Counts the occurences of different gates in circuit
-   help        Prints this message or the help of the given subcommand(s)
-   new         Create a new binary project
-   prove       Create proof for this program
-   verify      Given a proof and a program, verify whether the proof is valid
+Commands:
+   check             Checks the constraint system for errors
+   codegen-verifier  Generates a Solidity verifier smart contract for the program
+   compile           Compile the program and its secret execution trace into ACIR format
+   new               Create a new binary project
+   execute           Executes a circuit to calculate its return value
+   prove             Create proof for this program. The proof is returned as a hex encoded string
+   verify            Given a proof and a program, verify whether the proof is valid
+   test              Run the tests for this program
+   gates             Counts the occurrences of different gates in circuit
+   help              Print this message or the help of the given subcommand(s)
 ```
 
 ### Option 2: Compile from Source
@@ -191,26 +179,22 @@ TBC
 
    ```
    $ nargo --help
-   nargo 0.1
-   Kevaundray Wedderburn <kevtheappdev@gmail.com>
+   
    Noir's package manager
 
-   USAGE:
-      nargo [SUBCOMMAND]
+   Usage: nargo <COMMAND>
 
-   FLAGS:
-      -h, --help       Prints help information
-      -V, --version    Prints version information
-
-   SUBCOMMANDS:
-      build       Builds the constraint system
-      compile     Compile the program and its secret execution trace into ACIR format
-      contract    Creates the smart contract code for circuit
-      gates       Counts the occurences of different gates in circuit
-      help        Prints this message or the help of the given subcommand(s)
-      new         Create a new binary project
-      prove       Create proof for this program
-      verify      Given a proof and a program, verify whether the proof is valid
+   Commands:
+      check             Checks the constraint system for errors
+      codegen-verifier  Generates a Solidity verifier smart contract for the program
+      compile           Compile the program and its secret execution trace into ACIR format
+      new               Create a new binary project
+      execute           Executes a circuit to calculate its return value
+      prove             Create proof for this program. The proof is returned as a hex encoded string
+      verify            Given a proof and a program, verify whether the proof is valid
+      test              Run the tests for this program
+      gates             Counts the occurrences of different gates in circuit
+      help              Print this message or the help of the given subcommand(s)
    ```
 
 [git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git

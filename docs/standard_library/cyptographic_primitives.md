@@ -1,5 +1,5 @@
 ---
-title: Cryptographic primitives for Noir project
+title: Cryptographic primitives in Noir
 description:
   Learn about the cryptographic primitives ready to use for any Noir project, including sha256,
   blake2s, pedersen, mimc_bn254 and mimc, scalar_mul::fixed_base, schnorr::verify_signature, and

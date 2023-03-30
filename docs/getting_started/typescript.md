@@ -1,5 +1,5 @@
 ---
-title: TypeScript Interactions with Noir Programs
+title: TypeScript and Noir Programs
 description:
   Learn how to interact with Noir programs using TypeScript. Follow this tutorial to compile your
   program, specify inputs, initialize a prover & verifier, and prove and verify your program.
@@ -69,7 +69,6 @@ To begin proving and verifying a Noir program, it first needs to be compiled by 
 // 1_mul.ts
 const compiled_program = compile(path.resolve(__dirname, '../circuits/src/main.nr'));
 ```
-
 
 The `compiled_program` returned by the function contains the [ACIR](../advanced/acir.md) and the Application Binary Interface (ABI) of your Noir program. They shall be stored for proving your program later:
 

@@ -1,5 +1,5 @@
 ---
-title: Merkle Proof - How to Prove a Given Leaf is in a Merkle Tree
+title: Merkle Proof Membership Example
 description:
   Learn how to use merkle membership proof in Noir to prove that a given leaf is a member of a
   merkle tree with a specified root, at a given index.

@@ -1,5 +1,5 @@
 ---
-title: Understanding Nargo Projects - Anatomy and Proving
+title: Breakdown
 description:
   Learn about the anatomy of a Nargo project, including the purpose of the Prover and Verifier TOML
   files, and how to prove and verify your program.
