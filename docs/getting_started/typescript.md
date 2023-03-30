@@ -5,133 +5,167 @@ description:
   program, specify inputs, initialize a prover & verifier, and prove and verify your program.
 keywords: [TypeScript, Noir, tutorial, compile, inputs, prover, verifier, proof]
 ---
-
 # TypeScript
 
-Interactions with Noir programs can also be performed in TypeScript, which can come in handy when
-writing tests or when working in TypeScript-based projects like [Hardhat].
-
-The following sections use the [_Standard Noir Example_] as an example to dissect a typical Noir
-workflow in TypeScript, with specific focus on its:
-
-- Test script [`1_mul.ts`]
-- Noir program [`main.nr`]
-- Verifier contract generator script [`generate_sol_verifier.ts`]
-
-You are also welcome to revisit the full scripts [`1_mul.ts`] of _Standard Noir Example_ and
-[`mm.ts`] of _Mastermind in Noir_ anytime for inspirations.
-
-[hardhat]: https://hardhat.org/
-[_standard noir example_]: https://github.com/vezenovm/basic_mul_noir_example
-[`1_mul.ts`]: https://github.com/vezenovm/basic_mul_noir_example/blob/master/test/1_mul.ts
-[`main.nr`]: https://github.com/vezenovm/basic_mul_noir_example/blob/master/circuits/src/main.nr
-[`generate_sol_verifier.ts`]:
-  https://github.com/vezenovm/basic_mul_noir_example/blob/master/scripts/generate_sol_verifier.ts
-[`mm.ts`]: https://github.com/vezenovm/mastermind-noir/blob/master/test/mm.ts
+Interactions with Noir programs can also be performed in TypeScript, which can come in handy when writing tests or when working in TypeScript-based projects like [Hardhat](https://hardhat.org/)
 
 ## Setup
 
-Install [Yarn] and [Node.js].
+We're assuming you're using ES6 for both browser (for example with React), or nodejs.
 
-Install Noir dependencies in your project by running:
+Install [Yarn](https://yarnpkg.com/) or [Node.js](https://nodejs.org/en). Init a new project with `npm init`. Install Noir dependencies in your project by running:
 
 ```bash
 yarn add @noir-lang/noir_wasm @noir-lang/barretenberg @noir-lang/aztec_backend
 ```
 
-And import the applicable functions into your TypeScript file by adding:
+As for the circuit, we will use the _Standard Noir Example_ and place it in the `src` folder. Feel free to use any other, as long as you refactor the below examples accordingly.
 
-```ts
-// 1_mul.ts
-import { compile, acir_from_bytes } from '@noir-lang/noir_wasm';
-import {
-  setup_generic_prover_and_verifier,
-  create_proof,
-  verify_proof,
-  create_proof_with_witness,
-} from '@noir-lang/barretenberg/dest/client_proofs';
-import {
-  packed_witness_to_witness,
-  serialise_public_inputs,
-  compute_witnesses,
-} from '@noir-lang/aztec_backend';
-```
+This standard example is a program that multiplies input `x` with input `y` and returns the result:
 
-[yarn]: https://classic.yarnpkg.com/lang/en/docs/install/
-[node.js]: https://nodejs.org/en/download/
-
-## Compiling
-
-To begin proving and verifying a Noir program, it first needs to be compiled by calling
-`noir_wasm`'s `compile` function:
-
-```ts
-// 1_mul.ts
-const compiled_program = compile(path.resolve(__dirname, '../circuits/src/main.nr'));
-```
-
-The `compiled_program` returned by the function contains the ACIR and the Application Binary Interface (ABI) of your Noir program. They shall be stored for proving your program later:
-
-```ts
-// 1_mul.ts
-let acir = compiled_program.circuit;
-const abi = compiled_program.abi;
-```
-
-> **Note:** Compiling with `noir_wasm` may lack some of the newer features that `nargo compile`
-> offers. See the
-> [Proving and Verifying Externally Compiled Files](#proving-and-verifying-externally-compiled-files)
-> section to learn more.
-
-## Specifying Inputs
-
-Having obtained the compiled program, the program inputs shall then be specified in its ABI.
-
-_Standard Noir Example_ is a program that multiplies input `x` with input `y` and returns the
-result:
-
-```noir
-# main.nr
+```rs
+// src/main.nr
 fn main(x: u32, y: pub u32) -> pub u32 {
     let z = x * y;
     z
 }
 ```
 
-Hence, one valid scenario for proving could be `x = 3`, `y = 4` and `return = 12`:
+One valid scenario for proving could be `x = 3`, `y = 4` and `return = 12`
+
+## Imports
+
+We need some imports, for both the `noir_wasm` library (which will compile the circuit into `wasm` executables) and `aztec_backend` which is the actual proving backend we will be using.
+
+We also need to tell the compiler where to find the `.nr` files, so we need to import `initialiseResolver`.
 
 ```ts
-// 1_mul.ts
-abi.x = 3;
-abi.y = 4;
-abi.return = 12;
+import initNoirWasm, { acir_read_bytes, compile } from "@noir-lang/noir_wasm";
+import initialiseAztecBackend from "@noir-lang/aztec_backend";
+import { initialiseResolver } from "@noir-lang/noir-source-resolver";
 ```
 
-> **Info:** Return values are also required to be specified, as they are merely syntax sugar of
-> inputs with equality constraints.
+## Compiling
 
-> **Tip:** To best protect the private inputs in your program (if applicable) from public knowledge,
-> you should consider minimizing any passing around of inputs and deleting the inputs on the prover
-> instance once the proof is created when designing your program.
+We'll go over the code line-by-line later:
+
+```ts
+export const compileCircuit = async () => {
+  await initNoirWasm();
+
+  return await fetch(new URL("../src/main.nr", import.meta.url))
+  .then(r => r.text())
+  .then(code => {
+    initialiseResolver((id : any) => {
+      return code;
+    })
+  })
+  .then(() => {
+    try {
+      const compiled_noir = compile({});
+      return compiled_noir;
+    } catch (e) {
+        console.log("Error while compiling:", e);
+    }
+  })
+}
+```
+
+1. First we're calling `initNoirWasm`. This is required on the browser only.
+2. We then pass an URL that points to our `main.nr` file, and call `.then` on it so we can get the actual text of the source code
+3. We call `initialiseResolver` returning the source code
+4. Finally, we can call the `compile` function
+
+This function should return us the compiled circuit.
+
+> **A word about initialiseResolve:**
+>
+>In the browser, you need to create an URL and point initialiseResolver. However, in nodejs you can simply use `fs.readFileSync` and return the code like that. Example:
+>
+>```ts
+>    initialiseResolver(() => {
+>        try {
+>            const string = fs.readFileSync("src/main", { encoding: "utf8" });
+>            return string;
+>        } catch (err) {
+>            console.error(err);
+>            throw err;
+>        }
+>    });
+>    compiled = await compile({});
+>```
+
+## ACIR
+
+Noir compiles to two properties:
+
+1. The ACIR, which is the intermediate language used by backends such as Barretenberg
+2. The ABI, which tells you which inputs are to be read
+
+Let's write a little function that gets us both, initializes the backend, and returns the ACIR as bytes:
+
+```ts
+export const getAcir = async () => {
+    const { circuit, abi } = await compileCircuit();
+    await initialiseAztecBackend();
+
+    let acir_bytes = new Uint8Array(Buffer.from(circuit, "hex"));
+    return acir_read_bytes(acir_bytes);
+}
+```
+
+Calling `getAcir()` now should return us the ACIR of the circuit, ready to be used in proofs.
 
 ## Initializing Prover & Verifier
 
-Prior to proving and verifying, the prover and verifier have to first be initialized by calling
-`barretenberg`'s `setup_generic_prover_and_verifier` with your Noir program's ACIR:
+Prior to proving and verifying, the prover and verifier have to first be initialized by calling `barretenberg`'s `setup_generic_prover_and_verifier` with your Noir program's ACIR:
 
 ```ts
-// 1_mul.ts
 let [prover, verifier] = await setup_generic_prover_and_verifier(acir);
 ```
 
+This is probably a good time to store this prover and verifier into your state like React Context, Redux, or others.
+
 ## Proving
 
-The Noir program can then be executed and proved by calling `barretenberg`'s `create_proof`
-function:
+The Noir program can then be executed and proved by calling `barretenberg`'s `create_proof` function:
 
 ```ts
-// 1_mul.ts
 const proof = await create_proof(prover, acir, abi);
+```
+
+On the browser, this proof can fail as it requires heavy loads to be run on worker threads. Here's a quick example of a worker:
+
+```ts
+// worker.ts
+onmessage = async (event) => {
+    try {
+        await initializeAztecBackend();
+        const { acir, input } = event.data;
+        const [prover, verifier] = await setup_generic_prover_and_verifier(acir);
+        const proof = await create_proof(prover, acir, input)
+        postMessage(proof)
+    } catch(er) {
+        postMessage(er)
+    } finally {
+        close();
+    }
+};
+```
+
+Which would be called like this, for example:
+
+```ts
+// index.ts
+const worker = new Worker(new URL('./worker.ts', import.meta.url));
+worker.onmessage = (e) => {
+    if (e.data instanceof Error) {
+    // oh no!
+    } else {
+    // yey!
+    }
+}
+worker.postMessage({ acir, input: {x: 3, y: 4} });
 ```
 
 ## Verifying
@@ -143,37 +177,26 @@ The `proof` obtained can be verified by calling `barretenberg`'s `verify_proof` 
 const verified = await verify_proof(verifier, proof);
 ```
 
-The function should return `true` if the entire process is working as intended, which can be
-asserted if you are writing a test script:
+The function should return `true` if the entire process is working as intended, which can be asserted if you are writing a test script:
 
 ```ts
-// 1_mul.ts
 expect(verified).eq(true);
 ```
 
 ## Verifying with Smart Contract
 
-Alternatively, a verifier smart contract can be generated and used for verifying Noir proofs in
-TypeScript as well.
+Alternatively, a verifier smart contract can be generated and used for verifying Noir proofs in TypeScript as well.
 
-This could be useful if the Noir program is designed to be decentrally verified and/or make use of
-decentralized states and logics that is handled at the smart contract level.
+This could be useful if the Noir program is designed to be decentrally verified and/or make use of decentralized states and logics that is handled at the smart contract level.
 
-To generate the verifier smart contract:
+To generate the verifier smart contract using typescript:
 
 ```ts
-// generate_sol_verifier.ts
-
-// Imports
+// generator.ts
 import { writeFileSync } from 'fs';
 
-...
-
-// Generate verifier contract
 const sc = verifier.SmartContract();
 syncWriteFile("../contracts/plonk_vk.sol", sc);
-
-...
 
 function syncWriteFile(filename: string, data: any) {
     writeFileSync(join(__dirname, filename), data, {
@@ -182,18 +205,13 @@ function syncWriteFile(filename: string, data: any) {
 }
 ```
 
-To verify a Noir proof using the verifier contract:
+You can then verify a Noir proof using the verifier contract, for example using Hardhat:
 
 ```ts
-// 1_mul.ts
-
-// Imports
+// verifier.ts
 import { ethers } from "hardhat";
 import { Contract, ContractFactory, utils } from 'ethers';
 
-...
-
-// Deploy verifier contract
 let Verifier: ContractFactory;
 let verifierContract: Contract;
 
@@ -202,41 +220,6 @@ before(async () => {
     verifierContract = await Verifier.deploy();
 });
 
-...
-
 // Verify proof
 const sc_verified = await verifierContract.verify(proof);
-expect(sc_verified).eq(true)
 ```
-
-## Proving and Verifying Externally Compiled Files
-
-In some cases, `noir_wasm` may lack some of the newer features for compiling Noir programs due to
-separated upgrade workflows.
-
-To benefit from the best of both worlds, a Noir program can be compiled with `nargo compile`, with
-the `.acir` and `.tr` files then passed into your TypeScript project for proving and verifying:
-
-```ts
-// 1_mul.ts
-
-// Parse acir
-let acirByteArray = path_to_uint8array(path.resolve(__dirname, '../circuits/build/p.acir'));
-let acir = acir_from_bytes(acirByteArray);
-
-// Parse witness
-let witnessByteArray = path_to_uint8array(path.resolve(__dirname, '../circuits/build/p.tr'));
-const barretenberg_witness_arr = await packed_witness_to_witness(acir, witnessByteArray);
-
-...
-
-// Create proof
-const proof = await create_proof_with_witness(prover, barretenberg_witness_arr);
-```
-
-> **Info:** The `.acir` file is the ACIR of your Noir program, and the `.tr` file is the witness
-> file. The witness file can be considered as program inputs parsed for your program's ACIR.
-
-See the [Commands] section to learn more about the `nargo compile` command.
-
-[commands]: nargo/commands.md#nargo-compile-circuit_name
