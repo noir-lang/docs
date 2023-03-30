@@ -9,8 +9,8 @@ Noir code can live anywhere on your computer. Let us create a _projects_ folder 
 For Linux, macOS, and Windows PowerShell, create the directory and change directory into it by running:
 
 ```sh
-$ mkdir ~/projects
-$ cd ~/projects
+mkdir ~/projects
+cd ~/projects
 ```
 
 For Windwows CMD, run:
@@ -25,7 +25,7 @@ For Windwows CMD, run:
 Now that we are in the projects directory, create a new Nargo project by running:
 
 ```sh
-$ nargo new hello_world
+nargo new hello_world
 ```
 
 > **Note:** `hello_world` can be any arbitrary project name, we are simply using `hello_world` for demonstration.
@@ -60,15 +60,15 @@ constrain x != y;
 
 The Noir syntax `constrain` can be interpreted as something similar to `assert` in other languages.
 
-For more Noir syntax, check the [Language Concepts](../language_concepts.md) chapter.
+For more Noir syntax, check the [Language Concepts](../language_concepts/comments.md) chapter.
 
 ## Build In/Output Files
 
 Change directory into _hello_world_ and build in/output files for your Noir program by running:
 
 ```sh
-$ cd hello_world
-$ nargo check
+cd hello_world
+nargo check
 ```
 
 Two additional files would be generated in your project directory:
@@ -89,7 +89,7 @@ y = "2"
 Prove the valid execution of your Noir program with your preferred proof name, for example `p`:
 
 ```sh
-$ nargo prove p
+nargo prove p
 ```
 
 A new folder _proofs_ would then be generated in your project directory, containing the proof file `p.proof`.
@@ -109,7 +109,7 @@ Once a proof is generated, we can verify correct execution of our Noir program b
 Verify your proof of name `p` by running:
 
 ```sh
-$ nargo verify p
+nargo verify p
 ```
 
 The verification will complete in silence if it is successful. If it fails, it will log the corresponding error instead.
