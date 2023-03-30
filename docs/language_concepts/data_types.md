@@ -105,8 +105,7 @@ An integer type is a range constrained field type. The Noir frontend currently s
 arbitrary-sized integer types.
 
 An integer type is specified first with the letter `u`, indicating its unsigned nature, followed by
-its length in bits (e.g. `32`). For example, a `u32` variable can store a value in the range of
-\\([0,2^{32}-1]\\):
+its length in bits (e.g. `32`). For example, a `u32` variable can store a value in the range of $\\([0,2^{32}-1]\\)$:
 
 ```rust,noplaypen
 fn main(x : Field, y : u32) {
@@ -115,7 +114,7 @@ fn main(x : Field, y : u32) {
 ```
 
 `x`, `y` and `z` are all private values in this example. However, `x` is a field while `y` and `z`
-are unsigned 32-bit integers. If `y` or `z` exceeds the range \\([0,2^{32}-1]\\), proofs created
+are unsigned 32-bit integers. If `y` or `z` exceeds the range $\\([0,2^{32}-1]\\)$, proofs created
 will be rejected by the verifier.
 
 > **Note:** The default TurboPlonk backend supports both even (e.g. `u16`, `u48`) and odd (e.g.
