@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Nargo and Noir
+title: Getting Started
 description:
   Learn how to create and verify your first Noir program using Nargo, a programming language for
   zero-knowledge proofs.
