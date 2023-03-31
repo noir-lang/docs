@@ -1,5 +1,5 @@
 ---
-title: Functions and Methods in Noir
+title: Functions and Methods
 description:
   Learn how to declare functions and methods in Noir, a programming language with Rust semantics.
   This guide covers parameter declaration, return types, call expressions, and more.

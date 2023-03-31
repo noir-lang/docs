@@ -1,5 +1,5 @@
 ---
-title: Merkle Trees in Noir
+title: Merkle Trees
 description:
   Learn about Merkle Trees in Noir with this tutorial. Explore the basics of check membership and
   computing root from leaf, and implement them in your code with the help of code

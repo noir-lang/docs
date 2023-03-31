@@ -1,5 +1,5 @@
 ---
-title: Mutability in Noir
+title: Mutability
 description:
   Learn about mutable variables, constants, and globals in Noir programming language. Discover how
   to declare, modify, and use them in your programs.

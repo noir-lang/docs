@@ -1,5 +1,5 @@
 ---
-title: Understanding Modules in Noir
+title: Understanding Modules
 description:
   Learn how to organize your files using modules in Noir, following the same convention as Rust's
   module system. Examples included.
