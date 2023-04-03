@@ -22,7 +22,7 @@ must be done explicitly by the developer.
 
 Filename : `src/main.nr`
 
-```rust,noplaypen
+```rust
 mod foo;
 
 fn main() {
@@ -32,7 +32,7 @@ fn main() {
 
 Filename : `src/foo.nr`
 
-```rust,noplaypen
+```rust
 fn from_foo() {}
 ```
 
@@ -54,7 +54,7 @@ crate
 
 Filename : `src/main.nr`
 
-```rust,noplaypen
+```rust
 mod foo;
 
 fn main() {
@@ -64,14 +64,14 @@ fn main() {
 
 Filename : `src/foo.nr`
 
-```rust,noplaypen
+```rust
 mod bar;
 fn from_foo() {}
 ```
 
 Filename : `src/foo/bar.nr`
 
-```rust,noplaypen
+```rust
 fn from_bar() {}
 ```
 

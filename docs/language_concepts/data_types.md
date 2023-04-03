@@ -61,7 +61,7 @@ _Private values_ are also referred to as _witnesses_ sometimes.
 All data types in Noir are private by default. Types are explicitly declared as public using the
 `pub` modifier:
 
-```rust,noplaypen
+```rust
 fn main(x : Field, y : pub Field) -> pub Field {
     x + y
 }
@@ -87,7 +87,7 @@ backend that spans the Grumpkin curve.
 
 Fields support integer arithmetic and are often used as the default numeric type in Noir:
 
-```rust,noplaypen
+```rust
 fn main(x : Field, y : Field)  {
     let z = x + y;
 }
@@ -105,9 +105,10 @@ An integer type is a range constrained field type. The Noir frontend currently s
 arbitrary-sized integer types.
 
 An integer type is specified first with the letter `u`, indicating its unsigned nature, followed by
-its length in bits (e.g. `32`). For example, a `u32` variable can store a value in the range of $\\([0,2^{32}-1]\\)$:
+its length in bits (e.g. `32`). For example, a `u32` variable can store a value in the range of
+$\\([0,2^{32}-1]\\)$:
 
-```rust,noplaypen
+```rust
 fn main(x : Field, y : u32) {
     let z = x as u32 + y;
 }
@@ -124,7 +125,7 @@ will be rejected by the verifier.
 
 The `bool` type in Noir has two possible values: `true` and `false`:
 
-```rust,noplaypen
+```rust
 fn main() {
     let t = true;
     let f: bool = false;
@@ -148,7 +149,7 @@ be private or public.
 An array is one way of grouping together values into one compound type. Array types can be inferred
 or explicitly specified via the syntax `[<Type>; <Size>]`:
 
-```rust,noplaypen
+```rust
 fn main(x : Field, y : Field) {
     let my_arr = [x, y];
     let your_arr: [Field; 2] = [x, y];
@@ -159,7 +160,7 @@ Here, both `my_arr` and `your_arr` are instantiated as an array containing two `
 
 Array elements can be accessed using indexing:
 
-```rust,noplaypen
+```rust
 fn main() {
     let a = [1, 2, 3, 4, 5];
 
@@ -176,7 +177,7 @@ a `Field` value and a `u8` value together for example.
 A tuple collects multiple values like an array, but with the added ability to collect values of
 different types:
 
-```rust,noplaypen
+```rust
 fn main() {
     let tup: (u8, u64, Field) = (255, 500, 1000);
 }
@@ -184,7 +185,7 @@ fn main() {
 
 One way to access tuple elements is via destructuring using pattern matching:
 
-```rust,noplaypen
+```rust
 fn main() {
     let tup = (1, 2);
 
@@ -198,7 +199,7 @@ Another way to access tuple elements is via direct member access, using a period
 the index of the element we want to access. Index `0` corresponds to the first tuple element, `1` to
 the second and so on:
 
-```rust,noplaypen
+```rust
 fn main() {
     let tup = (5, 6, 7, 8);
 
@@ -217,7 +218,7 @@ name each field.
 
 Defining a struct requires giving it a name and listing each field within as `<Key>: <Type>` pairs:
 
-```rust,noplaypen
+```rust
 struct Animal {
     hands: Field,
     legs: Field,
@@ -228,7 +229,7 @@ struct Animal {
 An instance of a struct can then be created with actual values in `<Key>: <Value>` pairs in any
 order. Struct fields are accessible using their given names:
 
-```rust,noplaypen
+```rust
 fn main() {
     let legs = 4;
 
@@ -244,7 +245,7 @@ fn main() {
 
 Structs can also be destructured in a pattern, binding each field to a new variable:
 
-```rust,noplaypen
+```rust
 fn main() {
     let Animal { hands, legs: feet, eyes } = get_octopus();
 

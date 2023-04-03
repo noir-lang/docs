@@ -11,7 +11,7 @@ keywords: [noir programming language, mutability in noir, mutable variables, con
 Variables in noir can be declared mutable via the `mut` keyword. Mutable variables can be reassigned
 to via an assignment expression.
 
-```rust,noplaypen
+```rust
 let x = 2;
 x = 3; // error: x must be mutable to be assigned to
 
@@ -21,7 +21,7 @@ let y = 4; // OK
 
 The `mut` modifier can also apply to patterns:
 
-```rust,noplaypen
+```rust
 let (a, mut b) = (1, 2);
 a = 11; // error: a must be mutable to be assigned to
 b = 12; // OK
@@ -38,7 +38,7 @@ let MyStruct { x: mut y } = MyStruct { x: a }
 Note that mutability in noir is local and everything is passed by value, so if a called function
 mutates its parameters then the parent function will keep the old value of the parameters.
 
-```rust,noplaypen
+```rust
 fn main() -> Field {
     let x = 3;
     helper(x);
@@ -58,7 +58,7 @@ circuit will also change.
 
 Below we show how to declare a constant value:
 
-```rust,noplaypen
+```rust
 fn main() {
     let a: comptime Field = 5;
 
@@ -69,7 +69,7 @@ fn main() {
 
 Note that variables declared as mutable may not be constants:
 
-```rust,noplaypen
+```rust
 fn main() {
     // error: Cannot mark a comptime type as mutable - any mutation would remove its const-ness
     let mut a: comptime Field = 5;
@@ -89,7 +89,7 @@ annotations for function parameters and can be imported from submodules.
 
 Globals are currently limited to Field, integer, and bool literals.
 
-```rust,noplaypen
+```rust
 global N: Field = 5; // Same as `global N: comptime Field = 5`
 
 fn main(x : Field, y : [Field; N]) {

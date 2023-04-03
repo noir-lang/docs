@@ -16,7 +16,7 @@ be proven.
 
 ### Constrain statement example
 
-```rust,noplaypen
+```rust
 fn main(x : Field, y : Field) {
     constrain x == y;
 }
@@ -25,7 +25,7 @@ fn main(x : Field, y : Field) {
 The above snippet compiles because `==` is a predicate operation. Conversely, the following will not
 compile:
 
-```rust,noplaypen
+```rust
 fn main(x : Field, y : Field) {
     constrain x + y;
 }
