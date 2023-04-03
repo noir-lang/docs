@@ -14,7 +14,7 @@ programmers.
 
 Here is a single line comment:
 
-```rust,noplaypen
+```rust
 // This is a comment and is ignored
 ```
 
@@ -22,7 +22,7 @@ Here is a single line comment:
 
 Noir doesn't have multi-line comments, but you can emulate them via using `//` on each line
 
-```rust,noplaypen
+```rust
 // This is a multi line
 // comment, that is ignored by
 // the compiler
