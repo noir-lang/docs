@@ -20,13 +20,21 @@ keywords:
 
 # Commands
 
-## `nargo help [subcommand]`
+## `nargo check`
 
-Prints the list of available commands or specific information of a subcommand.
+Generate the `Prover.toml` and `Verifier.toml` files for specifying prover and verifier in/output values of the Noir program respectively.
+
+## `nargo codegen-verifier`
+
+Generate a Solidity verifier smart contract for the program.
+
+## `nargo compile <circuit_name>`
+
+Compile the program into a JSON build artifact file containing the ACIR representation and the ABI of the circuit. This build artifact can then be used to generate and verify proofs.
 
 _Arguments_
 
-- `<subcommand>` - The subcommand whose help message to display
+- `<circuit_name>` - The name of the circuit file
 
 ## `nargo new <package_name> [path]`
 
@@ -36,18 +44,6 @@ _Arguments_
 
 - `<package_name>` - Name of the package
 - `[path]` - The path to save the new project
-
-## `nargo check`
-
-Generate the `Prover.toml` and `Verifier.toml` files for specifying prover and verifier in/output values of the Noir program respectively.
-
-## `nargo compile <circuit_name>`
-
-Compile the program into a JSON build artifact file containing the ACIR representation and the ABI of the circuit. This build artifact can then be used to generate and verify proofs.
-
-_Arguments_
-
-- `<circuit_name>` - The name of the circuit file
 
 ## `nargo execute [witness_name]`
 
@@ -83,10 +79,6 @@ _Arguments_
 
 - `<proof>` - The proof to verify
 
-## `nargo codegen-verifier`
-
-Generate a Solidity verifier smart contract for the program.
-
 ## `nargo preprocess <build_artifact>`
 
 Generate proving and verification keys from a build artifact file.
@@ -100,3 +92,15 @@ See an example on the [testing page](./02_testing.md).
 _Arguments_
 
 - `<pattern>` - a pattern to indicate to only run tests with names containing the pattern
+
+## `nargo gates`
+
+Counts the occurrences of different gates in circuit
+
+## `nargo help [subcommand]`
+
+Prints the list of available commands or specific information of a subcommand.
+
+_Arguments_
+
+- `<subcommand>` - The subcommand whose help message to display
