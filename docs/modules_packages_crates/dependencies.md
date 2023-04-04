@@ -1,5 +1,5 @@
 ---
-title: Managing Dependencies in Nargo
+title: Managing Dependencies
 description:
   Learn how to specify and manage dependencies in Nargo, allowing you to upload packages to GitHub
   and use them easily in your project.

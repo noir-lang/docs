@@ -1,6 +1,7 @@
 ---
-title: Generics in Noir
-description: Learn how to use Generics in Noir
+title: Generics
+description:
+  Learn how to use Generics in Noir
 keywords: [Noir, Rust, generics, functions, structs]
 ---
 

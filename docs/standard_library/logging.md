@@ -1,5 +1,5 @@
 ---
-title: Introduction to Logging in Noir
+title: Logging
 description:
   Learn how to use the println statement for debugging in Noir with this tutorial. Understand the
   basics of logging in Noir and how to implement it in your code.

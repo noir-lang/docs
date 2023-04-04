@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Nargo and Noir
+title: Getting Started
 description:
   Learn how to create and verify your first Noir program using Nargo, a programming language for
   zero-knowledge proofs.
@@ -76,7 +76,7 @@ x : Field, y : pub Field
 
 Program inputs in Noir are private by default (e.g. `x`), but can be labeled public using the
 keyword `pub` (e.g. `y`). To learn more about private and public values, check the
-[Data Types](../language_concepts/data_types.md) section.
+[Data Types](../../language_concepts/data_types.md) section.
 
 The next line of the program specifies its body:
 
@@ -86,7 +86,7 @@ constrain x != y;
 
 The Noir syntax `constrain` can be interpreted as something similar to `assert` in other languages.
 
-For more Noir syntax, check the [Language Concepts](../language_concepts/comments.md) chapter.
+For more Noir syntax, check the [Language Concepts](../../language_concepts/comments.md) chapter.
 
 ## Build In/Output Files
 
@@ -146,4 +146,4 @@ corresponding error instead.
 
 Congratulations, you have now created and verified a proof for your very first Noir program!
 
-In the [next section](breakdown.md), we will go into more detail on each step performed.
+In the [next section](01_breakdown.md), we will go into more detail on each step performed.

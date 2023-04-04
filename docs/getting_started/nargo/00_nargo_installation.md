@@ -13,7 +13,7 @@ keywords: [Nargo, command line tool, Noir programs, installation guide, how to u
 verifying and more).
 
 Alternatively, the interactions can also be performed in
-[TypeScript](../getting_started/typescript.md).
+[TypeScript](../typescript.md).
 
 ## Installation
 
