@@ -47,16 +47,8 @@ html[data-theme='dark'] {
   --search-local-hit-color: white;
 }
 
-[data-theme='dark'] .navbar {
-  background-color: #2f1f49;
-  box-shadow: var(--ifm-navbar-shadow);
-  display: flex;
-  height: var(--ifm-navbar-height);
-  padding: var(--ifm-navbar-padding-vertical) var(--ifm-navbar-padding-horizontal);
-}
-
 [data-theme='dark'] .footer {
-  --ifm-footer-background-color: #211733;
+  --ifm-footer-background-color: #282a36
   --ifm-footer-color: var(--ifm-footer-link-color);
   --ifm-footer-link-color: var(--ifm-color-secondary);
   --ifm-footer-title-color: var(--ifm-color-white);
