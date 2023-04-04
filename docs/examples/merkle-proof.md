@@ -12,7 +12,7 @@ keywords:
 Let's walk through an example of a merkle membership proof in Noir that proves that a given leaf is
 in a merkle tree.
 
-```rust,noplaypen
+```rust
 use dep::std;
 
 fn main(message : [Field; 62], index : Field, hashpath : [Field; 40], root : Field) {
@@ -25,7 +25,7 @@ fn main(message : [Field; 62], index : Field, hashpath : [Field; 40], root : Fie
 
 The above code uses the noir standard library to call both of the aforementioned components.
 
-```rust,noplaypen
+```rust
    let leaf = std::hash::hash_to_field(message);
 ```
 
@@ -34,7 +34,7 @@ by the backend. The only requirement is that this hash function can heuristicall
 random oracle. If only collision resistance is needed, then one can call `std::hash::pedersen`
 instead.
 
-```rust,noplaypen
+```rust
     let is_member = std::merkle::check_membership(root, leaf, index, hashpath);
 ```
 
@@ -49,7 +49,7 @@ An example, the merkle membership proof, only requires a hash function that has 
 resistance, hence a hash function like Pedersen is allowed, which in most cases is more efficient
 than the even more conservative sha256.
 
-```rust,noplaypen
+```rust
     constrain is_member == 1;
 ```
 

@@ -15,7 +15,7 @@ times.
 
 The following block of code between the braces is run 10 times.
 
-```rust,noplaypen
+```rust
 for i in 0..10 {
     // do something
 };
@@ -26,7 +26,7 @@ for i in 0..10 {
 Noir supports `if-else` statements. The syntax is most similar to Rust's where it is not required
 for the statement's conditonal to be surrounded by parentheses.
 
-```rust,noplaypen
+```rust
 let a = 0;
 let mut x: u32 = 0;
 

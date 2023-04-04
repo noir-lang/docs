@@ -7,7 +7,15 @@ keywords: [TypeScript, Noir, tutorial, compile, inputs, prover, verifier, proof]
 ---
 # TypeScript
 
-Interactions with Noir programs can also be performed in TypeScript, which can come in handy when writing tests or when working in TypeScript-based projects like [Hardhat](https://hardhat.org/)
+Interactions with Noir programs can also be performed in TypeScript, which can come in handy when writing tests or when working in TypeScript-based projects like [Hardhat](https://hardhat.org/).
+
+This guide is based on the [zCaptcha](https://github.com/signorecello/zcaptcha/blob/main/package.json) example. Please refer to it for an example implementation.
+
+:::note
+
+You may find unexpected errors working with some frameworks such as `vite`. This is due to the nature of `wasm` files and the way Noir uses web workers. As we figure it out, we suggest using [Create React App](https://create-react-app.dev/), or [Next.js](https://nextjs.org/) for a quick start.
+
+:::
 
 ## Setup
 
@@ -16,8 +24,14 @@ We're assuming you're using ES6 for both browser (for example with React), or no
 Install [Yarn](https://yarnpkg.com/) or [Node.js](https://nodejs.org/en). Init a new project with `npm init`. Install Noir dependencies in your project by running:
 
 ```bash
-yarn add @noir-lang/noir_wasm @noir-lang/barretenberg @noir-lang/aztec_backend
+yarn add @noir-lang/noir_wasm github:noir-lang/barretenberg#39a1547875f941ef6640217a42d8f34972425c97 @noir-lang/aztec_backend
 ```
+
+:::note
+
+Due to a known issue, the latest `@noir-lang/barretenberg` is incompatible with `noir_wasm` and `aztec_backend`. Please make sure you install `barretenberg` via the provided github link.
+
+:::
 
 As for the circuit, we will use the _Standard Noir Example_ and place it in the `src` folder. Feel free to use any other, as long as you refactor the below examples accordingly.
 

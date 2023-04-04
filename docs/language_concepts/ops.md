@@ -45,7 +45,7 @@ This differs from the operations such as `+` where the operands are used in _com
 
 ### Bitwise Operations Example
 
-```rust,noplaypen
+```rust
 fn main(x : Field) {
     let y = x as u32;
     let z = y & y;
@@ -64,7 +64,7 @@ short-circuiting that these operators require can be inefficient for Noir's back
 use the bitwise operators `|` and `&` which operate indentically for booleans, just without the
 short-circuiting.
 
-```rust,noplaypen
+```rust
 let my_val = 5;
 
 let mut flag = 1;

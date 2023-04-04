@@ -12,14 +12,14 @@ Functions in Noir follow the same semantics of Rust, though Noir does not suppor
 
 To declare a function the `fn` keyword is used.
 
-```rust,noplaypen
+```rust
 fn foo() {}
 ```
 
 All parameters in a function must have a type and all types are known at compile time. The parameter
 is pre-pended with a colon and the parameter type. Multiple parameters are separated using a comma.
 
-```rust,noplaypen
+```rust
 fn foo(x : Field, y : pub Field){}
 ```
 
@@ -27,7 +27,7 @@ The return type of a function can be stated by using the `->` arrow notation. Th
 states that the foo function must return a `Field`. If the function returns no value, then the arrow
 is omitted.
 
-```rust,noplaypen
+```rust
 fn foo(x : Field, y : pub Field) -> Field {
     x + y
 }
@@ -43,7 +43,7 @@ arguments.
 
 Below we show how to call the `foo` function from the `main` function using a call expression:
 
-```rust,noplaypen
+```rust
 fn main(x : Field, y : Field) {
     let z = foo(x);
 }
@@ -57,7 +57,7 @@ fn foo(x : Field) -> Field {
 
 You can define methods in Noir on any struct type in scope.
 
-```rust,noplaypen
+```rust
 struct MyStruct {
     foo: Field,
     bar: Field,
@@ -85,6 +85,6 @@ fn main() {
 Methods are just syntactic sugar for functions, so if we wanted to we could also call `sum` as
 follows:
 
-```rust,noplaypen
+```rust
 constrain MyStruct::sum(s) == 42
 ```
