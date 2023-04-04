@@ -78,3 +78,19 @@ if (my_val != 10) & (my_val < 50) {
 }
 constrain flag == 0;
 ```
+
+### Shorthand operators
+
+Noir shorthand operators for most of the above operators, namely `+=, -=, *=, /=, %=, &=, |=, ^=, <<=`, and `>>=`. These allow for more concise syntax. For example:
+
+```rust
+let mut i = 0;
+i = i + 1;
+```
+
+could be written as:
+
+```rust
+let mut i = 0;
+i += 1;
+```
