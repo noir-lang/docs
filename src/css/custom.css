@@ -24,27 +24,53 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #1de5ce;
-  --ifm-color-primary-dark: #1de5ce;
-  --ifm-color-primary-darker: #1de5ce;
-  --ifm-color-primary-darkest: #1de5ce;
-  --ifm-color-primary-light: #1de5ce;
-  --ifm-color-primary-lighter: #1de5ce;
-  --ifm-color-primary-lightest: #1de5ce;
+  --ifm-color-primary: #f5bda9;
+  --ifm-color-primary-dark: #f5bda9;
+  --ifm-color-primary-darker: #f5bda9;
+  --ifm-color-primary-darkest: #f5bda9;
+  --ifm-color-primary-light: #f5bda9;
+  --ifm-color-primary-lighter: #f5bda9;
+  --ifm-color-primary-lightest: #f5bda9;
 
   --ifm-heading-color: white;
   --ifm-menu-color-background-active: #282a36;
   --ifm-breadcrumb-color-active: #2f1f49;
-  --ifm-breadcrumb-item-background-active: #1de5ce;
+  --ifm-breadcrumb-item-background-active: #f5bda9;
 
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
 html[data-theme='dark'] {
-  --search-local-highlight-color: #1de5ce;
+  --search-local-highlight-color: #f5bda9;
   --search-local-muted-color: white;
   --search-local-hit-active-color: #1b1b1d;
   --search-local-hit-color: white;
+}
+
+[data-theme='dark'] .navbar {
+  background-color: #2f1f49;
+  box-shadow: var(--ifm-navbar-shadow);
+  display: flex;
+  height: var(--ifm-navbar-height);
+  padding: var(--ifm-navbar-padding-vertical) var(--ifm-navbar-padding-horizontal);
+}
+
+[data-theme='dark'] .footer {
+  --ifm-footer-background-color: #211733;
+  --ifm-footer-color: var(--ifm-footer-link-color);
+  --ifm-footer-link-color: var(--ifm-color-secondary);
+  --ifm-footer-title-color: var(--ifm-color-white);
+}
+
+[data-theme='light'] .navbar {
+  background-color: #f6fbfc;
+}
+
+[data-theme='light'] .footer {
+  --ifm-footer-background-color: #f6fbfc;
+  --ifm-footer-color: #2f1f49;
+  --ifm-footer-link-color: #2f1f49;
+  --ifm-footer-title-color: #2f1f49;
 }
 
 .katex-html {
