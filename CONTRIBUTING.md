@@ -46,7 +46,7 @@ Before merging, you should mentally review these questions:
 
 The Noir documentation is versioned according to the [Docusaurus documentation](https://docusaurus.io/docs/versioning). In the `versioned_docs` and `versioned_sidebar` folders you will find the docs and configs for the previous versions. If any change needs to be made to older versions, please do it in this folder.
 
-In the `docs` folder, you'll find the current, unreleased version, which we call `nightly`. Any change in this folder will be reflected in the next version, once the Noir team decides to release.
+In the `docs` folder, you'll find the current, unreleased version, which we call `dev`. Any change in this folder will be reflected in the next version, once the Noir team decides to release.
 
 We aim to have every version matching the versions of [Noir](https://github.com/noir-lang/noir). However, we would only cut a new version of the docs if there are breaking or otherwise significant changes, to avoid unecessary build time and size to the existent documentation.
 
