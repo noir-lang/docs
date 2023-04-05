@@ -43,6 +43,7 @@ const config = {
           versions: {
             current: {
               label: 'dev',
+              path: 'dev',
             },
           },
         },
