@@ -40,6 +40,11 @@ const config = {
           routeBasePath: '/',
           remarkPlugins: [math],
           rehypePlugins: [katex],
+          versions: {
+            current: {
+              label: 'nightly',
+            },
+          },
         },
         blog: false,
         theme: {
