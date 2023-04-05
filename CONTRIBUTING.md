@@ -50,4 +50,8 @@ In the `docs` folder, you'll find the current, unreleased version, which we call
 
 We aim to have every version matching the versions of [Noir](https://github.com/noir-lang/noir). However, we would only cut a new version of the docs if there are breaking or otherwise significant changes, to avoid unecessary build time and size to the existent documentation.
 
-While the versioning is intended to be managed by the core maintainers, we feel it's important for external contributors to understand why and how is it maintained.
+While the versioning is intended to be managed by the core maintainers, we feel it's important for external contributors to understand why and how is it maintained. To bump to a new version, run the following command, replacing with the intended version:
+
+`npm run docusaurus docs:version <new_version_tag>`
+
+This should create a new version by copying the `docs` folder and the `sidebars.js` file to the relevant folders, as well as adding this version to `versions.json`.
