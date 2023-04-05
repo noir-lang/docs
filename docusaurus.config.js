@@ -30,7 +30,7 @@ const config = {
   presets: [
     [
       '@docusaurus/preset-classic',
-      ({
+      {
         gtag: {
           trackingID: 'G-SZQHEQZK3L',
           anonymizeIP: true,
@@ -45,7 +45,7 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      },
     ],
   ],
 
@@ -65,6 +65,11 @@ const config = {
             href: 'https://github.com/noir-lang/docs',
             label: 'GitHub',
             position: 'right',
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'left',
+            dropdownActiveClassDisabled: true,
           },
         ],
       },
