@@ -42,7 +42,8 @@ const config = {
           rehypePlugins: [katex],
           versions: {
             current: {
-              label: 'nightly',
+              label: 'dev',
+              path: 'dev',
             },
           },
         },
