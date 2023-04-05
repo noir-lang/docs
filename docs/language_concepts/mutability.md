@@ -50,13 +50,13 @@ fn helper(mut x: i32) {
 }
 ```
 
-### Constants
+## Comptime values
 
-A constant type is a value that does not change per circuit instance. This is different to a witness
-which changes per proof. If a constant type that is being used in your program is changed, then your
+Comptime value are values that are known at compile-time. This is different to a witness
+which changes per proof. If a comptime value that is being used in your program is changed, then your
 circuit will also change.
 
-Below we show how to declare a constant value:
+Below we show how to declare a comptime value:
 
 ```rust
 fn main() {
@@ -67,11 +67,11 @@ fn main() {
 }
 ```
 
-Note that variables declared as mutable may not be constants:
+Note that variables declared as mutable may not be comptime:
 
 ```rust
 fn main() {
-    // error: Cannot mark a comptime type as mutable - any mutation would remove its const-ness
+    // error: Cannot mark a comptime type as mutable
     let mut a: comptime Field = 5;
 
     // a inferred as a private Field here
@@ -79,7 +79,7 @@ fn main() {
 }
 ```
 
-### Globals
+## Globals
 
 Noir also supports global variables. However, they must be compile-time variables. If `comptime` is
 not explicitly written in the type annotation the compiler will implicitly specify the declaration
@@ -113,7 +113,7 @@ mod mysubmodule {
 }
 ```
 
-### Why only local mutability?
+## Why only local mutability?
 
 Witnesses in a proving system are immutable in nature. Noir aims to _closely_ mirror this setting
 without applying additional overhead to the user. Modeling a mutable reference is not as
