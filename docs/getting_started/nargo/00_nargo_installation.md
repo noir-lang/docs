@@ -191,7 +191,7 @@ TBC
 [rust]: https://www.rust-lang.org/tools/install
 [noir vs code extension]:
   https://marketplace.visualstudio.com/items?itemName=noir-lang.noir-programming-language-syntax-highlighter
-[barretenberg]: https://github.com/AztecProtocol/aztec-connect/tree/master/barretenberg
+[barretenberg]: https://github.com/AztecProtocol/barretenberg
 [homebrew]: https://brew.sh/
 [cmake]: https://cmake.org/install/
 [llvm]: https://llvm.org/docs/GettingStarted.html
