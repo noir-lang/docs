@@ -145,7 +145,7 @@ There are then two approaches to proceed, differing in how the proving backend i
 
 #### Option 2.2: Install Executable with Native Backend
 
-The [barretenberg] proving backend is written in C++, hence compiling it from source would first
+The [barretenberg](https://github.com/AztecProtocol/barretenberg) proving backend is written in C++, hence compiling it from source would first
 require certain dependencies to be installed.
 
 4. Install [CMake], [LLVM] and [OpenMP]:
@@ -191,7 +191,6 @@ TBC
 [rust]: https://www.rust-lang.org/tools/install
 [noir vs code extension]:
   https://marketplace.visualstudio.com/items?itemName=noir-lang.noir-programming-language-syntax-highlighter
-[barretenberg]: https://github.com/AztecProtocol/aztec-connect/tree/master/barretenberg
 [homebrew]: https://brew.sh/
 [cmake]: https://cmake.org/install/
 [llvm]: https://llvm.org/docs/GettingStarted.html
