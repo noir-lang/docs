@@ -6,7 +6,7 @@ keywords: [cryptographic primitives, Noir project, schnorr, signatures]
 
 ## schnorr::verify_signature
 
-Verifier for Schnorr signatures over the Grumpkin curve
+Verifier for Schnorr signatures over the embedded curve (for BN254 it is Grumpkin).
 
 ```rust
 fn verify_signature(_public_key_x: Field, _public_key_y: Field, _signature: [u8; 64], _message: [u8]) -> Field
