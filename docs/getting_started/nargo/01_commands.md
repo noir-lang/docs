@@ -18,7 +18,23 @@ keywords:
   ]
 ---
 
-# Commands
+## General options
+
+```
+Options:
+  -s, --show-ssa        Emit debug information for the intermediate SSA IR
+  -a, --allow-warnings  Issue a warning for each unused variable instead of an error
+      --show-output     Display output of `println` statements during tests
+  -h, --help            Print help
+```
+
+## `nargo help [subcommand]`
+
+Prints the list of available commands or specific information of a subcommand.
+
+_Arguments_
+
+- `<subcommand>` - The subcommand whose help message to display
 
 ## `nargo check`
 
@@ -37,6 +53,10 @@ of the circuit. This build artifact can then be used to generate and verify proo
 _Arguments_
 
 - `<circuit_name>` - The name of the circuit file
+
+_Options_
+
+- `-c, --contracts` - Compile each contract function used within the program
 
 ## `nargo new <package_name> [path]`
 
@@ -79,6 +99,10 @@ _Arguments_
 
 - `<proof_name>` - The name of the proof
 
+_Options_
+
+- `-v, --verify` - Verify proof after proving
+
 ## `nargo verify <proof>`
 
 Given a proof and a program, verify whether the proof is valid.
@@ -105,14 +129,6 @@ _Arguments_
 ## `nargo gates`
 
 Counts the occurrences of different gates in circuit
-
-## `nargo help [subcommand]`
-
-Prints the list of available commands or specific information of a subcommand.
-
-_Arguments_
-
-- `<subcommand>` - The subcommand whose help message to display
 
 ## `nargo print-acir`
 
