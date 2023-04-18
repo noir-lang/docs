@@ -31,10 +31,10 @@ const config = {
     [
       '@docusaurus/preset-classic',
       {
-//         gtag: {
-//           trackingID: 'G-SZQHEQZK3L',
-//           anonymizeIP: true,
-//         },
+        //         gtag: {
+        //           trackingID: 'G-SZQHEQZK3L',
+        //           anonymizeIP: true,
+        //         },
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
@@ -46,6 +46,8 @@ const config = {
               path: 'dev',
             },
           },
+          editUrl: ({ versionDocsDirPath, docPath }) =>
+            `https://github.com/noir-lang/docs/tree/main/${versionDocsDirPath}/${docPath}`
         },
         blog: false,
         theme: {
