@@ -47,7 +47,7 @@ const config = {
             },
           },
           editUrl: ({ versionDocsDirPath, docPath }) =>
-            `https://github.com/noir-lang/docs/tree/main/${versionDocsDirPath}/${docPath}`
+            `https://github.com/noir-lang/docs/edit/main/${versionDocsDirPath}/${docPath}`
         },
         blog: false,
         theme: {
