@@ -69,6 +69,21 @@ fn main() {
 }
 ```
 
+## map
+
+Applies a function to each element of the array, returning a new array containing the mapped elements.
+
+```rust
+fn map<U>(f: fn(T) -> U) -> [U; N]
+```
+
+example
+
+```rust
+let a = [1, 2, 3];
+let b = f.map(|a| a * 2) // b is now [2, 4, 6]
+```
+
 ## fold
 
 Applies a function to each element of the array, returning the final accumulated value. The first
