@@ -36,8 +36,8 @@ See the [merkle proof example](../examples/merkle-proof) for how to use it in th
 
 You can also import only the specific parts of dependency that you want to use. For example,
 demonstrated in the
-[elliptic curve example](../standard_library/cryptographic_primitives/03_ec_primitives#examples),
-you can import just the `Point` and the `Curve` that you want to use.
+[elliptic curve example](../standard_library/cryptographic_primitives/ec_primitives#examples), you
+can import just the `Point` and the `Curve` that you want to use.
 
 ```rust
 use dep::std::ec::tecurve::affine::Curve;
