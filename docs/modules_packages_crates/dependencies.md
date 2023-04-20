@@ -6,8 +6,6 @@ description:
 keywords: [Nargo, dependencies, GitHub, package management, versioning]
 ---
 
-# Dependencies
-
 Nargo allows you to upload packages to GitHub and use them as dependencies.
 
 ## Specifying a dependency
@@ -24,3 +22,24 @@ semver 2.0 guidelines.
 
 > Note: Without a `tag` , there would be no versioning and dependencies would change each time you
 > compile your project.
+
+## Importing dependencies
+
+You can import a dependency to a Noir file using the following syntax. For example, to import the
+std library:
+
+```rust
+use dep::std;
+```
+
+See the [merkle proof example](../examples/merkle-proof) for how to use it in the file.
+
+You can also import only the specific parts of dependency that you want to use. For example,
+demonstrated in the
+[elliptic curve example](../standard_library/cryptographic_primitives/03_ec_primitives#examples),
+you can import just the `Point` and the `Curve` that you want to use.
+
+```rust
+use dep::std::ec::tecurve::affine::Curve;
+use dep::std::ec::tecurve::affine::Point;
+```

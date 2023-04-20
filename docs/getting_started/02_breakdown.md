@@ -1,13 +1,11 @@
 ---
-title: Breakdown
+title: Project Breakdown
 description:
   Learn about the anatomy of a Nargo project, including the purpose of the Prover and Verifier TOML
   files, and how to prove and verify your program.
 keywords:
   [Nargo, Nargo project, Prover.toml, Verifier.toml, proof verification, private asset transfer]
 ---
-
-# Breakdown
 
 This section breaks down our hello world program in section _1.2_. We elaborate on the project
 structure and what the `prove` and `verify` commands did in the previous section.

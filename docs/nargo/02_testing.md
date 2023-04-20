@@ -1,14 +1,10 @@
 ---
-title: Testing with Nargo
+title: Testing in Noir
 description: Learn how to use Nargo to test your Noir program in a quick and easy way
 keywords: [Nargo, testing, Noir, compile, test]
 ---
 
-# Testing
-
 You can test your Noir programs using Noir circuits.
-
-## Testing in Noir
 
 Nargo will automatically compile and run any functions which have the decorator `#[test]` on them if
 you run `nargo test`.
