@@ -82,7 +82,7 @@ example
 ```rust
 let a = [1, 2, 3];
 let b = f.map(|a| a * 2) // b is now [2, 4, 6]
-```
+``` 
 
 ## fold
 
