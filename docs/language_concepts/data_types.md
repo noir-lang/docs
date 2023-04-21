@@ -35,9 +35,9 @@ public.
 ## Private & Public Types
 
 A **private value** is known only to the Prover, while a **public value** is known by both the
-Prover and Verifier. All primitive types (including individual fields of compound types) in Noir are
-private by default, and can be marked public when certain values are intended to be revealed to the
-Verifier.
+Prover and Verifier. Mark values as `private` when the value should only be known to the prover. All
+primitive types (including individual fields of compound types) in Noir are private by default, and
+can be marked public when certain values are intended to be revealed to the Verifier.
 
 > **Note:** For public values defined in Noir programs paired with smart contract verifiers, once
 > the proofs are verified on-chain the values can be considered known to everyone that has access to

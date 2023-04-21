@@ -1,13 +1,11 @@
 ---
-title: Merkle Proof Membership Example
+title: Merkle Proof Membership
 description:
   Learn how to use merkle membership proof in Noir to prove that a given leaf is a member of a
   merkle tree with a specified root, at a given index.
 keywords:
   [merkle proof, merkle membership proof, Noir, rust, hash function, Pedersen, sha256, merkle tree]
 ---
-
-# Merkle Proof
 
 Let's walk through an example of a merkle membership proof in Noir that proves that a given leaf is
 in a merkle tree.
@@ -26,7 +24,7 @@ fn main(message : [Field; 62], index : Field, hashpath : [Field; 40], root : Fie
 The above code uses the noir standard library to call both of the aforementioned components.
 
 ```rust
-   let leaf = std::hash::hash_to_field(message);
+let leaf = std::hash::hash_to_field(message);
 ```
 
 The message is hashed using `hash_to_field`. The specific hash function that is being used is chosen
@@ -35,7 +33,7 @@ random oracle. If only collision resistance is needed, then one can call `std::h
 instead.
 
 ```rust
-    let is_member = std::merkle::check_membership(root, leaf, index, hashpath);
+let is_member = std::merkle::check_membership(root, leaf, index, hashpath);
 ```
 
 The leaf is then passed to a check_membership proof with the root, index and hashpath. `is_member`
@@ -50,7 +48,7 @@ resistance, hence a hash function like Pedersen is allowed, which in most cases 
 than the even more conservative sha256.
 
 ```rust
-    constrain is_member == 1;
+constrain is_member == 1;
 ```
 
 This last line, constrains the variable to be equal to 1. If 1 was changed to 0, this would create a
