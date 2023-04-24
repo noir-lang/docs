@@ -24,12 +24,12 @@ We're assuming you're using ES6 for both browser (for example with React), or no
 Install [Yarn](https://yarnpkg.com/) or [Node.js](https://nodejs.org/en). Init a new project with `npm init`. Install Noir dependencies in your project by running:
 
 ```bash
-yarn add @noir-lang/noir_wasm github:noir-lang/barretenberg#39a1547875f941ef6640217a42d8f34972425c97 @noir-lang/aztec_backend
+npm i @noir-lang/noir_wasm@0.3.2-fa0e9cff github:noir-lang/barretenberg#39a1547875f941ef6640217a42d8f34972425c97 @noir-lang/aztec_backend@0.1.0-0c3b2f2
 ```
 
 :::note
 
-Due to a known issue, the latest `@noir-lang/barretenberg` is incompatible with `noir_wasm` and `aztec_backend`. Please make sure you install `barretenberg` via the provided github link.
+While Noir is in rapid development, some packages could interfere with others. For that reason, you should use these specified versions. Let us know if for some reason you need to use other ones.
 
 :::
 
