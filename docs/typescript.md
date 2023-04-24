@@ -10,7 +10,7 @@ Interactions with Noir programs can also be performed in TypeScript, which can c
 writing tests or when working in TypeScript-based projects like [Hardhat](https://hardhat.org/).
 
 This guide is based on the
-[zCaptcha](https://github.com/signorecello/zcaptcha/blob/main/package.json) example. Please refer to
+[noir-starter](https://github.com/signorecello/noir-starter) example. Please refer to
 it for an example implementation.
 
 :::note
@@ -103,23 +103,16 @@ export const compileCircuit = async () => {
 
 This function should return us the compiled circuit.
 
-> **A word about initialiseResolve:**
->
-> In the browser, you need to create an URL and point initialiseResolver. However, in nodejs you can
-> simply use `fs.readFileSync` and return the code like that. Example:
->
-> ```ts
-> initialiseResolver(() => {
->   try {
->     const string = fs.readFileSync('src/main', { encoding: 'utf8' });
->     return string;
->   } catch (err) {
->     console.error(err);
->     throw err;
->   }
-> });
-> compiled = await compile({});
-> ```
+:::note
+
+You can use as many files as you need, [importing them as you would do with Nargo](./modules_packages_crates/dependencies.md), and you don't need to set them up in the `src` folder. Just mind the following particularities about `initialiseResolver`:
+
+1. The `compile` function expects a `main.nr` file as an entry point. If you need another one, just pass it as a `entry_point` parameter to `compile`. Check the [noir starter](https://github.com/signorecello/noir-starter) for an example on multiple files and a non-default entry point.
+2. `initialiseResolver` needs to be synchronous
+3. Different frameworks use different ways of fetching files. It's beyond the scope of this guide to explain why and how, but for reference, [noir starter](https://github.com/signorecello/noir-starter) uses both Next.js and node.js for testing.
+
+Quick tip: an easy way to deal with `initialiseResolver` is just to prepare a `{fileName: "literally_the_code"}` object beforehand
+:::
 
 ## ACIR
 
