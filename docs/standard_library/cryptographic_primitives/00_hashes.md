@@ -68,6 +68,25 @@ fn main() {
 }
 ```
 
+## poseidon
+
+Given an array of Fields, returns a new Field with the Poseidon Hash. Mind that you need to specify how many inputs are there to your Poseidon function.
+
+```rust
+// example for hash_1, hash_2 accepts an array of length 2, etc
+fn hash_1(input: [Field; 1]) -> Field
+```
+
+example:
+
+```rust
+fn main()
+{
+  let hash1 = std::hash::poseidon::bn254::hash_2([1, 2]);
+  constrain hash1 == 0x115cc0f5e7d690413df64c6b9662e9cf2a3617f2743245519e19607a4417189a;
+}
+```
+
 ## mimc_bn254 and mimc
 
 `mimc_bn254` is `mimc`, but with hardcoded parameters for the BN254 curve. You can use it by
