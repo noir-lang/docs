@@ -9,9 +9,8 @@ keywords: [TypeScript, Noir, tutorial, compile, inputs, prover, verifier, proof]
 Interactions with Noir programs can also be performed in TypeScript, which can come in handy when
 writing tests or when working in TypeScript-based projects like [Hardhat](https://hardhat.org/).
 
-This guide is based on the
-[noir-starter](https://github.com/signorecello/noir-starter) example. Please refer to
-it for an example implementation.
+This guide is based on the [noir-starter](https://github.com/signorecello/noir-starter) example.
+Please refer to it for an example implementation.
 
 :::note
 
@@ -35,7 +34,8 @@ npm i @noir-lang/noir_wasm@0.3.2-fa0e9cff github:noir-lang/barretenberg#39a15478
 
 :::note
 
-While Noir is in rapid development, some packages could interfere with others. For that reason, you should use these specified versions. Let us know if for some reason you need to use other ones.
+While Noir is in rapid development, some packages could interfere with others. For that reason, you
+should use these specified versions. Let us know if for some reason you need to use other ones.
 
 :::
 
@@ -44,7 +44,7 @@ free to use any other, as long as you refactor the below examples accordingly.
 
 This standard example is a program that multiplies input `x` with input `y` and returns the result:
 
-```rs
+```rust
 // src/main.nr
 fn main(x: u32, y: pub u32) -> pub u32 {
     let z = x * y;
@@ -104,14 +104,23 @@ This function should return us the compiled circuit.
 
 :::note
 
-You can use as many files as you need, [importing them as you would do with Nargo](./modules_packages_crates/dependencies.md), and you don't need to set them up in the `src` folder. Just mind the following particularities about `initialiseResolver`:
+You can use as many files as you need,
+[importing them as you would do with Nargo](./modules_packages_crates/dependencies.md), and you
+don't need to set them up in the `src` folder. Just mind the following particularities about
+`initialiseResolver`:
 
-1. The `compile` function expects a `main.nr` file as an entry point. If you need another one, just pass it as a `entry_point` parameter to `compile`. Check the [noir starter](https://github.com/signorecello/noir-starter) for an example on multiple files and a non-default entry point.
+1. The `compile` function expects a `main.nr` file as an entry point. If you need another one, just
+   pass it as a `entry_point` parameter to `compile`. Check the
+   [noir starter](https://github.com/signorecello/noir-starter) for an example on multiple files and
+   a non-default entry point.
 2. `initialiseResolver` needs to be synchronous
-3. Different frameworks use different ways of fetching files. It's beyond the scope of this guide to explain why and how, but for reference, [noir starter](https://github.com/signorecello/noir-starter) uses both Next.js and node.js for testing.
+3. Different frameworks use different ways of fetching files. It's beyond the scope of this guide to
+   explain why and how, but for reference,
+   [noir starter](https://github.com/signorecello/noir-starter) uses both Next.js and node.js for
+   testing.
 
-Quick tip: an easy way to deal with `initialiseResolver` is just to prepare a `{fileName: "literally_the_code"}` object beforehand
-:::
+Quick tip: an easy way to deal with `initialiseResolver` is just to prepare a
+`{fileName: "literally_the_code"}` object beforehand :::
 
 ## ACIR
 
