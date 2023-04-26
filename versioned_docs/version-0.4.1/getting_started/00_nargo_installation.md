@@ -12,8 +12,7 @@ keywords: [Nargo, command line tool, Noir programs, installation guide, how to u
 `nargo` is a command line tool for interacting with Noir programs (e.g. compiling, proving,
 verifying and more).
 
-Alternatively, the interactions can also be performed in
-[TypeScript](../typescript.md).
+Alternatively, the interactions can also be performed in [TypeScript](../typescript.md).
 
 ## Installation
 
@@ -60,7 +59,7 @@ source ~/.zshrc
 
 Open PowerShell as Administrator and run:
 
-```sh
+```powershell
 mkdir -f -p "$env:USERPROFILE\.nargo\bin\"; `
 Invoke-RestMethod -Method Get -Uri https://github.com/noir-lang/noir/releases/download/v0.4.1/nargo-x86_64-pc-windows-msvc.zip -Outfile "$env:USERPROFILE\.nargo\bin\nargo-x86_64-pc-windows-msvc.zip"; `
 Expand-Archive -Path "$env:USERPROFILE\.nargo\bin\nargo-x86_64-pc-windows-msvc.zip" -DestinationPath "$env:USERPROFILE\.nargo\bin\"; `
