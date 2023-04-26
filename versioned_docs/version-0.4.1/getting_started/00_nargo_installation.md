@@ -90,7 +90,7 @@ Check if the installation was successful by running `nargo --help`.
 For a successful installation, you should see something similar to the following after running the
 command:
 
-```sh
+```
 $ nargo --help
 
 Noir's package manager
@@ -118,15 +118,15 @@ Commands:
 
 2. Download Noir's source code from Github by running:
 
-```bash
-git clone git@github.com:noir-lang/noir.git
-```
+   ```bash
+   git clone git@github.com:noir-lang/noir.git
+   ```
 
 3. Change directory into the Noir project and checkout the v0.4.1 release by running:
 
-```bash
-cd noir && git checkout tags/v0.4.1
-```
+   ```bash
+   cd noir && git checkout tags/v0.4.1
+   ```
 
 Note that you can install the latest version by building the project directly from the `master`
 branch, but this may not work as expected or may include undocumented features since it is not an
@@ -136,11 +136,11 @@ There are then two approaches to proceed, differing in how the proving backend i
 
 #### Option 2.1: Install Executable with WASM backend
 
-Install Nargo by running:
+4. Install Nargo by running:
 
-```bash
-cargo install --locked --path=crates/nargo_cli --no-default-features --features plonk_bn254_wasm
-```
+   ```bash
+   cargo install --locked --path=crates/nargo_cli --no-default-features --features plonk_bn254_wasm
+   ```
 
 #### Option 2.2: Install Executable with Native Backend
 
@@ -173,18 +173,18 @@ TBC
 
 5. Install Nargo by running:
 
-```bash
-cargo install --locked --path=crates/nargo_cli
-```
+   ```bash
+   cargo install --locked --path=crates/nargo_cli
+   ```
 
 #### Verify Installation
 
 6. Check if the installation was successful by running `nargo --version`:
 
-```sh
-$ nargo --version
-nargo 0.4.1 (git version hash: 29b1f7df4d563849a62e64c533cb62932188135b, is dirty: false)
-```
+   ```
+   $ nargo --version
+   nargo 0.4.1 (git version hash: 29b1f7df4d563849a62e64c533cb62932188135b, is dirty: false)
+   ```
 
 [git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [rust]: https://www.rust-lang.org/tools/install
