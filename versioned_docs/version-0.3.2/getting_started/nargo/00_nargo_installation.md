@@ -17,14 +17,31 @@ Alternatively, the interactions can also be performed in
 
 ## Installation
 
-There are two approaches to install Nargo:
+There are three approaches to install Nargo:
 
-- [Option 1: Binaries](#option-1-binaries)
-- [Option 2: Compile from Source](#option-2-compile-from-source)
+- [Option 1: Noirup](#option-1-noirup)
+- [Option 2: Binaries](#option-2-binaries)
+- [Option 3: Compile from Source](#option-3-compile-from-source)
 
 Optionally you can also install [Noir VS Code extension] for syntax highlighting.
 
-### Option 1: Binaries
+### Option 1: Noirup
+
+If you're on OSX or Linux, the easiest way to start using Noir and Nargo is via noirup. Just open a terminal and run:
+
+```bash
+curl -L https://raw.githubusercontent.com/noir-lang/noirup/main/install | bash
+```
+
+Close the terminal, open another one, and run
+
+```bash
+noirup -v 0.3.2
+```
+
+Done, you should have the correct version working. You can also install nightlies, specific versions or branches, check out the [noirup repository](https://github.com/noir-lang/noirup) for more information
+
+### Option 2: Binaries
 
 See [GitHub Releases](https://github.com/noir-lang/noir/releases) for the latest and previous
 platform specific binaries.
@@ -111,7 +128,7 @@ Commands:
    help              Print this message or the help of the given subcommand(s)
 ```
 
-### Option 2: Compile from Source
+### Option 3: Compile from Source
 
 #### Setup
 
