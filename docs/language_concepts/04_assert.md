@@ -23,6 +23,8 @@ The above snippet compiles because `==` is a predicate operation. Conversely, th
 compile:
 
 ```rust
+// INCORRECT
+
 fn main(x : Field, y : Field) {
     assert(x + y);
 }
