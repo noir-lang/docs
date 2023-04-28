@@ -105,8 +105,8 @@ This function should return us the compiled circuit.
 :::note
 
 You can use as many files as you need,
-[importing them as you would do with Nargo](./modules_packages_crates/dependencies.md), and you
-don't need to set them up in the `src` folder. Just mind the following particularities about
+[importing them as you would do with Nargo](./modules_packages_crates/dependencies), and you don't
+need to set them up in the `src` folder. Just mind the following particularities about
 `initialiseResolver`:
 
 1. The `compile` function expects a `main.nr` file as an entry point. If you need another one, just

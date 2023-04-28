@@ -1,5 +1,5 @@
 ---
-title: Noir Data Types
+title: Data Types
 description:
   Get a clear understanding of the two categories of Noir data types - primitive types and compound
   types. Learn about their characteristics, differences, and how to use them in your Noir
@@ -20,8 +20,6 @@ keywords:
     struct type,
   ]
 ---
-
-# Data Types
 
 Every value in Noir has a type, which determines which operations are valid for it.
 
@@ -82,8 +80,8 @@ A primitive type represents a single value. They can be private or public.
 The field type corresponds to the native field type of the proving backend.
 
 The size of a Noir field depends on the elliptic curve's finite field for the proving backend
-adopted. For example, a field would be a 254-bit integer when paired with the default TurboPlonk
-backend that spans the Grumpkin curve.
+adopted. For example, a field would be a 254-bit integer when paired with the default backend that
+spans the Grumpkin curve.
 
 Fields support integer arithmetic and are often used as the default numeric type in Noir:
 
@@ -118,8 +116,8 @@ fn main(x : Field, y : u32) {
 are unsigned 32-bit integers. If `y` or `z` exceeds the range $\\([0,2^{32}-1]\\)$, proofs created
 will be rejected by the verifier.
 
-> **Note:** The default TurboPlonk backend supports both even (e.g. `u16`, `u48`) and odd (e.g.
-> `u5`, `u3`) sized integer types.
+> **Note:** The default backend supports both even (e.g. `u16`, `u48`) and odd (e.g. `u5`, `u3`)
+> sized integer types.
 
 ### The Boolean Type
 
@@ -136,8 +134,8 @@ fn main() {
 > `false` in _Verifier.toml_.
 
 The boolean type is most commonly used in conditionals like `if` expressions and `constrain`
-statements. More about conditionals is covered in the [Control Flow](./control_flow.md) and
-[Constrain Statement](./constrain.md) sections.
+statements. More about conditionals is covered in the [Control Flow](./control_flow) and
+[Constrain Statement](./constrain) sections.
 
 ## Compound Types
 

@@ -84,7 +84,7 @@ constrain x != y;
 
 The Noir syntax `constrain` can be interpreted as something similar to `assert` in other languages.
 
-For more Noir syntax, check the [Language Concepts](../language_concepts/comments.md) chapter.
+For more Noir syntax, check the [Language Concepts](../language_concepts/comments) chapter.
 
 ## Build In/Output Files
 
@@ -144,4 +144,4 @@ corresponding error instead.
 
 Congratulations, you have now created and verified a proof for your very first Noir program!
 
-In the [next section](02_breakdown.md), we will go into more detail on each step performed.
+In the [next section](breakdown), we will go into more detail on each step performed.
