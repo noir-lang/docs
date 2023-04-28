@@ -75,7 +75,7 @@ private and another that is public.
 
 A primitive type represents a single value. They can be private or public.
 
-### The Field Type
+### Fields
 
 The field type corresponds to the native field type of the proving backend.
 
@@ -97,7 +97,7 @@ private value `z` constrained to be equal to `x + y`.
 If proving efficiency is of priority, fields should be used as a default for solving problems.
 Smaller integer types (e.g. `u64`) incur extra range constraints.
 
-### Integer Types
+### Integers
 
 An integer type is a range constrained field type. The Noir frontend currently supports unsigned,
 arbitrary-sized integer types.
@@ -119,7 +119,7 @@ will be rejected by the verifier.
 > **Note:** The default backend supports both even (e.g. `u16`, `u48`) and odd (e.g. `u5`, `u3`)
 > sized integer types.
 
-### The Boolean Type
+### Booleans
 
 The `bool` type in Noir has two possible values: `true` and `false`:
 
@@ -137,12 +137,27 @@ The boolean type is most commonly used in conditionals like `if` expressions and
 statements. More about conditionals is covered in the [Control Flow](./control_flow) and
 [Constrain Statement](./constrain) sections.
 
+### Strings
+
+The string type is a fixed length value defined with `str<N>`.
+
+You can use strings in `constrain` statements, `assert()` functions or print them with
+`std::println()`.
+
+```rust
+fn main(message : pub str<11>, y : Field, hex_as_string : str<4>) {
+    std::println(message);
+    assert(message == "hello world");
+    assert(hex_as_string == "0x41");
+}
+```
+
 ## Compound Types
 
 A compound type groups together multiple values into one type. Elements within a compound type can
 be private or public.
 
-### The Array Type
+### Arrays
 
 An array is one way of grouping together values into one compound type. Array types can be inferred
 or explicitly specified via the syntax `[<Type>; <Size>]`:
@@ -170,7 +185,7 @@ fn main() {
 All elements in an array must be of the same type (i.e. homogeneous). That is, an array cannot group
 a `Field` value and a `u8` value together for example.
 
-### The Tuple Type
+### Tuples
 
 A tuple collects multiple values like an array, but with the added ability to collect values of
 different types:
