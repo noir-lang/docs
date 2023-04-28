@@ -1,13 +1,13 @@
 ---
-title: Assert Statements
+title: Assert Function
 description:
-  Learn about the assert keyword in Noir, which can be used to explicitly constrain the predicate or
+  Learn about the assert function in Noir, which can be used to explicitly constrain the predicate or
   comparison expression that follows to be true, and what happens if the expression is false at
   runtime.
 keywords: [Noir programming language, assert statement, predicate expression, comparison expression]
 ---
 
-Noir includes a special keyword `assert` which will explicitly constrain the predicate/comparison
+Noir includes a special `assert` function which will explicitly constrain the predicate/comparison
 expression that follows to be true. If this expression is false at runtime, the program will fail to
 be proven.
 
