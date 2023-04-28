@@ -31,3 +31,24 @@ fn main(string: pub str<5>) {
 }
 
 ```
+
+To view the output of the `println` statement you need to set the `--show-output` flag. 
+
+```
+$ nargo prove --help
+Create proof for this program. The proof is returned as a hex encoded string
+
+Usage: nargo prove [OPTIONS] [PROOF_NAME] [CIRCUIT_NAME]
+
+Arguments:
+  [PROOF_NAME]    The name of the proof
+  [CIRCUIT_NAME]  The name of the circuit build files (ACIR, proving and verification keys)
+
+Options:
+  -v, --verify          Verify proof after proving
+  -s, --show-ssa        Emit debug information for the intermediate SSA IR
+  -a, --allow-warnings  Issue a warning for each unused variable instead of an error
+      --show-output     Display output of `println` statements during tests
+  -h, --help            Print help
+```
+
