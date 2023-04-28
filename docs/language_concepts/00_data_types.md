@@ -1,5 +1,5 @@
 ---
-title: Noir Data Types
+title: Data Types
 description:
   Get a clear understanding of the two categories of Noir data types - primitive types and compound
   types. Learn about their characteristics, differences, and how to use them in your Noir
@@ -20,8 +20,6 @@ keywords:
     struct type,
   ]
 ---
-
-# Data Types
 
 Every value in Noir has a type, which determines which operations are valid for it.
 

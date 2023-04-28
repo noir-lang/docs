@@ -7,8 +7,6 @@ description:
 keywords: [Noir programming language, comments, single-line comments, multi-line comments]
 ---
 
-# Comments
-
 A comment is a line in your codebase which the compiler ignores, however it can be read by
 programmers.
 
