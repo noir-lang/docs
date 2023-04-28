@@ -10,6 +10,9 @@ function).
 
 When using `disctinct` and `pub` simultaneously, `distinct` comes first. See the example below.
 
+You can read more about the problem this solves
+[here](https://github.com/noir-lang/noir/issues/1183).
+
 ## Example
 
 Without the `distinct` keyword, the following program
