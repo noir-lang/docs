@@ -12,7 +12,7 @@ keywords: [Nargo, command line tool, Noir programs, installation guide, how to u
 `nargo` is a command line tool for interacting with Noir programs (e.g. compiling, proving,
 verifying and more).
 
-Alternatively, the interactions can also be performed in [TypeScript](../typescript.md).
+Alternatively, the interactions can also be performed in [TypeScript](../typescript).
 
 ## Installation
 
@@ -26,7 +26,8 @@ Optionally you can also install [Noir VS Code extension] for syntax highlighting
 
 ### Option 1: Noirup
 
-If you're on OSX or Linux, the easiest way to start using Noir and Nargo is via noirup. Just open a terminal and run:
+If you're on OSX or Linux, the easiest way to start using Noir and Nargo is via noirup. Just open a
+terminal and run:
 
 ```bash
 curl -L https://raw.githubusercontent.com/noir-lang/noirup/main/install | bash
@@ -38,7 +39,9 @@ Close the terminal, open another one, and run
 noirup -n
 ```
 
-Done, you should have the correct version working. You can also install nightlies, specific versions or branches, check out the [noirup repository](https://github.com/noir-lang/noirup) for more information
+Done, you should have the correct version working. You can also install nightlies, specific versions
+or branches, check out the [noirup repository](https://github.com/noir-lang/noirup) for more
+information
 
 ### Option 2: Binaries
 

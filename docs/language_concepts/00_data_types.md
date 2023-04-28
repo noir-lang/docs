@@ -134,8 +134,8 @@ fn main() {
 > `false` in _Verifier.toml_.
 
 The boolean type is most commonly used in conditionals like `if` expressions and `constrain`
-statements. More about conditionals is covered in the [Control Flow](./control_flow.md) and
-[Constrain Statement](./constrain.md) sections.
+statements. More about conditionals is covered in the [Control Flow](./control_flow) and
+[Constrain Statement](./constrain) sections.
 
 ## Compound Types
 

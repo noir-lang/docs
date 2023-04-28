@@ -87,9 +87,8 @@ To save the witness to file, run the command with a value for the `witness-name`
 > parsed for your program's ACIR.
 >
 > This file can be passed along with circuit's ACIR into a TypeScript project for proving and
-> verification. See the
-> [TypeScript](../typescript.md#proving-and-verifying-externally-compiled-files) section to learn
-> more.
+> verification. See the [TypeScript](../typescript#proving-and-verifying-externally-compiled-files)
+> section to learn more.
 
 ## `nargo prove <proof_name>`
 
@@ -120,7 +119,7 @@ Generate proving and verification keys from a build artifact file.
 Nargo will automatically compile and run any functions which have the decorator `#[test]` on them if
 you run `nargo test`.
 
-See an example on the [testing page](./02_testing.md).
+See an example on the [testing page](./testing).
 
 _Arguments_
 
