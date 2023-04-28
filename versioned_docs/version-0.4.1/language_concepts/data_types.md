@@ -146,10 +146,11 @@ The string type is a fixed length value defined with `str<N>`.
 You can use strings in `constrain` statements or print them with `std::println()`.
 
 ```rust
-fn main(message : pub str<11>, y : Field, hex_as_string : str<4>) {
+fn main(message : pub str<11>, hex_as_string : str<4>) {
     std::println(message);
     constrain message == "hello world";
     constrain hex_as_string == "0x41";
+}
 ```
 
 ## Compound Types

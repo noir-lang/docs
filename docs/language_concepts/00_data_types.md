@@ -145,7 +145,7 @@ You can use strings in `constrain` statements, `assert()` functions or print the
 `std::println()`.
 
 ```rust
-fn main(message : pub str<11>, y : Field, hex_as_string : str<4>) {
+fn main(message : pub str<11>, hex_as_string : str<4>) {
     std::println(message);
     assert(message == "hello world");
     assert(hex_as_string == "0x41");
