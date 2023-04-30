@@ -45,7 +45,7 @@ fn main(x : Field, y : Field) {
 }
 ```
 
-The parameters `x` and `y` can be seen as the API for the program and must be supplied by the
+The parameters `x` and `y` can be seen as the input for the program and must be supplied by the
 prover. Since neither `x` nor `y` is marked as public, the verifier does not supply any inputs, when
 verifying the proof.
 
