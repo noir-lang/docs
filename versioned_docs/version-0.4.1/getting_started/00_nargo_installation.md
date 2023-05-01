@@ -40,6 +40,16 @@ noirup
 
 Done, you should have the correct version working. You can also install nightlies, specific versions or branches, check out the [noirup repository](https://github.com/noir-lang/noirup) for more information
 
+#### UltraPlonk
+
+The current `aztec_backend` and `aztec_wasm_backend` Nargo uses are based on the TurboPlonk version of Aztec Backend, which lacks efficient implementations of useful primitives (e.g. Keccak256 in 18k constraints, ECDSA verification in 36k constraints) that the UltraPlonk version offers.
+
+You can install Noir using UltraPlonk with:
+
+```bash
+noirup -v 0.5.0
+```
+
 ### Option 2: Binaries
 
 See [GitHub Releases](https://github.com/noir-lang/noir/releases) for the latest and previous
