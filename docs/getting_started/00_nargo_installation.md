@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Nargo Installation
 description:
   nargo is a command line tool for interacting with Noir programs (e.g. compiling, proving,
   verifying and more). Learn how to install and use Nargo for your projects with this comprehensive
@@ -7,12 +7,14 @@ description:
 keywords: [Nargo, command line tool, Noir programs, installation guide, how to use Nargo]
 ---
 
-# Nargo
-
 `nargo` is a command line tool for interacting with Noir programs (e.g. compiling, proving,
 verifying and more).
 
 Alternatively, the interactions can also be performed in [TypeScript](../typescript).
+
+### UltraPlonk
+
+Nargo versions <0.5.0 of `aztec_backend` and `aztec_wasm_backend` are based on the TurboPlonk version of Aztec Backend, which lacks efficient implementations of useful primitives (e.g. Keccak256 in 18k constraints, ECDSA verification in 36k constraints) that the UltraPlonk version offers.
 
 ## Installation
 
@@ -36,12 +38,20 @@ curl -L https://raw.githubusercontent.com/noir-lang/noirup/main/install | bash
 Close the terminal, open another one, and run
 
 ```bash
-noirup -n
+noirup -v 0.5.0
 ```
 
 Done, you should have the correct version working. You can also install nightlies, specific versions
 or branches, check out the [noirup repository](https://github.com/noir-lang/noirup) for more
 information
+
+#### Nightly versions
+
+To install the nightly version of Noir (updated daily) run:
+
+```bash
+noirup -n
+```
 
 ### Option 2: Binaries
 
