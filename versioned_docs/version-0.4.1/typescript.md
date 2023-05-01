@@ -120,7 +120,9 @@ don't need to set them up in the `src` folder. Just mind the following particula
    testing.
 
 Quick tip: an easy way to deal with `initialiseResolver` is just to prepare a
-`{fileName: "literally_the_code"}` object beforehand :::
+`{fileName: "literally_the_code"}` object beforehand 
+
+:::
 
 ## ACIR
 
