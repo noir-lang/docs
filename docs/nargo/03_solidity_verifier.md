@@ -33,5 +33,23 @@ file `plonk_vk.sol`. It can be deployed on any EVM blockchain acting as a verifi
 > **Note:** It is possible to compile verifier contracts of Noir programs for other smart contract
 > platforms as long as the proving backend supplies an implementation.
 >
-> Barretenberg, the default proving backend Nargo is integrated with, supports compilation of
-> verifier contracts in Solidity only for the time being.
+> Barretenberg, the default proving backend for Nargo, supports compilation of verifier contracts in
+> Solidity only for the time being.
+
+## Public Inputs
+
+The verifier contract counts the output (return) value of the `main()` function as a public input.
+So if you have the following function
+
+```rust
+fn main(
+    // Public inputs
+    pubkey_x: pub Field,
+    pubkey_y: pub Field,
+    // Private inputs
+    priv_key: Field,
+) -> pub Field
+```
+
+then `verify` in `plonk_vk.sol` will expect 3 public inputs. Passing two inputs will result in an
+error like `Reason: PUBLIC_INPUT_COUNT_INVALID(3, 2)`.
