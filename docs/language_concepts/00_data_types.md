@@ -185,6 +185,11 @@ fn main() {
 All elements in an array must be of the same type (i.e. homogeneous). That is, an array cannot group
 a `Field` value and a `u8` value together for example.
 
+#### Types
+
+You can create arrays of primitive types or structs. There is not yet support for nested arrays
+(arrays of arrays) or arrays of structs that contain arrays.
+
 ### Tuples
 
 A tuple collects multiple values like an array, but with the added ability to collect values of
