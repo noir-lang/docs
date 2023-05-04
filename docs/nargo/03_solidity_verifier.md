@@ -53,3 +53,5 @@ fn main(
 
 then `verify` in `plonk_vk.sol` will expect 3 public inputs. Passing two inputs will result in an
 error like `Reason: PUBLIC_INPUT_COUNT_INVALID(3, 2)`.
+
+In this case the 3 inputs to `verify` would be ordered as `[pubkey_x, pubkey_y, return]`.
