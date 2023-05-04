@@ -111,10 +111,6 @@ _Arguments_
 
 - `<proof>` - The proof to verify
 
-## `nargo preprocess <build_artifact>`
-
-Generate proving and verification keys from a build artifact file.
-
 ## `nargo test <pattern>`
 
 Nargo will automatically compile and run any functions which have the decorator `#[test]` on them if
