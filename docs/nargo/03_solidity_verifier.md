@@ -47,8 +47,18 @@ function verify(bytes calldata _proof, bytes32[] calldata _publicInputs) externa
 
 ### Public Inputs
 
-The verifier contract counts the output (return) value of the `main()` function as a public input.
-So if you have the following function
+:::tip
+
+A circuit doesn't have the concept of a return value. Return values are just syntactic sugar in
+Noir.
+
+Under the hood, the return value is passed as an input to the circuit and is checked at the end of
+the circuit program.
+
+:::
+
+The verifier contract uses the output (return) value of a Noir program as a public input. So if you
+have the following function
 
 ```rust
 fn main(
