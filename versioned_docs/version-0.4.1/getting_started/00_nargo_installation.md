@@ -26,7 +26,8 @@ Optionally you can also install [Noir VS Code extension] for syntax highlighting
 
 ### Option 1: Noirup
 
-If you're on OSX or Linux, the easiest way to start using Noir and Nargo is via noirup. Just open a terminal and run:
+If you're on OSX or Linux, the easiest way to start using Noir and Nargo is via noirup. Just open a
+terminal and run:
 
 ```bash
 curl -L https://raw.githubusercontent.com/noir-lang/noirup/main/install | bash
@@ -38,7 +39,18 @@ Close the terminal, open another one, and run
 noirup
 ```
 
-Done, you should have the correct version working. You can also install nightlies, specific versions or branches, check out the [noirup repository](https://github.com/noir-lang/noirup) for more information
+Done, you should have the correct version working. You can also install nightlies, specific versions
+or branches, check out the [noirup repository](https://github.com/noir-lang/noirup) for more
+information
+
+#### GitHub Actions
+
+You can use `noirup` with GitHub Actions for CI/CD and automated testing. It is as simple as
+installing `noirup` and running tests in your GitHub Action `yml` file.
+
+See the
+[config file](https://github.com/TomAFrench/noir-hashes/blob/master/.github/workflows/noir.yml) in
+this repo containing hash functions in Noir for an example.
 
 ### Option 2: Binaries
 

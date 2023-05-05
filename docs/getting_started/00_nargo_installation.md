@@ -14,7 +14,9 @@ Alternatively, the interactions can also be performed in [TypeScript](../typescr
 
 ### UltraPlonk
 
-Nargo versions <0.5.0 of `aztec_backend` and `aztec_wasm_backend` are based on the TurboPlonk version of Aztec Backend, which lacks efficient implementations of useful primitives (e.g. Keccak256 in 18k constraints, ECDSA verification in 36k constraints) that the UltraPlonk version offers.
+Nargo versions <0.5.0 of `aztec_backend` and `aztec_wasm_backend` are based on the TurboPlonk
+version of Aztec Backend, which lacks efficient implementations of useful primitives (e.g. Keccak256
+in 18k constraints, ECDSA verification in 36k constraints) that the UltraPlonk version offers.
 
 ## Installation
 
@@ -44,6 +46,15 @@ noirup -v 0.5.0
 Done, you should have the correct version working. You can also install nightlies, specific versions
 or branches, check out the [noirup repository](https://github.com/noir-lang/noirup) for more
 information
+
+#### GitHub Actions
+
+You can use `noirup` with GitHub Actions for CI/CD and automated testing. It is as simple as
+installing `noirup` and running tests in your GitHub Action `yml` file.
+
+See the
+[config file](https://github.com/TomAFrench/noir-hashes/blob/master/.github/workflows/noir.yml) in
+this repo containing hash functions in Noir for an example.
 
 #### Nightly versions
 
