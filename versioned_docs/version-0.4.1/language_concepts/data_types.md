@@ -184,7 +184,19 @@ fn main() {
 ```
 
 All elements in an array must be of the same type (i.e. homogeneous). That is, an array cannot group
-a `Field` value and a `u8` value together for example.
+a `Field` value and a `u8` value together for example. You can write mutable arrays, like:
+
+```rust
+
+fn main() {
+    let mut arr = [1, 2, 3, 4, 5];
+    constrain arr[0] == 1;
+
+    arr[0] = 42;
+    constrain arr[0] == 42;
+}
+
+```
 
 #### Types
 
