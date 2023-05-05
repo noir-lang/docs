@@ -87,8 +87,6 @@ as compile-time. They can then be used like any other compile-time variable insi
 global type can also be inferred by the compiler entirely. Globals can also be used to specify array
 annotations for function parameters and can be imported from submodules.
 
-Globals are currently limited to Field, integer, and bool literals.
-
 ```rust
 global N: Field = 5; // Same as `global N: comptime Field = 5`
 
