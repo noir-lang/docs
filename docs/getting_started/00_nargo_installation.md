@@ -15,8 +15,7 @@ Alternatively, the interactions can also be performed in [TypeScript](../typescr
 ### UltraPlonk
 
 Nargo versions <0.5.0 of `aztec_backend` and `aztec_wasm_backend` are based on the TurboPlonk
-version of Aztec Backend, which lacks efficient implementations of useful primitives (e.g. Keccak256
-in 18k constraints, ECDSA verification in 36k constraints) that the UltraPlonk version offers.
+version of Aztec Backend, which lacks efficient implementations of useful primitives (e.g. Keccak256 in 18k constraints, ECDSA verification in 36k constraints) that the UltraPlonk version offers.
 
 ## Installation
 

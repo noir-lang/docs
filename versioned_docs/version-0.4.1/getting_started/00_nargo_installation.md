@@ -26,8 +26,7 @@ Optionally you can also install [Noir VS Code extension] for syntax highlighting
 
 ### Option 1: Noirup
 
-If you're on OSX or Linux, the easiest way to start using Noir and Nargo is via noirup. Just open a
-terminal and run:
+If you're on OSX or Linux, the easiest way to start using Noir and Nargo is via noirup. Just open a terminal and run:
 
 ```bash
 curl -L https://raw.githubusercontent.com/noir-lang/noirup/main/install | bash
