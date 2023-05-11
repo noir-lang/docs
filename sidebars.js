@@ -61,6 +61,7 @@ const sidebars = {
         'standard_library/field_methods',
         'standard_library/logging',
         'standard_library/merkle_trees',
+        'standard_library/zeroed'
       ],
     },
     {
