@@ -184,6 +184,7 @@ Now that your environment is set up, you can get to work on the project.
 ```sh
 git clone git@github.com:noir-lang/noir
 ```
+> Replacing `noir` with whichever repository you want to work on.
 
 2. Navigate to the directory:
 
