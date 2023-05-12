@@ -191,6 +191,7 @@ git clone git@github.com:noir-lang/noir
 ```sh
 cd noir
 ```
+> Replacing `noir` with whichever repository you cloned.
 
 3. You should see a __direnv error__ because projects aren't allowed by default. Make sure you've reviewed and trust our `.envrc` file, then you need to run:
 
