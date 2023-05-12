@@ -172,7 +172,7 @@ extra-experimental-features = flakes
 nix profile install nixpkgs#direnv
 ```
 
-4. Add direnv to your shell following [their guide](https://direnv.net/docs/hook.html)
+4. Add direnv to your shell following [their guide](https://direnv.net/docs/hook.html).
 5. Restart your shell
 
 #### Shell & editor experience
