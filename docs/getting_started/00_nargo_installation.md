@@ -158,7 +158,7 @@ Due to the large number of native dependencies, Noir projects uses [Nix](https:/
 
 For the best experience, please follow these instructions to setup your environment:
 
-1. Install Nix following [their guide](https://nixos.org/download.html) for your operating system
+1. Install Nix following [their guide](https://nixos.org/download.html) for your operating system.
 2. Create the file `~/.config/nix/nix.conf` with the contents:
 
 ```ini
