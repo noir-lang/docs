@@ -152,79 +152,76 @@ Commands:
 
 ### Option 3: Compile from Source
 
-#### Setup
+Due to the large number of native dependencies, this project uses [Nix](https://nixos.org/) and [direnv](https://direnv.net/) to streamline the development experience.
 
-1. Install [Git] and [Rust].
+#### Setting up your environment
 
-2. Download Noir's source code from Github by running:
+For the best experience, please follow these instructions to setup your environment:
 
-```bash
-git clone git@github.com:noir-lang/noir.git
+1. Install Nix following [their guide](https://nixos.org/download.html) for your operating system
+2. Create the file `~/.config/nix/nix.conf` with the contents:
+
+```ini
+experimental-features = nix-command
+extra-experimental-features = flakes
 ```
 
-3. Change directory into the Noir project and checkout the v0.4.1 release by running:
-
-```bash
-cd noir && git checkout tags/v0.4.1
-```
-
-Note that you can install the latest version by building the project directly from the `master`
-branch, but this may not work as expected or may include undocumented features since it is not an
-official release.
-
-There are then two approaches to proceed, differing in how the proving backend is installed:
-
-#### Option 2.1: Install Executable with WASM backend
-
-Install Nargo by running:
-
-```bash
-cargo install --locked --path=crates/nargo_cli --no-default-features --features plonk_bn254_wasm
-```
-
-#### Option 2.2: Install Executable with Native Backend
-
-The [barretenberg] proving backend is written in C++, hence compiling it from source would first
-require certain dependencies to be installed.
-
-4. Install [CMake], [LLVM] and [OpenMP]:
-
-##### macOS
-
-Installing through [Homebrew] is recommended:
-
-```bash
-brew install cmake llvm libomp
-```
-
-##### Ubuntu (Linux)
-
-```bash
-sudo apt update && sudo apt install clang lld cmake libomp-dev
-```
-
-Other variants of Linux will need to adjust the commands for their package manager.
-
-##### Windows
+3. Install direnv into your Nix profile by running:
 
 ```sh
-TBC
+nix profile install nixpkgs#direnv
 ```
 
-5. Install Nargo by running:
+4. Add direnv to your shell following [their guide](https://direnv.net/docs/hook.html)
+5. Restart your shell
 
-```bash
-cargo install --locked --path=crates/nargo_cli
-```
+#### Shell & editor experience
 
-#### Verify Installation
+Now that your environment is set up, you can get to work on the project.
 
-6. Check if the installation was successful by running `nargo --version`:
+1. Clone the repository, such as:
 
 ```sh
-$ nargo --version
-nargo 0.4.1 (git version hash: 29b1f7df4d563849a62e64c533cb62932188135b, is dirty: false)
+git clone git@github.com:noir-lang/noir
 ```
+
+2. Navigate to the directory:
+
+```sh
+cd noir
+```
+
+3. You should see a __direnv error__ because projects aren't allowed by default. Make sure you've reviewed and trust our `.envrc` file, then you need to run:
+
+```sh
+direnv allow
+```
+
+4. Now, wait awhile for all the native dependencies to be built. This will take some time and direnv will warn you that it is taking a long time, but we just need to let it run.
+
+5. Once you are presented with your prompt again, you can start your editor within the project directory (we recommend [VSCode](https://code.visualstudio.com/)):
+
+```sh
+code .
+```
+
+6. (Recommended) When launching VSCode for the first time, you should be prompted to install our recommended plugins. We highly recommend installing these for the best development experience.
+
+#### Building and testing
+
+Assuming you are using `direnv` to populate your environment, building and testing the project can be done
+with the typical `cargo build`, `cargo test`, and `cargo clippy` commands. You'll notice that the `cargo` version matches the version we specify in [flake.nix](https://github.com/noir-lang/noir/blob/master/flake.nix), which is 1.66.0 at the time of this writing.
+
+If you want to build the entire project in an isolated sandbox, you can use Nix commands:
+
+1. `nix build .` (or `nix build . -L` for verbose output) to build the project in a Nix sandbox
+2. `nix flake check` (or `nix flake check -L` for verbose output) to run clippy and tests in a Nix sandbox
+
+#### Without `direnv`
+
+If you have hesitations with using direnv, you can launch a subshell with nix develop and then launch your editor from within the subshell. However, if VSCode was already launched in the project directory, the environment won't be updated.
+
+Advanced: If you aren't using direnv nor launching your editor within the subshell, you can try to install Barretenberg and other global dependencies the package needs. This is an advanced workflow and likely won't receive support!
 
 [git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [rust]: https://www.rust-lang.org/tools/install
