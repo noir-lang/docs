@@ -152,7 +152,7 @@ Commands:
 
 ### Option 3: Compile from Source
 
-Due to the large number of native dependencies, this project uses [Nix](https://nixos.org/) and [direnv](https://direnv.net/) to streamline the development experience.
+Due to the large number of native dependencies, Noir projects uses [Nix](https://nixos.org/) and [direnv](https://direnv.net/) to streamline the development experience.
 
 #### Setting up your environment
 
