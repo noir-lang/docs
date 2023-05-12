@@ -219,7 +219,7 @@ If you want to build the entire project in an isolated sandbox, you can use Nix 
 
 #### Without `direnv`
 
-If you have hesitations with using direnv, you can launch a subshell with nix develop and then launch your editor from within the subshell. However, if VSCode was already launched in the project directory, the environment won't be updated.
+If you have hesitations with using direnv, you can launch a subshell with `nix develop` and then launch your editor from within the subshell. However, if VSCode was already launched in the project directory, the environment won't be updated.
 
 Advanced: If you aren't using direnv nor launching your editor within the subshell, you can try to install Barretenberg and other global dependencies the package needs. This is an advanced workflow and likely won't receive support!
 
