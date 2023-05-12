@@ -215,7 +215,7 @@ with the typical `cargo build`, `cargo test`, and `cargo clippy` commands. You'l
 If you want to build the entire project in an isolated sandbox, you can use Nix commands:
 
 1. `nix build .` (or `nix build . -L` for verbose output) to build the project in a Nix sandbox
-2. `nix flake check` (or `nix flake check -L` for verbose output) to run clippy and tests in a Nix sandbox
+2. `nix flake check` (or `nix flake check -L` for verbose output) to run clippy and tests in a Nix sandbox.
 
 #### Without `direnv`
 
