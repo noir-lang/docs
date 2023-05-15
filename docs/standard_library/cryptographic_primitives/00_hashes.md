@@ -15,8 +15,6 @@ keywords:
   ]
 ---
 
-# Available hashes
-
 ## sha256
 
 Given an array of bytes, returns the resulting sha256 hash.
@@ -65,6 +63,23 @@ example:
 fn main() {
     let x = [163, 117, 178, 149] // some random bytes
     let hash = std::hash::pedersen(x);
+}
+```
+
+## keccak256
+
+Given an array of bytes (`u8`), returns the resulting keccak hash as an array of 32 bytes (`[u8; 32]`).
+
+```rust
+fn keccak256<N>(_input : [u8; N]) -> [u8; 32]
+```
+
+example:
+
+```rust
+fn main() {
+    let x = [163, 117, 178, 149] // some random bytes
+    let hash = std::hash::keccak256(x);
 }
 ```
 
