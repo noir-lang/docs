@@ -15,8 +15,6 @@ keywords:
   ]
 ---
 
-# Available hashes
-
 ## sha256
 
 Given an array of bytes, returns the resulting sha256 hash.
@@ -65,6 +63,42 @@ example:
 fn main() {
     let x = [163, 117, 178, 149] // some random bytes
     let hash = std::hash::pedersen(x);
+}
+```
+
+## keccak256
+
+Given an array of bytes (`u8`), returns the resulting keccak hash as an array of 32 bytes (`[u8; 32]`).
+
+```rust
+fn keccak256<N>(_input : [u8; N]) -> [u8; 32]
+```
+
+example:
+
+```rust
+fn main() {
+    let x = [163, 117, 178, 149] // some random bytes
+    let hash = std::hash::keccak256(x);
+}
+```
+
+## poseidon
+
+Given an array of Fields, returns a new Field with the Poseidon Hash. Mind that you need to specify how many inputs are there to your Poseidon function.
+
+```rust
+// example for hash_1, hash_2 accepts an array of length 2, etc
+fn hash_1(input: [Field; 1]) -> Field
+```
+
+example:
+
+```rust
+fn main()
+{
+  let hash1 = std::hash::poseidon::bn254::hash_2([1, 2]);
+  constrain hash1 == 0x115cc0f5e7d690413df64c6b9662e9cf2a3617f2743245519e19607a4417189a;
 }
 ```
 

@@ -47,7 +47,7 @@ const config = {
             },
           },
           editUrl: ({ versionDocsDirPath, docPath }) =>
-            `https://github.com/noir-lang/docs/edit/main/${versionDocsDirPath}/${docPath}`,
+            `https://github.com/noir-lang/docs/edit/master/${versionDocsDirPath}/${docPath}`
         },
         blog: false,
         theme: {
@@ -119,7 +119,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['rust'],
+        additionalLanguages: ['rust', 'powershell', 'solidity'],
       },
       stylesheets: [
         {
