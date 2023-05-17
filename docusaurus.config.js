@@ -47,7 +47,7 @@ const config = {
             },
           },
           editUrl: ({ versionDocsDirPath, docPath }) =>
-            `https://github.com/noir-lang/docs/edit/main/${versionDocsDirPath}/${docPath}`
+            `https://github.com/noir-lang/docs/edit/main/${versionDocsDirPath}/${docPath}`,
         },
         blog: false,
         theme: {
@@ -137,6 +137,7 @@ const config = {
         apiKey: '8cdbbd8b0b98caab7765766267b1cb23',
 
         indexName: 'noir-lang',
+        contextualSearch: true,
       },
     }),
 };
