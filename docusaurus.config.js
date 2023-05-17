@@ -47,7 +47,7 @@ const config = {
             },
           },
           editUrl: ({ versionDocsDirPath, docPath }) =>
-            `https://github.com/noir-lang/docs/edit/master/${versionDocsDirPath}/${docPath}`
+            `https://github.com/noir-lang/docs/edit/master/${versionDocsDirPath}/${docPath}`,
         },
         blog: false,
         theme: {
@@ -134,7 +134,7 @@ const config = {
         appId: '97APAVUL6H',
 
         // Public API key: it is safe to commit it
-        apiKey: '8cdbbd8b0b98caab7765766267b1cb23',
+        apiKey: 'b9b94d2f1c58f7d509f0bc1f13b381fb',
 
         indexName: 'noir-lang',
       },
