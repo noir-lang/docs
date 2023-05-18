@@ -28,4 +28,4 @@ jobs:
           algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
           site-url: 'https://noir-lang.org/'
           crawler-name: noir-lang
-          override-config: true
+          override-config: false
