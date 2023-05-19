@@ -31,7 +31,7 @@ ecrecover = {tag = "v0.2.0", git = "https://github.com/colinnielsen/ecrecover-no
 ## Importing dependencies
 
 You can import a dependency to a Noir file using the following syntax. For example, to import the
-ecrover-noir library referenced above:
+ecrecover-noir library referenced above:
 
 ```rust
 use dep::ecrecover;
