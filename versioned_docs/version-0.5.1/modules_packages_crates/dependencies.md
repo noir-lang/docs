@@ -37,8 +37,6 @@ ecrover-noir library referenced above:
 use dep::ecrecover;
 ```
 
-See the [merkle proof example](../examples/merkle-proof) for how to use it in the file.
-
 You can also import only the specific parts of dependency that you want to use. For example,
 demonstrated in the
 [elliptic curve example](../standard_library/cryptographic_primitives/ec_primitives#examples), you
