@@ -98,5 +98,5 @@ This would come in handy in a Merkle proof.
 
 - EdDSA signature verification: This is a matter of combining these primitives with a suitable hash
   function. See
-  [feat(stdlib): EdDSA sig verification noir#1136](https://github.com/noir-lang/noir/pull/1136) for
+  [feat(stdlib): EdDSA sig verification noir#1136](https://github.com/noir-lang/noir/pull/1313) for
   the case of Baby Jubjub and the Poseidon hash function.
