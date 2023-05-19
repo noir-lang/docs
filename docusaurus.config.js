@@ -95,8 +95,8 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Discord',
-                href: 'https://discord.gg/aztec',
+                label: 'Noir Forum',
+                href: 'https://discourse.aztec.network/c/noir/7',
               },
               {
                 label: 'Twitter',
@@ -105,10 +105,14 @@ const config = {
             ],
           },
           {
-            title: 'More',
+            title: 'Code',
             items: [
               {
-                label: 'GitHub',
+                label: 'Noir GitHub',
+                href: 'https://github.com/noir-lang',
+              },
+              {
+                label: 'Docs GitHub',
                 href: 'https://github.com/noir-lang/docs',
               },
             ],
