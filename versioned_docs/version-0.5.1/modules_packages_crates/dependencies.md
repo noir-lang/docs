@@ -10,10 +10,6 @@ Nargo allows you to upload packages to GitHub and use them as dependencies.
 
 ## Specifying a dependency
 
-```
-hello_world = { tag = "v0.5", git = "https://github.com/kevaundray/hello-world-noir"}
-```
-
 Specifying a dependency requires a tag to a specific commit and the git url to the url containing
 the package.
 
@@ -23,13 +19,22 @@ semver 2.0 guidelines.
 > Note: Without a `tag` , there would be no versioning and dependencies would change each time you
 > compile your project.
 
+For example, to add the [ecrecover-noir library](https://github.com/colinnielsen/ecrecover-noir) to your project, add it to `Nargo.toml`:
+
+```toml
+# Nargo.toml
+
+[dependencies]
+ecrecover = {tag = "v0.2.0", git = "https://github.com/colinnielsen/ecrecover-noir"}
+```
+
 ## Importing dependencies
 
 You can import a dependency to a Noir file using the following syntax. For example, to import the
-std library:
+ecrover-noir library referenced above:
 
 ```rust
-use dep::std;
+use dep::ecrecover;
 ```
 
 See the [merkle proof example](../examples/merkle-proof) for how to use it in the file.
