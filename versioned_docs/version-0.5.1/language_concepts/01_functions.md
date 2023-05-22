@@ -86,3 +86,36 @@ follows:
 ```rust
 constrain MyStruct::sum(s) == 42
 ```
+
+## Black Box Functions
+
+Black box functions are functions in Noir that rely on backend implementations for their functionality. This makes certain zk-snark unfriendly computations cheaper than if they were implemented in Noir.
+
+:::warning
+
+It is likely that not all backends will support a particular black box function.
+
+:::
+
+Because it is not guaranteed that all backends will support black box functions, it is possible to compile Noir code which won't run against a particular backend. It is possible to fallback to less efficient implementations written in Noir/ACIR in some cases.
+
+Here is a list of the current black box functions that are supported by UltraPlonk:
+
+- AES
+- [SHA256](../standard_library/cryptographic_primitives/hashes#sha256)
+- [Schnorr signature verification](../standard_library/cryptographic_primitives/schnorr)
+- [Blake2s](../standard_library/cryptographic_primitives/hashes#blake2s)
+- [Pedersen](../standard_library/cryptographic_primitives/hashes#pedersen)
+- HashToField128Security
+- [ECDSA signature verification](../standard_library/cryptographic_primitives/ecdsa_secp256k1)
+- [Fixed base scalar multiplication](../standard_library/cryptographic_primitives/scalar)
+- AND
+- XOR
+- RANGE
+- [Keccak256](../standard_library/cryptographic_primitives/hashes#keccack256)
+
+You can find `stdlib` functions which link to these as they'll have the `#[foreign()]` modifier.
+
+You may notice there's a number of black box functions which aren't included in the `stdlib` as they are generated as part of the language (e.g. working with a `u64` will result in RANGE black box functions being emitted to ensure you don't overflow). For these, we have fallback implementations of `AND`, `XOR` and `RANGE` defined in the ACVM `stdlib` which means that we can seamlessly fallback if the backend doesn't support them.
+
+You can view the black box functions defined in the ACVM code [here](https://github.com/noir-lang/acvm/blob/master/acir/src/circuit/black_box_functions.rs).
