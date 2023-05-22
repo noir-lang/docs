@@ -4,6 +4,8 @@ description: Learn how you can verify Schnorr signatures using Noir
 keywords: [cryptographic primitives, Noir project, schnorr, signatures]
 ---
 
+import BlackBoxInfo from '../../common/\_blackbox.mdx';
+
 ## schnorr::verify_signature
 
 Verifier for Schnorr signatures over the embedded curve (for BN254 it is Grumpkin).
@@ -32,8 +34,4 @@ const signature = Array.from(
 ...
 ```
 
-:::info
-
-This is a black box function. Read [this section](../../language_concepts/functions#black-box-functions) to learn more about black box functions in Noir.
-
-:::
+<BlackBoxInfo/>
