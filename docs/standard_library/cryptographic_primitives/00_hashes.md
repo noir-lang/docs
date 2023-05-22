@@ -32,6 +32,12 @@ fn main() {
 }
 ```
 
+:::info
+
+This is a black box function. Read [this section](../../language_concepts/functions#black-box-functions) to learn more about black box functions in Noir.
+
+:::
+
 ## blake2s
 
 Given an array of bytes, returns an array with the Blake2 hash
@@ -48,6 +54,12 @@ fn main() {
     let hash = std::hash::blake2s(x);
 }
 ```
+
+:::info
+
+This is a black box function. Read [this section](../../language_concepts/functions#black-box-functions) to learn more about black box functions in Noir.
+
+:::
 
 ## pedersen
 
@@ -66,6 +78,12 @@ fn main() {
 }
 ```
 
+:::info
+
+This is a black box function. Read [this section](../../language_concepts/functions#black-box-functions) to learn more about black box functions in Noir.
+
+:::
+
 ## keccak256
 
 Given an array of bytes (`u8`), returns the resulting keccak hash as an array of 32 bytes (`[u8; 32]`).
@@ -82,6 +100,12 @@ fn main() {
     let hash = std::hash::keccak256(x);
 }
 ```
+
+:::info
+
+This is a black box function. Read [this section](../../language_concepts/functions#black-box-functions) to learn more about black box functions in Noir.
+
+:::
 
 ## poseidon
 

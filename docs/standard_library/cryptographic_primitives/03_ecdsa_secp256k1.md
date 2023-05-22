@@ -19,3 +19,9 @@ Verifier for ECDSA Secp256k1 signatures
 ```rust
 fn verify_signature(_public_key_x : [u8; 32], _public_key_y : [u8; 32], _signature: [u8; 64], _message: [u8]) -> Field
 ```
+
+:::info
+
+This is a black box function. Read [this section](../../language_concepts/functions#black-box-functions) to learn more about black box functions in Noir.
+
+:::

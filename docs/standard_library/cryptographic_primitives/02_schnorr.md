@@ -31,3 +31,9 @@ const signature = Array.from(
 
 ...
 ```
+
+:::info
+
+This is a black box function. Read [this section](../../language_concepts/functions#black-box-functions) to learn more about black box functions in Noir.
+
+:::
