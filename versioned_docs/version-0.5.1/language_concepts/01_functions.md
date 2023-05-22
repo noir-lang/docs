@@ -107,12 +107,10 @@ Here is a list of the current black box functions that are supported by UltraPlo
 - [Blake2s](../standard_library/cryptographic_primitives/hashes#blake2s)
 - [Pedersen](../standard_library/cryptographic_primitives/hashes#pedersen)
 - HashToField128Security
-- [ECDSA signature verification](../standard_library/cryptographic_primitives/ecdsa_secp256k1)
 - [Fixed base scalar multiplication](../standard_library/cryptographic_primitives/scalar)
 - AND
 - XOR
 - RANGE
-- [Keccak256](../standard_library/cryptographic_primitives/hashes#keccack256)
 
 You can find `stdlib` functions which link to these as they'll have the `#[foreign()]` modifier.
 
