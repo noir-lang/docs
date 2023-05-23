@@ -97,7 +97,7 @@ It is likely that not all backends will support a particular black box function.
 
 :::
 
-Because it is not guaranteed that all backends will support black box functions, it is possible to compile Noir code which won't run against a particular backend. It is possible to fallback to less efficient implementations written in Noir/ACIR in some cases.
+Because it is not guaranteed that all backends will support black box functions, it is possible that certain Noir programs won't compile against a particular backend if they use an unsupported black box function. It is possible to fallback to less efficient implementations written in Noir/ACIR in some cases.
 
 Here is a list of the current black box functions that are supported by UltraPlonk:
 
