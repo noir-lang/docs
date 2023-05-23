@@ -118,4 +118,4 @@ You can find `stdlib` functions which link to these as they'll have the `#[forei
 
 You may notice there's a number of black box functions which aren't included in the `stdlib` as they are generated as part of the language (e.g. working with a `u64` will result in RANGE black box functions being emitted to ensure you don't overflow). For these, we have fallback implementations of `AND`, `XOR` and `RANGE` defined in the ACVM `stdlib` which means that we can seamlessly fallback if the backend doesn't support them.
 
-You can view the black box functions defined in the ACVM code [here](https://github.com/noir-lang/acvm/blob/master/acir/src/circuit/black_box_functions.rs).
+You can view the black box functions defined in the ACVM code [here](https://github.com/noir-lang/acvm/blob/acir-v0.12.0/acir/src/circuit/black_box_functions.rs).
