@@ -86,34 +86,3 @@ follows:
 ```rust
 constrain MyStruct::sum(s) == 42
 ```
-
-## Black Box Functions
-
-Black box functions are functions in Noir that rely on backends implementing support for specialized constraints. This makes certain zk-snark unfriendly computations cheaper than if they were implemented in Noir.
-
-:::warning
-
-It is likely that not all backends will support a particular black box function.
-
-:::
-
-Because it is not guaranteed that all backends will support black box functions, it is possible that certain Noir programs won't compile against a particular backend if they use an unsupported black box function. It is possible to fallback to less efficient implementations written in Noir/ACIR in some cases.
-
-Here is a list of the current black box functions that are supported by UltraPlonk:
-
-- AES
-- [SHA256](../standard_library/cryptographic_primitives/hashes#sha256)
-- [Schnorr signature verification](../standard_library/cryptographic_primitives/schnorr)
-- [Blake2s](../standard_library/cryptographic_primitives/hashes#blake2s)
-- [Pedersen](../standard_library/cryptographic_primitives/hashes#pedersen)
-- HashToField128Security
-- [ECDSA signature verification](../standard_library/cryptographic_primitives/ecdsa_secp256k1)
-- [Fixed base scalar multiplication](../standard_library/cryptographic_primitives/scalar)
-- AND
-- XOR
-- RANGE
-- [Keccak256](../standard_library/cryptographic_primitives/hashes#keccack256)
-
-Most black box functions are included as part of the Noir standard library, however `AND`, `XOR` and `RANGE` are used as part of the Noir language syntax. For instance, using the bitwise operator `&` will invoke the `AND` black box function. To ensure compatibility across backends, the ACVM has fallback implementations of `AND`, `XOR` and `RANGE` defined in its standard library which it can seamlessly fallback to if the backend doesn't support them.
-
-You can view the black box functions defined in the ACVM code [here](https://github.com/noir-lang/acvm/blob/acir-v0.12.0/acir/src/circuit/black_box_functions.rs).
