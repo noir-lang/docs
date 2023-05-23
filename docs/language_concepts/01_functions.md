@@ -89,7 +89,7 @@ constrain MyStruct::sum(s) == 42
 
 ## Black Box Functions
 
-Black box functions are functions in Noir that rely on backend implementations for their functionality. This makes certain zk-snark unfriendly computations cheaper than if they were implemented in Noir.
+Black box functions are functions in Noir that rely on backends implementing support for specialized constraints. This makes certain zk-snark unfriendly computations cheaper than if they were implemented in Noir.
 
 :::warning
 
