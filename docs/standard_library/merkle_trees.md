@@ -17,11 +17,9 @@ keywords:
   ]
 ---
 
-# Merkle Trees
-
 ## check_membership
 
-Returns 1 if the specified leaf is at the given index on a tree
+Returns 1 if the specified leaf is at the given index on a tree.
 
 ```rust
 fn check_membership(_root : Field, _leaf : Field, _index : Field, _hash_path: [Field]) -> Field
@@ -68,7 +66,7 @@ For examples, you can literally replace `check_membership` for this method, in t
 
 ## compute_root_from_leaf
 
-Returns the root of the tree from the provided leaf and its hashpath, using a pedersen hash
+Returns the root of the tree from the provided leaf and its hash path, using a pedersen hash.
 
 ```rust
 fn compute_root_from_leaf(leaf : Field, index : Field, hash_path: [Field]) -> Field
@@ -99,3 +97,18 @@ fn main(index : Field, priv_key : Field, secret : Field, note_hash_path : [Field
     std::println(root);
 }
 ```
+
+## compute_merkle_root
+
+Returns the root of the tree from the provided leaf and its hash path, using a pedersen hash. Functionally equivalent to `compute_root_from_leaf`.
+
+```rust
+#[foreign(compute_merkle_root)]
+fn compute_merkle_root(_leaf : Field, _index : Field, _hash_path: [Field]) -> Field {}
+```
+
+:::info
+
+This is a black box function. Read [this section](black_box_fns) to learn more about black box functions in Noir.
+
+:::
