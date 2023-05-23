@@ -28,13 +28,37 @@ For example, to add the [ecrecover-noir library](https://github.com/colinnielsen
 ecrecover = {tag = "v0.2.0", git = "https://github.com/colinnielsen/ecrecover-noir"}
 ```
 
+## Specifying a local dependency
+You can also specify dependencies that are local to your machine.
+
+For example, this file structure has a library and binary crate
+```
+├── binary_crate
+│   ├── Nargo.toml
+│   └── src
+│       └── main.nr
+└── liba
+    ├── Nargo.toml
+    └── src
+        └── lib.nr
+```
+
+Inside of the binary crate, you can specify:
+```toml
+# Nargo.toml
+
+[dependencies]
+libA = { path = "../liba" }
+```
+
 ## Importing dependencies
 
 You can import a dependency to a Noir file using the following syntax. For example, to import the
-ecrecover-noir library referenced above:
+ecrecover-noir library and local liba referenced above:
 
 ```rust
 use dep::ecrecover;
+use dep::libA;
 ```
 
 You can also import only the specific parts of dependency that you want to use. For example,
