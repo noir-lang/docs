@@ -15,6 +15,15 @@ It is likely that not all backends will support a particular black box function.
 
 Because it is not guaranteed that all backends will support black box functions, it is possible that certain Noir programs won't compile against a particular backend if they use an unsupported black box function. It is possible to fallback to less efficient implementations written in Noir/ACIR in some cases.
 
+Black box functions are specified with the `#[foreign(black_box_fn)]` attribute. For example, the SHA256 function in the Noir [source code](https://github.com/noir-lang/noir/blob/v0.5.1/noir_stdlib/src/hash.nr) looks like:
+
+```rust
+#[foreign(sha256)]
+fn sha256<N>(_input : [u8; N]) -> [u8; 32] {}
+```
+
+## Function list
+
 Here is a list of the current black box functions that are supported by UltraPlonk:
 
 - AES
