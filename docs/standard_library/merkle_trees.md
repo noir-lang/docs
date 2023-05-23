@@ -100,7 +100,7 @@ fn main(index : Field, priv_key : Field, secret : Field, note_hash_path : [Field
 
 ## compute_merkle_root
 
-Returns the root of the tree from the provided leaf and its hash path, using a pedersen hash. Functionally equivalent to `compute_root_from_leaf`.
+Returns the root of the tree from the provided leaf and its hash path, using a pedersen hash.
 
 ```rust
 #[foreign(compute_merkle_root)]
