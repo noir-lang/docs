@@ -59,10 +59,10 @@ const sidebars = {
         },
         'standard_library/array_methods',
         'standard_library/field_methods',
-        'standard_library/black_box_fns',
         'standard_library/logging',
         'standard_library/merkle_trees',
-        'standard_library/zeroed'
+        'standard_library/zeroed',
+        'standard_library/black_box_fns'
       ],
     },
     {
