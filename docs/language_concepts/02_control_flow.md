@@ -6,8 +6,6 @@ description:
 keywords: [Noir programming language, loops, for loop, if-else statements, Rust syntax]
 ---
 
-# Control Flow
-
 ## Loops
 
 Noir has one kind of loop: the `for` loop. `for` loops allow you to repeat a block of code multiple

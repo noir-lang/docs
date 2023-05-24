@@ -15,7 +15,7 @@ keywords:
   ]
 ---
 
-# Available hashes
+import BlackBoxInfo from './common/\_blackbox.mdx';
 
 ## sha256
 
@@ -34,6 +34,8 @@ fn main() {
 }
 ```
 
+<BlackBoxInfo/>
+
 ## blake2s
 
 Given an array of bytes, returns an array with the Blake2 hash
@@ -51,6 +53,8 @@ fn main() {
 }
 ```
 
+<BlackBoxInfo/>
+
 ## pedersen
 
 Given an array of Fields, returns the Pedersen hash.
@@ -67,6 +71,7 @@ fn main() {
     let hash = std::hash::pedersen(x);
 }
 ```
+<BlackBoxInfo/>
 
 ## poseidon
 
@@ -112,3 +117,13 @@ fn main() {
     let hash = std::hash::mimc_bn254(x);
 }
 ```
+
+## hash_to_field
+
+```rust
+fn hash_to_field<N>(_input : [Field; N]) -> Field {}
+```
+
+Calculates the `blake2s` hash of the inputs and returns the hash modulo the field modulus to return a value which can be represented as a `Field`.
+
+<BlackBoxInfo/>
