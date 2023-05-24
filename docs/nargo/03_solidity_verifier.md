@@ -74,3 +74,24 @@ then `verify` in `plonk_vk.sol` will expect 3 public inputs. Passing two inputs 
 error like `Reason: PUBLIC_INPUT_COUNT_INVALID(3, 2)`.
 
 In this case the 3 inputs to `verify` would be ordered as `[pubkey_x, pubkey_y, return]`.
+
+#### Struct inputs
+Consider the following program:
+
+```rust
+struct Type1 {
+  val1: Field,
+  val2: Field,
+}
+
+struct Nested {
+  t1: Type1,
+  is_true: bool,
+}
+
+fn main(x: pub Field, nested: pub Nested, y: pub Field) {
+  //... 
+}
+```
+
+Structs will be flattened so that the array of inputs is 1-dimensional array. The order of these inputs would be flattened to: `[x, nested.is_true, nested.t1.val1, nested.t1.val2, y]`
