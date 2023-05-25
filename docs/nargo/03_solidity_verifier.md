@@ -94,4 +94,4 @@ fn main(x: pub Field, nested: pub Nested, y: pub Field) {
 }
 ```
 
-Structs will be flattened so that the array of inputs is 1-dimensional array. The order of these inputs would be flattened to: `[x, nested.is_true, nested.t1.val1, nested.t1.val2, y]`
+Structs will be flattened so that the array of inputs is 1-dimensional array. The order of these inputs would be flattened to: `[x, nested.t1.val1, nested.t1.val2, nested.is_true, y]`
