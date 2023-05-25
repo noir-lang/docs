@@ -1,34 +1,27 @@
-# This is a basic workflow to help you get started with Actions
+name: Close documentation issue
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-      pr_number:
-        description: name
+      pr-number:
+        description: The number of the PR that no longer needs to be documented
         required: true
         type: string
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+permissions:
+  issues: write
+  contents: read
+
 jobs:
-  # This workflow contains a single job called "build"
-  receive:
-    # The type of runner that the job will run on
+  close-issue:
+    name: Close issue
     runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
+
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - name: Select issue
+      - name: Find and close issue
         id: docs
-        uses: lee-dohm/select-matching-issues@v1
-        with:
-          query: 'repo:${{ github.repository }} "Document noir PR ${{ inputs.name }}" in:title'
-          token: ${{ github.token }}
-      - name: Close found issues
+        run: |
+          ISSUE_URL=$(gh issue list --repo ${{ github.repository }} --state all --search "Document Noir PR ${{ inputs.pr-number }} in:title" --json url --jq ".[0].url")
+          gh issue close $ISSUE_URL --reason "not planned"
         env:
-          GH_TOKEN: ${{ github.token }}
-        run: cat ${{ steps.docs.outputs.path }} | xargs -I {} gh issue close {}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,41 +1,42 @@
-# This is a basic workflow to help you get started with Actions
+name: Create documentation issue
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-      pr_number:
-        description: name
+      pr-number:
+        description: The number of the PR that needs to be documented
         required: true
         type: string
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+permissions:
+  issues: write
+  contents: read
+
 jobs:
-  # This workflow contains a single job called "build"
-  receive:
-    # The type of runner that the job will run on
+  create-issue:
+    name: Create issue
     runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Check if issue exists
+        id: issue-exists
+        run: |
+          ISSUE_URL=$(gh issue list --repo ${{ github.repository }} --state all --search "Document Noir PR ${{ inputs.pr-number }} in:title" --json url --jq ".[0].url")
+          echo "issue-url=$ISSUE_URL" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: nickderobertis/check-if-issue-exists-action@master
-        name: Check if Issue Exists
-        id: check_if_issue_exists
-        with:
-          repo: noir-lang/docs
-          token: ${{ secrets.GITHUB_TOKEN }}
-          title: Document Noir PR ${{ inputs.pr_number }}
-          labels: migrated
-
-      - name: Create new issue
+      - name: Create issue
+        if: ${{ steps.issue-exists.outputs.issue-url == '' }}
         uses: JasonEtco/create-an-issue@v2
         env:
-          GITHUB_TOKEN: ${{ github.token }}
-          PR: ${{ inputs.pr_number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ inputs.pr-number }}
         with:
           filename: .github/MIGRATED_ISSUE.md
+
+      - name: Re-open issue
+        if: ${{ steps.issue-exists.outputs.issue-url != '' }}
+        run: |
+          gh issue reopen ${{ steps.issue-exists.outputs.issue-url }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
