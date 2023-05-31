@@ -152,7 +152,31 @@ Commands:
    help              Print this message or the help of the given subcommand(s)
 ```
 
-### Option 3: Compile from Source
+### Option 3: Install via Nix
+
+Due to the large number of native dependencies, Nargo can be installed via [Nix](https://nixos.org/).
+
+#### Installing Nix
+
+For the best experience, please follow these instructions to setup Nix:
+
+1. Install Nix following [their guide](https://nixos.org/download.html) for your operating system.
+2. Create the file `~/.config/nix/nix.conf` with the contents:
+
+```ini
+experimental-features = nix-command
+extra-experimental-features = flakes
+```
+
+#### Install Nargo into your Nix profile
+
+1. Use `nix profile` to install Nargo
+
+```sh
+nix profile install github:noir-lang/noir/v0.5.1
+```
+
+### Option 4: Compile from Source
 
 Due to the large number of native dependencies, Noir projects uses [Nix](https://nixos.org/) and [direnv](https://direnv.net/) to streamline the development experience.
 
