@@ -102,6 +102,10 @@ const config = {
                 label: 'Twitter',
                 href: 'https://twitter.com/NoirLang',
               },
+              {
+                label: 'Discord',
+                href: 'https://discord.gg/JtqzkdeQ6G'
+              }
             ],
           },
           {
