@@ -19,11 +19,13 @@ version of Aztec Backend, which lacks efficient implementations of useful primit
 
 ## Installation
 
-There are three approaches to install Nargo:
+There are four approaches for installing Nargo:
 
 - [Option 1: Noirup](#option-1-noirup)
 - [Option 2: Binaries](#option-2-binaries)
-- [Option 3: Compile from Source](#option-3-compile-from-source)
+- [Option 3: Install via Nix](#option-3-install-via-nix)
+- [Option 4: Compile from Source](#option-4-compile-from-source)
+
 
 Optionally you can also install [Noir VS Code extension] for syntax highlighting.
 
