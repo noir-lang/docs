@@ -50,6 +50,18 @@ crate
 
 ```
 
+### Importing a module throughout the tree
+All modules are accessible from the ``crate::`` namespace.
+
+```
+crate
+ ├── bar
+ ├── foo
+ └── main
+
+```
+In the above snippet, if ``bar`` would like to use functions in ``foo``, it can do so by ``use crate::foo::function_name``.
+
 ### Sub-modules
 
 Filename : `src/main.nr`
