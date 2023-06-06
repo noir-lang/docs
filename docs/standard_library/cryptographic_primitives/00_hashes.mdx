@@ -1,13 +1,21 @@
 ---
 title: Hash methods
 description:
-  Learn about the cryptographic primitives ready to use for any Noir project, including sha256,
-  blake2s, pedersen, mimc_bn254 and mimc
+  Learn about the cryptographic primitives ready to use for any Noir project, including sha256, blake2s, pedersen, mimc_bn254 and mimc
 keywords:
-  [cryptographic primitives, Noir project, sha256, blake2s, pedersen, mimc_bn254, mimc, hash]
+  [
+    cryptographic primitives,
+    Noir project,
+    sha256,
+    blake2s,
+    pedersen,
+    mimc_bn254,
+    mimc,
+    hash
+  ]
 ---
 
-import BlackBoxInfo from './common/_blackbox.mdx';
+import BlackBoxInfo from './common/\_blackbox.mdx';
 
 ## sha256
 
@@ -26,7 +34,7 @@ fn main() {
 }
 ```
 
-<BlackBoxInfo />
+<BlackBoxInfo/>
 
 ## blake2s
 
@@ -45,7 +53,7 @@ fn main() {
 }
 ```
 
-<BlackBoxInfo />
+<BlackBoxInfo/>
 
 ## pedersen
 
@@ -64,16 +72,14 @@ fn main() {
 }
 ```
 
-<BlackBoxInfo />
+<BlackBoxInfo/>
 
 ## keccak256
 
-Given an array of bytes (`u8`), returns the resulting keccak hash as an array of 32 bytes
-(`[u8; 32]`). You can optionally specify a message_size to hash only the first `message_size` bytes
-of the input.
+Given an array of bytes (`u8`), returns the resulting keccak hash as an array of 32 bytes (`[u8; 32]`).
 
 ```rust
-fn keccak256<N>(_input : [u8; N], _message_size: u32) -> [u8; 32]
+fn keccak256<N>(_input : [u8; N]) -> [u8; 32]
 ```
 
 example:
@@ -81,17 +87,15 @@ example:
 ```rust
 fn main() {
     let x = [163, 117, 178, 149] // some random bytes
-    let message_size = 4;
-    let hash = std::hash::keccak256(x, message_size);
+    let hash = std::hash::keccak256(x);
 }
 ```
 
-<BlackBoxInfo />
+<BlackBoxInfo/>
 
 ## poseidon
 
-Given an array of Fields, returns a new Field with the Poseidon Hash. Mind that you need to specify
-how many inputs are there to your Poseidon function.
+Given an array of Fields, returns a new Field with the Poseidon Hash. Mind that you need to specify how many inputs are there to your Poseidon function.
 
 ```rust
 // example for hash_1, hash_2 accepts an array of length 2, etc
@@ -140,7 +144,6 @@ fn main() {
 fn hash_to_field<N>(_input : [Field; N]) -> Field {}
 ```
 
-Calculates the `blake2s` hash of the inputs and returns the hash modulo the field modulus to return
-a value which can be represented as a `Field`.
+Calculates the `blake2s` hash of the inputs and returns the hash modulo the field modulus to return a value which can be represented as a `Field`.
 
-<BlackBoxInfo />
+<BlackBoxInfo/>
