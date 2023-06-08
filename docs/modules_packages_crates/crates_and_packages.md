@@ -1,11 +1,9 @@
 ---
-title: Crates and Packages in Noir
+title: Crates and Packages
 description:
   Learn how to use Crates and Packages in your Noir project
 keywords: [Nargo, dependencies, package management, crates, package]
 ---
-
-# Crates and Packages
 
 ## Crates
 

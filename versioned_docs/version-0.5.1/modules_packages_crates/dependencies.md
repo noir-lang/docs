@@ -29,9 +29,11 @@ ecrecover = {tag = "v0.2.0", git = "https://github.com/colinnielsen/ecrecover-no
 ```
 
 ## Specifying a local dependency
+
 You can also specify dependencies that are local to your machine.
 
 For example, this file structure has a library and binary crate
+
 ```
 ├── binary_crate
 │   ├── Nargo.toml
@@ -44,6 +46,7 @@ For example, this file structure has a library and binary crate
 ```
 
 Inside of the binary crate, you can specify:
+
 ```toml
 # Nargo.toml
 
@@ -70,3 +73,13 @@ can import just the `Point` and the `Curve` that you want to use.
 use dep::std::ec::tecurve::affine::Curve;
 use dep::std::ec::tecurve::affine::Point;
 ```
+
+## Available Libraries
+
+Noir does not currently have an official package manager. You can find a list of available Noir libraries in the [awesome-noir repo here](https://github.com/noir-lang/awesome-noir#libraries).
+
+Some libraries that are available today include:
+
+- BigInt
+- "`ecrecover`"
+- sparse merkle tree verifier
