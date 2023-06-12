@@ -28,6 +28,7 @@ example:
 
 ```rust
 /**
+    // these values are for this example only
     index = "0"
     priv_key = "0x000000000000000000000000000000000000000000000000000000616c696365"
     secret = "0x1929ea3ab8d9106a899386883d9428f8256cfedb3c4f6b66bf4aa4d28a79988f"
@@ -48,3 +49,11 @@ fn main(index: Field, priv_key: Field, secret: Field, note_hash_path: [Field; 3]
     std::println(root);
 }
 ```
+
+To check merkle tree membership:
+
+1. Include a merkle root as a program input.
+2. Compute the merkle root of a given leaf, index and hash path.
+3. Assert the merkle roots are equal.
+
+For more info about merkle trees, see the Wikipedia [page](https://en.wikipedia.org/wiki/Merkle_tree).
