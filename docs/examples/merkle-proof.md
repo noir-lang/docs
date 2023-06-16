@@ -41,7 +41,7 @@ returns 1 if the leaf is a member of the merkle tree with the specified root, at
 
 > **Note:** It is possible to re-implement the merkle tree implementation without standard library.
 > However, for most usecases, it is enough. In general, the standard library will always opt to be
-> as conservative as possible, while striking a balance between efficiency.
+> as conservative as possible, while striking a balance with efficiency.
 
 An example, the merkle membership proof, only requires a hash function that has collision
 resistance, hence a hash function like Pedersen is allowed, which in most cases is more efficient
