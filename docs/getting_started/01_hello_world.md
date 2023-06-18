@@ -79,10 +79,10 @@ keyword `pub` (e.g. `y`). To learn more about private and public values, check t
 The next line of the program specifies its body:
 
 ```rust
-constrain x != y;
+assert(x != y);
 ```
 
-The Noir syntax `constrain` can be interpreted as something similar to `assert` in other languages.
+The Noir syntax `assert` can be interpreted as something similar to constraints in other zk-contract languages.
 
 For more Noir syntax, check the [Language Concepts](../language_concepts/comments) chapter.
 
