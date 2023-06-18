@@ -62,7 +62,7 @@ Let us take a closer look at _main.nr_. The default _main.nr_ generated should l
 
 ```rust
 fn main(x : Field, y : pub Field) {
-    constrain x != y;
+    assert(x != y);
 }
 ```
 
