@@ -18,7 +18,6 @@ keywords:
 Now that we have installed Nargo, it is time to make our first hello world program!
 
 ## Create a Project Directory
-
 Noir code can live anywhere on your computer. Let us create a _projects_ folder in the home
 directory to house our Noir programs.
 
@@ -62,7 +61,7 @@ Let us take a closer look at _main.nr_. The default _main.nr_ generated should l
 
 ```rust
 fn main(x : Field, y : pub Field) {
-    constrain x != y;
+    assert(x != y);
 }
 ```
 
@@ -79,10 +78,10 @@ keyword `pub` (e.g. `y`). To learn more about private and public values, check t
 The next line of the program specifies its body:
 
 ```rust
-constrain x != y;
+assert(x != y);
 ```
 
-The Noir syntax `constrain` can be interpreted as something similar to `assert` in other languages.
+The Noir syntax `assert` can be interpreted as something similar to constraints in other zk-contract languages.
 
 For more Noir syntax, check the [Language Concepts](../language_concepts/comments) chapter.
 
