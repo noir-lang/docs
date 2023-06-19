@@ -21,6 +21,12 @@ fn main(message : [Field; 62], index : Field, hashpath : [Field; 40], root : Fie
 
 ```
 
+:::info
+
+The `std::merkle::check_membership` function is no longer in the standard library. The equivalent functionality can be achieved by using `std::merkle::compute_merkle_root` and checking that the computed root matches an expected value.
+
+:::
+
 The above code uses the noir standard library to call both of the aforementioned components.
 
 ```rust
