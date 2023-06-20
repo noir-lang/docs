@@ -8,12 +8,8 @@ keywords:
   [Noir programming language, constrain statement, predicate expression, comparison expression]
 ---
 
-:::danger
-
-In versions >=0.5.0 use the [`assert`](./language_concepts/assert) syntax. The `constrain` statement will be
+Versions >=0.5.0 use the [assert](assert) syntax. The `constrain` statement will be
 maintained for some time for backwards compatibility but will be deprecated in the future.
-
-:::
 
 Noir includes a special keyword `constrain` which will explicitly constrain the predicate/comparison
 expression that follows to be true. If this expression is false at runtime, the program will fail to
