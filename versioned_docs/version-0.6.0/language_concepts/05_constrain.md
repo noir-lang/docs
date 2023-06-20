@@ -10,7 +10,7 @@ keywords:
 
 :::danger
 
-In versions >=0.5.0 use the [`assert`](assert) syntax. The `constrain` statement will be
+In versions >=0.5.0 use the [`assert`](./04_assert.md) syntax. The `constrain` statement will be
 maintained for some time for backwards compatibility but will be deprecated in the future.
 
 :::
