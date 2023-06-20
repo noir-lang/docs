@@ -17,9 +17,9 @@ fn add(x: u64, y: u64) -> u64 {
 }
 #[test]
 fn test_add() {
-    constrain add(2,2) == 4;
-    constrain add(0,1) == 1;
-    constrain add(1,0) == 1;
+    assert(add(2,2) == 4);
+    assert(add(0,1) == 1);
+    assert(add(1,0) == 1);
 }
 ```
 

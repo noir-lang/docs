@@ -93,10 +93,10 @@ global N: Field = 5; // Same as `global N: comptime Field = 5`
 fn main(x : Field, y : [Field; N]) {
     let res = x * N;
 
-    constrain res == y[0];
+    assert(res == y[0]);
 
     let res2 = x * mysubmodule::N;
-    constrain res != res2;
+    assert(res != res2);
 }
 
 mod mysubmodule {

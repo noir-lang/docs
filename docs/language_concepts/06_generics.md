@@ -70,11 +70,11 @@ struct BigInt<N> {
 impl<N> BigInt<N> {
     // `N` is in scope of all methods in the impl
     fn first(first: BigInt<N>, second: BigInt<N>) -> Self {
-        constrain first.limbs != second.limbs;
+        assert(first.limbs != second.limbs);
         first
 
     fn second(first: BigInt<N>, second: Self) -> Self {
-        constrain first.limbs != second.limbs;
+        assert(first.limbs != second.limbs);
         second
     }
 }
@@ -103,12 +103,12 @@ fn array_eq<T, N>(array1: [T; N], array2: [T; N], elem_eq: fn(T, T) -> bool) -> 
 }
 
 fn main() {
-    constrain array_eq([1, 2, 3], [1, 2, 3], |a, b| a == b);
+    assert(array_eq([1, 2, 3], [1, 2, 3], |a, b| a == b));
 
     // We can use array_eq even for arrays of structs, as long as we have
     // an equality function for these structs we can pass in
     let array = [MyStruct::new(), MyStruct::new()];
-    constrain array_eq(array, array, MyStruct::eq);
+    assert(array_eq(array, array, MyStruct::eq));
 }
 ```
 

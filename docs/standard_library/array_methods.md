@@ -23,7 +23,7 @@ example
 ```rust
 fn main() {
     let array = [42, 42]
-    constrain arr.len() == 2;
+    assert(arr.len() == 2);
 }
 ```
 
@@ -44,7 +44,7 @@ example
 fn main() {
     let arr = [42, 32]
     let sorted = arr.sort();
-    constrain sorted == [32, 42];
+    assert(sorted == [32, 42]);
 }
 ```
 
@@ -62,10 +62,10 @@ example
 fn main() {
     let arr = [42, 32]
     let sorted_ascending = arr.sort_via(|a, b| a < b);
-    constrain sorted_ascending == [32, 42]; // verifies
+    assert(sorted_ascending == [32, 42]); // verifies
 
     let sorted_descending = arr.sort_via(|a, b| a > b);
-    constrain sorted_descending == [32, 42]; // does not verify
+    assert(sorted_descending == [32, 42]); // does not verify
 }
 ```
 
@@ -114,7 +114,7 @@ example:
 fn main() {
     let arr = [2,2,2,2,2]
     let folded = arr.fold(0, |a, b| a + b);
-    constrain folded == 10;
+    assert(folded == 10);
 }
 
 ```
@@ -133,7 +133,7 @@ example:
 fn main() {
     let arr = [2,2,2,2,2]
     let reduced = arr.reduce(|a, b| a + b);
-    constrain reduced == 10;
+    assert(reduced == 10);
 }
 ```
 
@@ -151,7 +151,7 @@ example:
 fn main() {
     let arr = [2,2,2,2,2]
     let all = arr.all(|a| a == 2);
-    constrain all;
+    assert(all);
 }
 ```
 
@@ -169,7 +169,7 @@ example:
 fn main() {
     let arr = [2,2,2,2,5]
     let any = arr.any(|a| a == 5);
-    constrain any;
+    assert(any);
 }
 
 ```

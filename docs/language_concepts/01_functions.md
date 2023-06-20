@@ -76,7 +76,7 @@ impl MyStruct {
 
 fn main() {
     let s = MyStruct::new(40);
-    constrain s.sum() == 42;
+    assert(s.sum() == 42);
 }
 ```
 
@@ -84,5 +84,5 @@ Methods are just syntactic sugar for functions, so if we wanted to we could also
 follows:
 
 ```rust
-constrain MyStruct::sum(s) == 42
+assert(MyStruct::sum(s) == 42);
 ```
