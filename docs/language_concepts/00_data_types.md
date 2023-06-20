@@ -135,13 +135,13 @@ fn main() {
 
 The boolean type is most commonly used in conditionals like `if` expressions and `constrain`
 statements. More about conditionals is covered in the [Control Flow](./control_flow) and
-[Constrain Statement](./constrain) sections.
+[Assert Function](./assert) sections.
 
 ### Strings
 
 The string type is a fixed length value defined with `str<N>`.
 
-You can use strings in `constrain` statements, `assert()` functions or print them with
+You can use strings in `assert()` functions or print them with
 `std::println()`.
 
 ```rust

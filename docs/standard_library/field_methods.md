@@ -136,7 +136,7 @@ example:
 fn main() {
     let field = 2
     let pow = field.pow_32(4);
-    constrain pow == 16;
+    assert(pow == 16);
 }
 ```
 

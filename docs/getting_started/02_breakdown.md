@@ -40,7 +40,7 @@ In our sample program, _main.nr_ looks like this:
 
 ```rust
 fn main(x : Field, y : Field) {
-    constrain x != y;
+    assert(x != y);
 }
 ```
 

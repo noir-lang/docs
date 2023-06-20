@@ -22,7 +22,7 @@ for i in 0..10 {
 ## If Expressions
 
 Noir supports `if-else` statements. The syntax is most similar to Rust's where it is not required
-for the statement's conditonal to be surrounded by parentheses.
+for the statement's conditional to be surrounded by parentheses.
 
 ```rust
 let a = 0;
@@ -36,7 +36,7 @@ if a == 0 {
     }
 } else {
     x = 5;
-    constrain x == 5;
+    assert(x == 5);
 }
-constrain x == 2;
+assert(x == 2);
 ```
