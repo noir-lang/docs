@@ -15,22 +15,10 @@ use dep::std;
 
 fn main(message : [Field; 62], index : Field, hashpath : [Field; 40], root : Field) {
     let leaf = std::hash::hash_to_field(message);
-    let is_member = std::merkle::check_membership(root, leaf, index, hashpath);
-    assert(is_member == 1);
+    let merkle_root = std::merkle::compute_merkle_root(leaf, index, hashpath);
+    assert(merkle_root == root);
 }
 
-```
-
-:::info
-
-The `std::merkle::check_membership` function is no longer in the standard library. The equivalent functionality can be achieved by using `std::merkle::compute_merkle_root` and checking that the computed root matches an expected value.
-
-:::
-
-The above code uses the noir standard library to call both of the aforementioned components.
-
-```rust
-let leaf = std::hash::hash_to_field(message);
 ```
 
 The message is hashed using `hash_to_field`. The specific hash function that is being used is chosen
@@ -39,11 +27,15 @@ random oracle. If only collision resistance is needed, then one can call `std::h
 instead.
 
 ```rust
-let is_member = std::merkle::check_membership(root, leaf, index, hashpath);
+let leaf = std::hash::hash_to_field(message);
 ```
 
-The leaf is then passed to a check_membership proof with the root, index and hashpath. `is_member`
-returns 1 if the leaf is a member of the merkle tree with the specified root, at the given index.
+The leaf is then passed to a compute_merkle_root function with the root, index and hashpath. The returned root can then be asserted to be the same as the provided root.
+
+```rust
+let merkle_root = std::merkle::compute_merkle_root(leaf, index, hashpath);
+assert (merkle_root == root);
+```
 
 > **Note:** It is possible to re-implement the merkle tree implementation without standard library.
 > However, for most usecases, it is enough. In general, the standard library will always opt to be
@@ -53,12 +45,4 @@ An example, the merkle membership proof, only requires a hash function that has 
 resistance, hence a hash function like Pedersen is allowed, which in most cases is more efficient
 than the even more conservative sha256.
 
-```rust
-constrain is_member == 1;
-```
-
-This last line, constrains the variable to be equal to 1. If 1 was changed to 0, this would create a
-proof that the leaf was not present at that specific index for that specific root. _Importantly, it
-would not prove that this leaf was not in the merkle tree._
-
-Example Project: <https://github.com/vezenovm/simple_shield>
+[view an example on the starter repo](https://github.com/noir-lang/noir-starter/blob/49dcdb31a6be3605b0d870e6dab3aa6c79416304/stealthdrop/circuits/src/main.nr#L20)
