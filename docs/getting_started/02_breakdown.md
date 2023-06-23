@@ -116,3 +116,7 @@ and submit it to the verifier smart contract.
 The verifier contract would then draw the user's encrypted balance directly from the blockchain and
 verify the proof submitted against it. If the verification passes, additional functions in the
 verifier contract could trigger (e.g. approve the asset transfer).
+
+Now that you understand the concepts, you'll probably want some editor feedback while you are writing more complex code.
+
+In the [next section](language_server), we will explain how to utilize the Noir Language Server.
