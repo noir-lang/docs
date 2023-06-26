@@ -57,6 +57,7 @@ _Arguments_
 _Options_
 
 - `-c, --contracts` - Compile each contract function used within the program
+- `--print-acir` - Displays the ACIR for the compiled circuit
 
 ## `nargo new <package_name> [path]`
 
@@ -124,7 +125,3 @@ _Arguments_
 ## `nargo gates`
 
 Counts the occurrences of different gates in circuit
-
-## `nargo print-acir`
-
-Print a compiled circuit to stdout such that the ACIR can be inspected.
