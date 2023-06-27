@@ -125,3 +125,8 @@ _Arguments_
 ## `nargo gates`
 
 Counts the occurrences of different gates in circuit
+
+## `nargo lsp`
+
+Start a long-running Language Server process that communicates over stdin/stdout.
+Usually this command is not run by a user, but instead will be run by a Language Client, such as [vscode-noir](https://github.com/noir-lang/vscode-noir).
