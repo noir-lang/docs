@@ -256,7 +256,7 @@ Advanced: If you aren't using direnv nor launching your editor within the subshe
 
 [git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [rust]: https://www.rust-lang.org/tools/install
-[noir vs code extension]: https://marketplace.visualstudio.com/items?itemName=noir-lang.noir-programming-language-syntax-highlighter
+[noir vs code extension]: https://marketplace.visualstudio.com/items?itemName=noir-lang.vscode-noir
 [homebrew]: https://brew.sh/
 [cmake]: https://cmake.org/install/
 [llvm]: https://llvm.org/docs/GettingStarted.html
