@@ -103,13 +103,14 @@ _Options_
 
 - `-v, --verify` - Verify proof after proving
 
-## `nargo verify <proof>`
+## `nargo verify <proof_name> [circuit_name]`
 
 Given a proof and a program, verify whether the proof is valid.
 
 _Arguments_
 
 - `<proof>` - The proof to verify
+- `[circuit_name]` - The circuit compiled from running `nargo compile`
 
 ## `nargo preprocess <build_artifact>`
 
