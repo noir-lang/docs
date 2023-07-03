@@ -211,6 +211,7 @@ Now that your environment is set up, you can get to work on the project.
 ```sh
 git clone git@github.com:noir-lang/noir
 ```
+
 > Replacing `noir` with whichever repository you want to work on.
 
 2. Navigate to the directory:
@@ -218,9 +219,10 @@ git clone git@github.com:noir-lang/noir
 ```sh
 cd noir
 ```
+
 > Replacing `noir` with whichever repository you cloned.
 
-3. You should see a __direnv error__ because projects aren't allowed by default. Make sure you've reviewed and trust our `.envrc` file, then you need to run:
+3. You should see a **direnv error** because projects aren't allowed by default. Make sure you've reviewed and trust our `.envrc` file, then you need to run:
 
 ```sh
 direnv allow
@@ -254,8 +256,7 @@ Advanced: If you aren't using direnv nor launching your editor within the subshe
 
 [git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [rust]: https://www.rust-lang.org/tools/install
-[noir vs code extension]:
-  https://marketplace.visualstudio.com/items?itemName=noir-lang.noir-programming-language-syntax-highlighter
+[noir vs code extension]: https://marketplace.visualstudio.com/items?itemName=noir-lang.noir-programming-language-syntax-highlighter
 [homebrew]: https://brew.sh/
 [cmake]: https://cmake.org/install/
 [llvm]: https://llvm.org/docs/GettingStarted.html
