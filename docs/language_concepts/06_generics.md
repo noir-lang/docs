@@ -113,4 +113,4 @@ fn main() {
 ```
 
 You can see an example of generics in the tests
-[here](https://github.com/noir-lang/noir/blob/master/crates/nargo/tests/test_data/generics/src/main.nr).
+[here](https://github.com/noir-lang/noir/blob/master/crates/nargo_cli/tests/test_data/generics/src/main.nr).
