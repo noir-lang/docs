@@ -23,7 +23,7 @@ keywords:
 ```
 Options:
   -s, --show-ssa        Emit debug information for the intermediate SSA IR
-  -a, --allow-warnings  Issue a warning for each unused variable instead of an error
+  -d, --deny-warnings   Quit execution when warnings are emitted
       --show-output     Display output of `println` statements during tests
   -h, --help            Print help
 ```
