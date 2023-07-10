@@ -4,14 +4,14 @@ description: Learn how you can verify Schnorr signatures using Noir
 keywords: [cryptographic primitives, Noir project, schnorr, signatures]
 ---
 
-import BlackBoxInfo from './common/\_blackbox.mdx';
+import BlackBoxInfo from './common/_blackbox.mdx';
 
 ## schnorr::verify_signature
 
 Verifier for Schnorr signatures over the embedded curve (for BN254 it is Grumpkin).
 
 ```rust
-fn verify_signature(_public_key_x: Field, _public_key_y: Field, _signature: [u8; 64], _message: [u8]) -> Field
+fn verify_signature(_public_key_x: Field, _public_key_y: Field, _signature: [u8; 64], _message: [u8]) -> bool
 ```
 
 where `_signature` can be generated like so using the npm package
@@ -34,4 +34,4 @@ const signature = Array.from(
 ...
 ```
 
-<BlackBoxInfo/>
+<BlackBoxInfo />
