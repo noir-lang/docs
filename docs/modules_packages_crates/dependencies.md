@@ -64,14 +64,19 @@ use dep::ecrecover;
 use dep::libA;
 ```
 
-You can also import only the specific parts of dependency that you want to use. For example,
-demonstrated in the
-[elliptic curve example](../standard_library/cryptographic_primitives/ec_primitives#examples), you
-can import just the `Point` and the `Curve` that you want to use.
+You can also import only the specific parts of dependency that you want to use, like so:
 
 ```rust
-use dep::std::ec::tecurve::affine::Curve;
-use dep::std::ec::tecurve::affine::Point;
+use dep::std::hash::sha256;
+use dep::std::scalar_mul::fixed_base;
+```
+
+Lastly, as demonstrated in the
+[elliptic curve example](../standard_library/cryptographic_primitives/ec_primitives#examples), you
+can import multiple items in the same line by enclosing them in curly braces:
+
+```rust
+use dep::std::ec::tecurve::affine::{Curve, Point};
 ```
 
 ## Available Libraries
