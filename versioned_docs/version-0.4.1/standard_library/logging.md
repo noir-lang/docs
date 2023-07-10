@@ -32,7 +32,7 @@ fn main(string: pub str<5>) {
 
 ```
 
-To view the output of the `println` statement you need to set the `--show-output` flag. 
+To view the output of the `println` statement you need to set the `--show-output` flag.
 
 ```
 $ nargo prove --help
@@ -47,8 +47,7 @@ Arguments:
 Options:
   -v, --verify          Verify proof after proving
   -s, --show-ssa        Emit debug information for the intermediate SSA IR
-  -a, --allow-warnings  Issue a warning for each unused variable instead of an error
+  -d, --deny-warnings   Quit execution when warnings are emitted
       --show-output     Display output of `println` statements during tests
   -h, --help            Print help
 ```
-
