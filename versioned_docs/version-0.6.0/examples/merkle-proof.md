@@ -45,4 +45,4 @@ An example, the merkle membership proof, only requires a hash function that has 
 resistance, hence a hash function like Pedersen is allowed, which in most cases is more efficient
 than the even more conservative sha256.
 
-[view an example on the starter repo](https://github.com/noir-lang/noir-starter/blob/49dcdb31a6be3605b0d870e6dab3aa6c79416304/stealthdrop/circuits/src/main.nr#L20)
+[view an example on the starter repo](https://github.com/noir-lang/noir-by-example/blob/master/stealthdrop/circuits/src/main.nr#L20)
