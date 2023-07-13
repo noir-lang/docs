@@ -40,7 +40,7 @@ curl -L https://raw.githubusercontent.com/noir-lang/noirup/main/install | bash
 Close the terminal, open another one, and run
 
 ```bash
-noirup -v 0.6.0
+noirup
 ```
 
 Done, you should have the latest version working. You can check with `nargo --version`.
