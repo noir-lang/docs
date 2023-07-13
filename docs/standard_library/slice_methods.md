@@ -40,8 +40,8 @@ example
 
 ```rust
 fn main() {
-    let slice = [42, 42]
-    assert(arr.len() == 2);
+    let slic = [42, 42]
+    assert(slic.len() == 2);
 }
 ```
 
@@ -60,8 +60,8 @@ example
 
 ```rust
 fn main() {
-    let arr = [42, 32]
-    let sorted = arr.sort();
+    let slic = [42, 32]
+    let sorted = slic.sort();
     assert(sorted == [32, 42]);
 }
 ```
@@ -78,11 +78,11 @@ example
 
 ```rust
 fn main() {
-    let arr = [42, 32]
-    let sorted_ascending = arr.sort_via(|a, b| a < b);
+    let slic = [42, 32]
+    let sorted_ascending = slic.sort_via(|a, b| a < b);
     assert(sorted_ascending == [32, 42]); // verifies
 
-    let sorted_descending = arr.sort_via(|a, b| a > b);
+    let sorted_descending = slic.sort_via(|a, b| a > b);
     assert(sorted_descending == [32, 42]); // does not verify
 }
 ```
@@ -130,8 +130,8 @@ example:
 ```rust
 
 fn main() {
-    let arr = [2,2,2,2,2]
-    let folded = arr.fold(0, |a, b| a + b);
+    let slic = [2,2,2,2,2]
+    let folded = slic.fold(0, |a, b| a + b);
     assert(folded == 10);
 }
 
@@ -149,8 +149,8 @@ example:
 
 ```rust
 fn main() {
-    let arr = [2,2,2,2,2]
-    let reduced = arr.reduce(|a, b| a + b);
+    let slic = [2,2,2,2,2]
+    let reduced = slic.reduce(|a, b| a + b);
     assert(reduced == 10);
 }
 ```
@@ -167,8 +167,8 @@ example:
 
 ```rust
 fn main() {
-    let arr = [2,2,2,2,2]
-    let all = arr.all(|a| a == 2);
+    let slic = [2,2,2,2,2]
+    let all = slic.all(|a| a == 2);
     assert(all);
 }
 ```
@@ -185,8 +185,8 @@ example:
 
 ```rust
 fn main() {
-    let arr = [2,2,2,2,5]
-    let any = arr.any(|a| a == 5);
+    let slic = [2,2,2,2,5]
+    let any = slic.any(|a| a == 5);
     assert(any);
 }
 
