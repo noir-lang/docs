@@ -75,27 +75,6 @@ private and another that is public.
 
 A primitive type represents a single value. They can be private or public.
 
-## References
-
-Noir supports first-class references. References are a bit like pointers: they point to a specific address that can be followed to access the data stored at that address. You can use Rust-like syntax to use pointers in Noir: the `&` operator references the variable, the `*` operator dereferences it.
-
-Example:
-
-```rust
-fn main() {
-    let mut x = 2;
-
-    // you can reference x as &mut and pass it to multiplyBy2
-    multiplyBy2(&mut x);
-}
-
-// you can access &mut here
-fn multiplyBy2(x: &mut Field) {
-    // and dereference it with *
-    *x = *x * 2;
-}
-```
-
 ### Fields
 
 The field type corresponds to the native field type of the proving backend.
@@ -320,3 +299,24 @@ showcased in the `legs --> feet` binding in the example above.
 :::note
 You can use Structs as inputs to the `main` function, but you can't output them
 :::
+
+## References
+
+Noir supports first-class references. References are a bit like pointers: they point to a specific address that can be followed to access the data stored at that address. You can use Rust-like syntax to use pointers in Noir: the `&` operator references the variable, the `*` operator dereferences it.
+
+Example:
+
+```rust
+fn main() {
+    let mut x = 2;
+
+    // you can reference x as &mut and pass it to multiplyBy2
+    multiplyBy2(&mut x);
+}
+
+// you can access &mut here
+fn multiplyBy2(x: &mut Field) {
+    // and dereference it with *
+    *x = *x * 2;
+}
+```
