@@ -76,6 +76,7 @@ error like `Reason: PUBLIC_INPUT_COUNT_INVALID(3, 2)`.
 In this case the 3 inputs to `verify` would be ordered as `[pubkey_x, pubkey_y, return]`.
 
 #### Struct inputs
+
 Consider the following program:
 
 ```rust
@@ -95,3 +96,21 @@ fn main(x: pub Field, nested: pub Nested, y: pub Field) {
 ```
 
 Structs will be flattened so that the array of inputs is 1-dimensional array. The order of these inputs would be flattened to: `[x, nested.t1.val1, nested.t1.val2, nested.is_true, y]`
+
+## Noir for EVM chains
+
+You can currently deploy the Solidity verifier contracts to most EVM compatible chains. EVM chains that have been tested and are known to work include:
+
+- Optimism
+- Arbitrum
+- Polygon PoS
+- Scroll
+- Celo
+
+Other EVM chains should work, but have not been tested directly by our team. If you test any other chains, please open a PR on this page to update the list. See [this doc](https://github.com/noir-lang/noir-starter/tree/main/with-foundry#testing-on-chain) for more info about testing verifier contracts on different EVM chains.
+
+### Unsupported chains
+
+Unfortunately not all "EVM" chains are supported.
+
+**zkSync** and the **Polygon zkEVM** do *not* currently support proof verification via Solidity verifier contracts. They are missing the bn256 precompile contract that the verifier contract requires. Once these chains support this precompile, they may work.
