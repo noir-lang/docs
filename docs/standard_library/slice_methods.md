@@ -49,7 +49,7 @@ fn main() {
 
 Returns a new sorted slice. The original slice remains untouched. Notice that this function will
 only work for slices of fields or integers, not for any arbitrary type. This is because the sorting
-logic it uses internally is optimized specifically for these values. If you need a sort function to
+logic the function uses internally is optimized specifically for these values. If you need a sort function to
 sort any type, you should use the function `sort_via` described below.
 
 ```rust
