@@ -6,8 +6,6 @@ description:
 keywords: [rust, array, methods, len, sort, fold, reduce, all, any]
 ---
 
-# Array
-
 For convenience, the STD provides some ready-to-use, common methods for arrays[^migrationnote]:
 
 ## len
@@ -18,7 +16,7 @@ Returns the length of an array
 fn len<T, N>(_array: [T; N]) -> comptime Field
 ```
 
-example
+Example
 
 ```rust
 fn main() {
@@ -38,7 +36,7 @@ sort any type, you should use the function `sort_via` described below.
 fn sort<T, N>(_array: [T; N]) -> [T; N]
 ```
 
-example
+Example
 
 ```rust
 fn main() {
@@ -56,7 +54,7 @@ Sorts the array with a custom comparison function
 fn sort_via<T, N>(mut a: [T; N], ordering: fn(T, T) -> bool) -> [T; N]
 ```
 
-example
+Example
 
 ```rust
 fn main() {
@@ -77,12 +75,12 @@ Applies a function to each element of the array, returning a new array containin
 fn map<U>(f: fn(T) -> U) -> [U; N]
 ```
 
-example
+Example
 
 ```rust
 let a = [1, 2, 3];
 let b = a.map(|a| a * 2) // b is now [2, 4, 6]
-``` 
+```
 
 ## fold
 
@@ -107,7 +105,7 @@ a2.fold(10, f)  //=> f(f(10, 1), 2)
 a3.fold(10, f)  //=> f(f(f(10, 1), 2), 3)
 ```
 
-example:
+Example:
 
 ```rust
 
@@ -127,7 +125,7 @@ Same as fold, but uses the first element as starting element.
 fn reduce<T, N>(f: fn(T, T) -> T) -> T
 ```
 
-example:
+Example:
 
 ```rust
 fn main() {
@@ -145,7 +143,7 @@ Returns true if all the elements satisfy the given predicate
 fn all<T, N>(predicate: fn(T) -> bool) -> bool
 ```
 
-example:
+Example:
 
 ```rust
 fn main() {
@@ -163,7 +161,7 @@ Returns true if any of the elements satisfy the given predicate
 fn any<T, N>(predicate: fn(T) -> bool) -> bool
 ```
 
-example:
+Example:
 
 ```rust
 fn main() {
@@ -174,7 +172,112 @@ fn main() {
 
 ```
 
+## push_front
+
+Returns a new array with the specified element inserted at index 0. The existing elements indexes are incremented by 1.
+
+```rust
+fn push_front(_self: Self, _elem: T) -> Self
+```
+
+Example:
+
+```rust
+let mut new_slice: [Field] = [];
+new_slice = new_slice.push_front(20);
+assert(new_slice[0] == 20); // returns true
+```
+
+View the corresponding test file [here][test-file].
+
+## push_back
+
+Returns a new array with the specified element inserted at the end of the array.
+
+```rust
+fn push_back(_self: Self, _elem: T) -> Self
+```
+
+Example:
+
+```rust
+let mut new_slice: [Field] = [];
+for i in 0..5 {
+    new_slice = new_slice.push_back(i);
+}
+assert(new_slice.len() == 5);
+```
+
+View the corresponding test file [here][test-file].
+
+## pop_front
+
+Returns a tuple of two items, the first element of the array and the rest of the array.
+
+```rust
+fn pop_front(_self: Self) -> (T, Self)
+```
+
+Example:
+
+```rust
+let (first_elem, rest_of_slice) = slice.pop_front();
+```
+
+View the corresponding test file [here][test-file].
+
+## pop_back
+
+Returns a tuple of two items, the beginning of the array with the last element omitted and the last element.
+
+```rust
+fn pop_back(_self: Self) -> (Self, T)
+```
+
+Example:
+
+```rust
+let (popped_slice, last_elem) = slice.pop_back();
+```
+
+View the corresponding test file [here][test-file].
+
+## insert
+
+Inserts an element at a specified index and shifts all following elements by 1.
+
+```rust
+fn insert(_self: Self, _index: Field, _elem: T) -> Self
+```
+
+Example:
+
+```rust
+ new_slice = rest_of_slice.insert(2, 100);
+assert(new_slice[2] == 100);
+```
+
+View the corresponding test file [here][test-file].
+
+## remove
+
+Remove an element at a specified index, shifting all elements after it to the left, returning the altered slice and the removed element.
+
+```rust
+fn remove(_self: Self, _index: Field) -> (Self, T)
+```
+
+Example:
+
+```rust
+let (remove_slice, removed_elem) = slice.remove(3);
+```
+
+View the corresponding test file [here]([test-file].
+
 [^migrationnote]:
     Migration Note: These methods were previously free functions, called via `std::array::len()`.
     For the sake of ease of use and readability, these functions are now methods and the old syntax
     for them is now deprecated.
+
+[test-file]: https://github.com/noir-lang/noir/blob/f387ec1475129732f72ba294877efdf6857135ac/crates/nargo_cli/tests/test_data_ssa_refactor/slices/src/main.nr
