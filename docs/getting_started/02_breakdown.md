@@ -93,15 +93,15 @@ fn main(foos: [Foo; 3]) -> pub Field {
 Prover.toml:
 
 ```toml
-[[foos]] // foos[0]
+[[foos]] # foos[0]
 bar = 0
 baz = 0
 
-[[foos]] // foos[1]
+[[foos]] # foos[1]
 bar = 0
 baz = 0
 
-[[foos]] // foos[2]
+[[foos]] # foos[2]
 bar = 1
 baz = 2
 ```
