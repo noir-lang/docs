@@ -18,10 +18,15 @@ Here is a single line comment:
 
 `//` is used to tell the compiler to ignore the rest of the line.
 
-Noir doesn't have multi-line comments, but you can emulate them via using `//` on each line
+Noir also supports multi-line block comments. Start a block comment with `/*` and end the block with `*/`.
+
+Noir does not natively support doc comments. You may be able to use [Rust doc comments](https://doc.rust-lang.org/reference/comments.html) in your code to leverage some Rust documentation build tools with Noir code.
 
 ```rust
-// This is a multi line
-// comment, that is ignored by
-// the compiler
+/*
+  This is a block comment describing a complex function.
+*/
+fn main(x : Field, y : pub Field) {
+    assert(x != y);
+}
 ```
