@@ -253,6 +253,26 @@ If you have hesitations with using direnv, you can launch a subshell with `nix d
 
 Advanced: If you aren't using direnv nor launching your editor within the subshell, you can try to install Barretenberg and other global dependencies the package needs. This is an advanced workflow and likely won't receive support!
 
+## Uninstalling Nargo
+
+### Noirup
+
+If you installed Noir with `noirup`, you can uninstall Noir by removing the files in `~/.nargo`, `~/nargo` and `~/noir_cache`.
+
+```bash
+rm -r ~/.nargo 
+rm -r ~/nargo
+rm -r ~/noir_cache
+```
+
+### Nix
+
+If you installed Noir with Nix or from source, you can remove the binary located at `~/.nix-profile/bin/nargo`.
+
+```bash
+rm ~/.nix-profile/bin/nargo
+```
+
 [git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [rust]: https://www.rust-lang.org/tools/install
 [noir vs code extension]:
