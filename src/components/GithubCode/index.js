@@ -4,7 +4,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import github from 'prism-react-renderer/themes/github';
 //import vsDark from 'prism-react-renderer/themes/vsDark';
 
-const GitHubCode = ({ owner, repo, branch = 'master', filePath, startLine = 1, endLine = Infinity }) => {
+const GitHubCode = ({ owner, repo, branch = 'master', filePath, language, startLine = 1, endLine = Infinity }) => {
     const [code, setCode] = useState('');
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const GitHubCode = ({ owner, repo, branch = 'master', filePath, startLine = 1, e
             {...defaultProps}
             code={code}
             theme={github}
-            language="rust"
+            language={language}
         >
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <pre style={style}>
