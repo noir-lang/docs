@@ -7,9 +7,6 @@ keywords:
   [merkle proof, merkle membership proof, Noir, rust, hash function, Pedersen, sha256, merkle tree]
 ---
 
-import GitHubCode from '../../src/components/GithubCode';
-import { Highlight, themes } from 'prism-react-renderer';
-
 Let's walk through an example of a merkle membership proof in Noir that proves that a given leaf is
 in a merkle tree.
 
@@ -48,12 +45,4 @@ An example, the merkle membership proof, only requires a hash function that has 
 resistance, hence a hash function like Pedersen is allowed, which in most cases is more efficient
 than the even more conservative sha256.
 
-[view an example on the starter repo](https://github.com/noir-lang/noir-examples/blob/3ea09545cabfa464124ec2f3ea8e60c608abe6df/stealthdrop/circuits/src/main.nr#L20)
-
-<GitHubCode
-  owner="noir-lang"
-  repo="noir-examples"
-  branch="master"
-  filePath="stealthdrop/circuits/src/main.nr"
-  language="rust"
-/>
+[View an example on the starter repo](https://github.com/noir-lang/noir-examples/blob/3ea09545cabfa464124ec2f3ea8e60c608abe6df/stealthdrop/circuits/src/main.nr#L20)
