@@ -27,25 +27,18 @@ completed.
 
 ## What is Noir?
 
-Noir is a domain specific language for creating and verifying proofs. It's design choices are
-influenced heavily by Rust.
+Noir is a Domain Specific Language for SNARK proving systems. It has been designed to use any ACIR compatible proving system.
 
-## What's new about Noir?
-
-Noir is simple and flexible in its design, as it does not compile immediately to a fixed
-NP-complete language. Instead, Noir compiles to an intermediate language (ACIR), which itself can be compiled
-to an arithmetic circuit (if choosing to target Aztec's barretenberg backend) or a rank-1 constraint system (if choosing to target an R1CS backend like Arkwork's Marlin backend, or others). 
-
-This in itself brings up a few challenges within the design process, but allows one to decouple the programming language completely from the backend. This is similar in theory to LLVM.
+It's design choices are influenced heavily by Rust and focuses on a simple, familiar syntax.
 
 ## Who is Noir for?
 
 Noir can be used for a variety of purposes.
 
-### Ethereum Developers
+### Solidity Developers
 
-Noir currently includes a command to publish a contract which verifies your Noir program. This will
-be modularised in the future; however, as of the alpha, you can use the `contract` command to create
+Noir currently includes a command to create a Solidity contract which verifies your Noir program. This will
+be modularised in the future; however, as of the alpha, you can use the [`nargo codegen-verifier`](./nargo/commands#nargo-codegen-verifier) command to create
 a verifier contract.
 
 ### Protocol Developers
@@ -53,7 +46,7 @@ a verifier contract.
 As a protocol developer, you may not want to use the Aztec backend due to it not being a fit for
 your stack, or maybe you simply want to use a different proving system. Since Noir does not compile
 to a specific proof system, it is possible for protocol developers to replace the PLONK-based
-proving system with a different proving system altogether. 
+proving system with a different proving system altogether.
 
 ### Blockchain developers
 
@@ -61,3 +54,34 @@ As a blockchain developer, you will be constrained by parameters set by your blo
 proving system and smart contract language has been pre-defined). In order for you to use Noir in
 your blockchain, a proving system backend and a smart contract interface
 must be implemented for it.
+
+## What's new about Noir?
+
+Noir is simple and flexible in its design, as it does not compile immediately to a fixed
+NP-complete language. Instead, Noir compiles to an intermediate language (ACIR), which itself can be compiled
+to an arithmetic circuit (if choosing to target Aztec's barretenberg backend) or a rank-1 constraint system (if choosing to target an R1CS backend like Arkwork's Marlin backend, or others).
+
+This in itself brings up a few challenges within the design process, but allows one to decouple the programming language completely from the backend. This is similar in theory to LLVM.
+
+## Current Features
+
+Compiler:
+
+- Module System
+- For expressions
+- Arrays
+- Bit Operations
+- Binary operations (<, <=, >, >=, +, -, \*, /, %) [See documentation for an extensive list]
+- Unsigned integers
+- If statements
+- Structures and Tuples
+- Generics
+
+ACIR Supported OPCODES:
+
+- Sha256
+- Blake2s
+- Schnorr signature verification
+- MerkleMembership
+- Pedersen
+- HashToField
