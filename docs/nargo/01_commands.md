@@ -50,6 +50,10 @@ Generate a Solidity verifier smart contract for the program.
 Compile the program into a JSON build artifact file containing the ACIR representation and the ABI
 of the circuit. This build artifact can then be used to generate and verify proofs.
 
+You can also use "build" as an alias for compile.
+
+For example, `nargo build <circuit_name>`.
+
 _Arguments_
 
 - `<circuit_name>` - The name of the circuit file
