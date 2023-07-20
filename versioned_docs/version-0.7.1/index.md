@@ -27,24 +27,17 @@ completed.
 
 ## What is Noir?
 
-Noir is a domain specific language for creating and verifying proofs. It's design choices are
-influenced heavily by Rust.
+Noir is a Domain Specific Language for SNARK proving systems. It has been designed to use any ACIR compatible proving system. 
 
-## What's new about Noir?
-
-Noir is simple and flexible in its design, as it does not compile immediately to a fixed
-NP-complete language. Instead, Noir compiles to an intermediate language (ACIR), which itself can be compiled
-to an arithmetic circuit (if choosing to target Aztec's barretenberg backend) or a rank-1 constraint system (if choosing to target an R1CS backend like Arkwork's Marlin backend, or others). 
-
-This in itself brings up a few challenges within the design process, but allows one to decouple the programming language completely from the backend. This is similar in theory to LLVM.
+It's design choices are influenced heavily by Rust and focuses on a simple, familiar syntax.
 
 ## Who is Noir for?
 
 Noir can be used for a variety of purposes.
 
-### Ethereum Developers
+### Solidity Developers
 
-Noir currently includes a command to publish a contract which verifies your Noir program. This will
+Noir currently includes a command to create a Solidity contract which verifies your Noir program. This will
 be modularised in the future; however, as of the alpha, you can use the `contract` command to create
 a verifier contract.
 
@@ -61,3 +54,34 @@ As a blockchain developer, you will be constrained by parameters set by your blo
 proving system and smart contract language has been pre-defined). In order for you to use Noir in
 your blockchain, a proving system backend and a smart contract interface
 must be implemented for it.
+
+## What's new about Noir?
+
+Noir is simple and flexible in its design, as it does not compile immediately to a fixed
+NP-complete language. Instead, Noir compiles to an intermediate language (ACIR), which itself can be compiled
+to an arithmetic circuit (if choosing to target Aztec's barretenberg backend) or a rank-1 constraint system (if choosing to target an R1CS backend like Arkwork's Marlin backend, or others). 
+
+This in itself brings up a few challenges within the design process, but allows one to decouple the programming language completely from the backend. This is similar in theory to LLVM.
+
+## Current Features
+
+Compiler:
+
+- Module System
+- For expressions
+- Arrays
+- Bit Operations
+- Binary operations (<, <=, >, >=, +, -, \*, /, %) [See documentation for an extensive list]
+- Unsigned integers
+- If statements
+- Structures and Tuples
+- Generics
+
+ACIR Supported OPCODES:
+
+- Sha256
+- Blake2s
+- Schnorr signature verification
+- MerkleMembership
+- Pedersen
+- HashToField
