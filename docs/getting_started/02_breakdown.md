@@ -50,7 +50,7 @@ verifying the proof.
 
 The prover supplies the values for `x` and `y` in the _Prover.toml_ file.
 
-As for the program body, `constrain` ensures the satisfaction of the condition (e.g. `x != y`) is
+As for the program body, `assert` ensures the satisfaction of the condition (e.g. `x != y`) is
 constrained by the proof of the execution of said program (i.e. if the condition was not met, the
 verifier would reject the proof as an invalid proof).
 
