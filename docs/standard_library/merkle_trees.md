@@ -1,7 +1,6 @@
 ---
 title: Merkle Trees
-description:
-  Learn about Merkle Trees in Noir with this tutorial. Explore the basics of computing a merkle root using a proof, with examples.
+description: Learn about Merkle Trees in Noir with this tutorial. Explore the basics of computing a merkle root using a proof, with examples.
 keywords:
   [
     Merkle trees in Noir,
