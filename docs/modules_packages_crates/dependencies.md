@@ -79,6 +79,22 @@ can import multiple items in the same line by enclosing them in curly braces:
 use dep::std::ec::tecurve::affine::{Curve, Point};
 ```
 
+## Dependencies of Dependencies
+
+Note that when you import a dependency, you also get access to all of the dependencies of that package.
+
+For example, the [phy_vector](https://github.com/resurgencelabs/phy_vector) library imports an [fraction](https://github.com/resurgencelabs/fraction) library. If you're importing the phy_vector library, then you can access the functions in fractions library like so:
+
+```rust
+use dep::phy_vector;
+
+fn main(x : Field, y : pub Field) {
+  //...
+  let f = phy_vector::fraction::toFraction(true, 2, 1);
+  //...
+}
+```
+
 ## Available Libraries
 
 Noir does not currently have an official package manager. You can find a list of available Noir libraries in the [awesome-noir repo here](https://github.com/noir-lang/awesome-noir#libraries).
