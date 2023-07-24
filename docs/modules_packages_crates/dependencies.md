@@ -25,7 +25,7 @@ For example, to add the [ecrecover-noir library](https://github.com/colinnielsen
 # Nargo.toml
 
 [dependencies]
-ecrecover = {tag = "v0.2.0", git = "https://github.com/colinnielsen/ecrecover-noir"}
+ecrecover = {tag = "v0.8.0", git = "https://github.com/colinnielsen/ecrecover-noir"}
 ```
 
 ## Specifying a local dependency
