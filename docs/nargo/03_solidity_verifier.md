@@ -45,6 +45,19 @@ following signature:
 function verify(bytes calldata _proof, bytes32[] calldata _publicInputs) external view returns (bool)
 ```
 
+You can see an example of how the `verify` function is called in the example zk voting application [here](https://github.com/noir-lang/noir-examples/blob/33e598c257e2402ea3a6b68dd4c5ad492bce1b0a/foundry-voting/src/zkVote.sol#L35):
+
+```solidity
+function castVote(bytes calldata proof, uint proposalId, uint vote, bytes32 nullifierHash) public returns (bool) {
+  // ...
+  bytes32[] memory publicInputs = new bytes32[](4);
+  publicInputs[0] = merkleRoot;
+  publicInputs[1] = bytes32(proposalId);
+  publicInputs[2] = bytes32(vote);
+  publicInputs[3] = nullifierHash;
+  require(verifier.verify(proof, publicInputs), "Invalid proof");
+```
+
 ### Public Inputs
 
 :::tip
@@ -91,7 +104,7 @@ struct Nested {
 }
 
 fn main(x: pub Field, nested: pub Nested, y: pub Field) {
-  //... 
+  //...
 }
 ```
 
@@ -113,4 +126,4 @@ Other EVM chains should work, but have not been tested directly by our team. If 
 
 Unfortunately not all "EVM" chains are supported.
 
-**zkSync** and the **Polygon zkEVM** do *not* currently support proof verification via Solidity verifier contracts. They are missing the bn256 precompile contract that the verifier contract requires. Once these chains support this precompile, they may work.
+**zkSync** and the **Polygon zkEVM** do _not_ currently support proof verification via Solidity verifier contracts. They are missing the bn256 precompile contract that the verifier contract requires. Once these chains support this precompile, they may work.
