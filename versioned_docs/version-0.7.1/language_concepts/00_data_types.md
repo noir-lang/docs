@@ -299,3 +299,7 @@ showcased in the `legs --> feet` binding in the example above.
 :::note
 You can use Structs as inputs to the `main` function, but you can't output them
 :::
+
+### BigInt
+
+You can acheive BigInt functionality using the [Noir BigInt](https://github.com/shuklaayush/noir-bigint) library.
