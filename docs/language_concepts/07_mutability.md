@@ -6,8 +6,6 @@ description:
 keywords: [noir programming language, mutability in noir, mutable variables, constants, globals]
 ---
 
-# Mutability
-
 Variables in noir can be declared mutable via the `mut` keyword. Mutable variables can be reassigned
 to via an assignment expression.
 
@@ -50,11 +48,13 @@ fn helper(mut x: i32) {
 }
 ```
 
-## Comptime values
+## Comptime Values
 
-Comptime value are values that are known at compile-time. This is different to a witness
+Comptime values are values that are known at compile-time. This is different to a witness
 which changes per proof. If a comptime value that is being used in your program is changed, then your
 circuit will also change.
+
+Comptime is slightly different from Rust's `const`. Namely, it is a bit more flexible in that normal functions can accept comptime parameters. For example, this is used to verify an array index is known at compile-time. Note that the "known at compile-time" here means "known after function inlining is performed while optimizing the program" and not "known during type-checking."
 
 Below we show how to declare a comptime value:
 
