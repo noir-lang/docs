@@ -65,12 +65,16 @@ _Options_
 
 ## `nargo new <package_name> [path]`
 
-Creates a new Noir project.
+Creates a new Noir project in a new folder called `<package_name`.
 
 _Arguments_
 
 - `<package_name>` - Name of the package
 - `[path]` - The path to save the new project
+
+## `nargo init`
+
+Creates a new Noir project in the current directory.
 
 ## `nargo execute [witness_name]`
 
