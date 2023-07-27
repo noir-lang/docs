@@ -22,7 +22,7 @@ example
 
 ```rust
 fn main() {
-    let array = [42, 42]
+    let array = [42, 42];
     constrain array.len() == 2;
 }
 ```
