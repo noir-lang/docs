@@ -17,7 +17,7 @@ Enabling a circuit language to perform unconstrained execution is a powerful too
 
 Fetching information from somewhere external to a circuit can also be used to enable developers to improve circuit efficiency.
 
-A ZK DSL does not just prove computation, but proves that some computation was handled correctly. Thus, it is necessary that when we switch from performing some operation directly inside of a circuit to inside of an unconstrained environment that the appropriate constraints are still laid down elsewhere in the circuit. The note selection algorithm example at the top of this section follows the same methodology. We are not constraining the unconstrained execution, but rather its outputs.
+A ZK DSL does not just prove computation, but proves that some computation was handled correctly. Thus, it is necessary that when we switch from performing some operation directly inside of a circuit to inside of an unconstrained environment that the appropriate constraints are still laid down elsewhere in the circuit.
 
 ## Example
 
