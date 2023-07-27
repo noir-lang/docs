@@ -42,7 +42,7 @@ example
 
 ```rust
 fn main() {
-    let arr = [42, 32]
+    let arr = [42, 32];
     let sorted = arr.sort();
     assert(sorted == [32, 42]);
 }
@@ -81,7 +81,7 @@ example
 
 ```rust
 let a = [1, 2, 3];
-let b = a.map(|a| a * 2) // b is now [2, 4, 6]
+let b = a.map(|a| a * 2); // b is now [2, 4, 6]
 ```
 
 ## fold
@@ -112,7 +112,7 @@ example:
 ```rust
 
 fn main() {
-    let arr = [2,2,2,2,2]
+    let arr = [2, 2, 2, 2, 2];
     let folded = arr.fold(0, |a, b| a + b);
     assert(folded == 10);
 }
@@ -131,7 +131,7 @@ example:
 
 ```rust
 fn main() {
-    let arr = [2,2,2,2,2]
+    let arr = [2, 2, 2, 2, 2];
     let reduced = arr.reduce(|a, b| a + b);
     assert(reduced == 10);
 }
@@ -149,7 +149,7 @@ example:
 
 ```rust
 fn main() {
-    let arr = [2,2,2,2,2]
+    let arr = [2, 2, 2, 2, 2];
     let all = arr.all(|a| a == 2);
     assert(all);
 }
@@ -167,7 +167,7 @@ example:
 
 ```rust
 fn main() {
-    let arr = [2,2,2,2,5]
+    let arr = [2, 2, 2, 2, 5];
     let any = arr.any(|a| a == 5);
     assert(any);
 }
