@@ -5,8 +5,6 @@ description:
 keywords: [rust, slice, methods, push_back, len, sort, fold, reduce, all, any]
 ---
 
-# Slice
-
 For convenience, the STD provides some ready-to-use, common methods for slices:
 
 ## push_back
@@ -28,6 +26,91 @@ fn main() -> pub Field {
 }
 ```
 
+View the corresponding test file [here][test-file].
+
+## push_front
+
+Returns a new array with the specified element inserted at index 0. The existing elements indexes are incremented by 1.
+
+```rust
+fn push_front(_self: Self, _elem: T) -> Self
+```
+
+Example:
+
+```rust
+let mut new_slice: [Field] = [];
+new_slice = new_slice.push_front(20);
+assert(new_slice[0] == 20); // returns true
+```
+
+View the corresponding test file [here][test-file].
+
+## pop_front
+
+Returns a tuple of two items, the first element of the array and the rest of the array.
+
+```rust
+fn pop_front(_self: Self) -> (T, Self)
+```
+
+Example:
+
+```rust
+let (first_elem, rest_of_slice) = slice.pop_front();
+```
+
+View the corresponding test file [here][test-file].
+
+## pop_back
+
+Returns a tuple of two items, the beginning of the array with the last element omitted and the last element.
+
+```rust
+fn pop_back(_self: Self) -> (Self, T)
+```
+
+Example:
+
+```rust
+let (popped_slice, last_elem) = slice.pop_back();
+```
+
+View the corresponding test file [here][test-file].
+
+## insert
+
+Inserts an element at a specified index and shifts all following elements by 1.
+
+```rust
+fn insert(_self: Self, _index: Field, _elem: T) -> Self
+```
+
+Example:
+
+```rust
+ new_slice = rest_of_slice.insert(2, 100);
+assert(new_slice[2] == 100);
+```
+
+View the corresponding test file [here][test-file].
+
+## remove
+
+Remove an element at a specified index, shifting all elements after it to the left, returning the altered slice and the removed element.
+
+```rust
+fn remove(_self: Self, _index: Field) -> (Self, T)
+```
+
+Example:
+
+```rust
+let (remove_slice, removed_elem) = slice.remove(3);
+```
+
+View the corresponding test file [here]([test-file].
+
 ## len
 
 Returns the length of a slice
@@ -36,7 +119,7 @@ Returns the length of a slice
 fn len<T>(_slice: [T]) -> comptime Field
 ```
 
-example
+Example:
 
 ```rust
 fn main() {
@@ -56,7 +139,7 @@ sort any type, you should use the function `sort_via` described below.
 fn sort<T>(_slice: [T]) -> [T]
 ```
 
-example
+Example:
 
 ```rust
 fn main() {
@@ -74,7 +157,7 @@ Sorts the slice with a custom comparison function
 fn sort_via<T>(mut a: [T], ordering: fn(T, T) -> bool) -> [T]
 ```
 
-example
+Example:
 
 ```rust
 fn main() {
@@ -95,7 +178,7 @@ Applies a function to each element of the slice, returning a new slice containin
 fn map<U>(f: fn(T) -> U) -> [U]
 ```
 
-example
+Example:
 
 ```rust
 let a = [1, 2, 3];
@@ -125,7 +208,7 @@ a2.fold(10, f)  //=> f(f(10, 1), 2)
 a3.fold(10, f)  //=> f(f(f(10, 1), 2), 3)
 ```
 
-example:
+Example:
 
 ```rust
 
@@ -145,7 +228,7 @@ Same as fold, but uses the first element as starting element.
 fn reduce<T>(f: fn(T, T) -> T) -> T
 ```
 
-example:
+Example:
 
 ```rust
 fn main() {
@@ -163,7 +246,7 @@ Returns true if all the elements satisfy the given predicate
 fn all<T>(predicate: fn(T) -> bool) -> bool
 ```
 
-example:
+Example:
 
 ```rust
 fn main() {
@@ -181,7 +264,7 @@ Returns true if any of the elements satisfy the given predicate
 fn any<T>(predicate: fn(T) -> bool) -> bool
 ```
 
-example:
+Example:
 
 ```rust
 fn main() {
@@ -191,3 +274,6 @@ fn main() {
 }
 
 ```
+
+[test-file]: https://github.com/noir-lang/noir/blob/f387ec1475129732f72ba294877efdf6857135ac/crates/nargo_cli/tests/test_data_ssa_refactor/slices/src/main.nr
+

@@ -74,6 +74,38 @@ When the command `nargo prove my_proof` is executed, two processes happen:
 2. Noir creates and stores the proof of this statement in the _proofs_ directory and names the proof
    file _my_proof_. Opening this file will display the proof in hex format.
 
+#### Arrays of Structs
+
+The following code shows how to pass an array of structs to a Noir program to generate a proof.
+
+```rust
+// main.nr
+struct Foo {
+    bar: Field,
+    baz: Field,
+}
+
+fn main(foos: [Foo; 3]) -> pub Field {
+    foos[2].bar + foos[2].baz
+}
+```
+
+Prover.toml:
+
+```toml
+[[foos]] # foos[0]
+bar = 0
+baz = 0
+
+[[foos]] # foos[1]
+bar = 0
+baz = 0
+
+[[foos]] # foos[2]
+bar = 1
+baz = 2
+```
+
 #### Custom toml files
 
 You can specify a `toml` file with a different name to use for proving by using the `--prover-name` or `-p` flags.

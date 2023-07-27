@@ -317,6 +317,10 @@ showcased in the `legs --> feet` binding in the example above.
 You can use Structs as inputs to the `main` function, but you can't output them
 :::
 
+### BigInt
+
+You can acheive BigInt functionality using the [Noir BigInt](https://github.com/shuklaayush/noir-bigint) library.
+
 ## References
 
 Noir supports first-class references. References are a bit like pointers: they point to a specific address that can be followed to access the data stored at that address. You can use Rust-like syntax to use pointers in Noir: the `&` operator references the variable, the `*` operator dereferences it.
