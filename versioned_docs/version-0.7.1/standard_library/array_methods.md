@@ -23,7 +23,7 @@ example
 ```rust
 fn main() {
     let array = [42, 42]
-    assert(arr.len() == 2);
+    assert(array.len() == 2);
 }
 ```
 
@@ -82,7 +82,7 @@ example
 ```rust
 let a = [1, 2, 3];
 let b = a.map(|a| a * 2) // b is now [2, 4, 6]
-``` 
+```
 
 ## fold
 
