@@ -201,7 +201,6 @@ You can instantiate a new array of a fixed size with the same value repeated for
 
 ```rust
 let array: [Field; 32] = [0; 32];
-
 ```
 
 #### Types
