@@ -24,7 +24,6 @@ keywords:
 Options:
   -s, --show-ssa        Emit debug information for the intermediate SSA IR
   -d, --deny-warnings   Quit execution when warnings are emitted
-      --show-output     Display output of `println` statements during tests
   -h, --help            Print help
 ```
 
