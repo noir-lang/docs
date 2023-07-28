@@ -7,7 +7,14 @@ keywords:
     recursive proofs,
     verification_key,
     aggregation object,
-    verify_proof,
+    verify_proof,fn main(x: u32, y: u32){
+    let mut z: u32 = 1;
+    for i in 0..100000{
+        z = z + x;
+        assert(z > x);
+    }
+}
+
     key_hash,
     input_aggregation_object,
   ]
@@ -83,7 +90,7 @@ The proof for the zk program that is being verified.
 
 ### `public_inputs`
 
-These represent the public inputs of the proof we are verifying They should be checked against in the circuit after construction of a new aggregation state.
+These represent the public inputs of the proof we are verifying. They should be checked against in the circuit after construction of a new aggregation state.
 
 ### `key_hash`
 
