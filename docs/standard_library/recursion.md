@@ -1,23 +1,7 @@
 ---
 title: Recursive Proofs
 description: Learn about how to write recursive proofs in Noir.
-keywords:
-  [
-    recursion,
-    recursive proofs,
-    verification_key,
-    aggregation object,
-    verify_proof,fn main(x: u32, y: u32){
-    let mut z: u32 = 1;
-    for i in 0..100000{
-        z = z + x;
-        assert(z > x);
-    }
-}
-
-    key_hash,
-    input_aggregation_object,
-  ]
+keywords: [recursion, recursive proofs, verification_key, aggregation object, verify_proof]
 ---
 
 Noir supports recursively verifying proofs, meaning you verify the proof of a Noir program in another Noir program. This enables creating proofs of arbitrary size by doing step-wise verification of smaller components of a large proof.
