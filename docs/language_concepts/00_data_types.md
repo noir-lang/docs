@@ -197,6 +197,13 @@ fn main() {
 }
 ```
 
+You can instantiate a new array of a fixed size with the same value repeated for each element. The following example instantiates an array od length 32 where each element is of type Field and has the value 0.
+
+```rust
+let array: [Field; 32] = [0; 32];
+
+```
+
 #### Types
 
 You can create arrays of primitive types or structs. There is not yet support for nested arrays
