@@ -22,7 +22,7 @@ start.
 
 ## Setup
 
-We're assuming you're using ES6 for both browser (for example with React), or nodejs. Install [Yarn](https://yarnpkg.com/) or [Node.js](https://nodejs.org/en). Init a new project with `npm init`. Install Noir dependencies in your project by running:
+We're assuming you're using ES6 for both browser (for example with React), or nodejs. Install [Node.js](https://nodejs.org/en). Init a new project with `npm init`. Install Noir dependencies in your project by running:
 
 ```bash
 npm i @aztec/bb.js github:noir-lang/acvm-simulator-wasm.git#c56eec56f67f90fef90126c5575b85190bdcd1e1 github:noir-lang/noir_wasm.git fflate ethers@5.7.2
