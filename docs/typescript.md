@@ -9,7 +9,7 @@ keywords: [TypeScript, Noir, tutorial, compile, inputs, prover, verifier, proof]
 Interactions with Noir programs can also be performed in TypeScript, which can come in handy when
 writing tests or when working in TypeScript-based projects like [Hardhat](https://hardhat.org/).
 
-This guide is based on the [noir-starter](https://github.com/signorecello/noir-starter) example.
+This guide is based on the [noir-starter](https://github.com/noir-lang/noir-starter) example.
 Please refer to it for an example implementation.
 
 :::note
@@ -29,8 +29,12 @@ Install [Yarn](https://yarnpkg.com/) or [Node.js](https://nodejs.org/en). Init a
 `npm init`. Install Noir dependencies in your project by running:
 
 ```bash
-npm i @noir-lang/noir_wasm@0.3.2-fa0e9cff github:noir-lang/barretenberg#39a1547875f941ef6640217a42d8f34972425c97 @noir-lang/aztec_backend@0.1.0-0c3b2f2
+npm i @aztec/bb.js github:noir-lang/acvm-simulator-wasm.git#c56eec56f67f90fef90126c5575b85190bdcd1e1 github:noir-lang/noir_wasm.git
 ```
+
+This will install the `acvm-simulator` that will generate our witness, and the proving backend barretenberg `bb.js`. We also install `noir_wasm` which will compile our circuit into the ACIR format.
+
+The witness generator expects our public inputs to be an array of 32 bytes, so every input must be padded. If you're lazy like us, you can just use some library like `ethers` and use `ethers.utils.hexZeroPad`. Just make sure to also run `npm i ethers@5.7.2`
 
 :::note
 
@@ -54,168 +58,152 @@ fn main(x: u32, y: pub u32) -> pub u32 {
 
 One valid scenario for proving could be `x = 3`, `y = 4` and `return = 12`
 
-## Imports
-
-We need some imports, for both the `noir_wasm` library (which will compile the circuit into `wasm`
-executables) and `aztec_backend` which is the actual proving backend we will be using.
-
-We also need to tell the compiler where to find the `.nr` files, so we need to import
-`initialiseResolver`.
-
-```ts
-import initNoirWasm, { acir_read_bytes, compile } from '@noir-lang/noir_wasm';
-import initialiseAztecBackend from '@noir-lang/aztec_backend';
-import { initialiseResolver } from '@noir-lang/noir-source-resolver';
-```
-
 ## Compiling
 
-We'll go over the code line-by-line later:
+In order to start proving, we need to compile our circuit into the intermediate representation used by our backend. As of today, you have to do that with `nargo`. Just hop to your circuits folder and run `nargo compile main`.
+
+You should have a `json` file in `target/main.json` with your circuit's bytecode. You can then import that file normally.
 
 ```ts
-export const compileCircuit = async () => {
-  await initNoirWasm();
-
-  return await fetch(new URL('../src/main.nr', import.meta.url))
-    .then(r => r.text())
-    .then(code => {
-      initialiseResolver((id: any) => {
-        return code;
-      });
-    })
-    .then(() => {
-      try {
-        const compiled_noir = compile({});
-        return compiled_noir;
-      } catch (e) {
-        console.log('Error while compiling:', e);
-      }
-    });
-};
+import circuit from "../target/main.json";
 ```
 
-1. First we're calling `initNoirWasm`. This is required on the browser only.
-2. We then pass an URL that points to our `main.nr` file, and call `.then` on it so we can get the
-   actual text of the source code
-3. We call `initialiseResolver` returning the source code
-4. Finally, we can call the `compile` function
+## Decompressing the circuit
 
-This function should return us the compiled circuit.
+The compiled circuit comes compressed with `gZip`. We need to decompress it.
 
-:::note
+### Decompressing on the server
 
-You can use as many files as you need,
-[importing them as you would do with Nargo](./modules_packages_crates/dependencies), and you don't
-need to set them up in the `src` folder. Just mind the following particularities about
-`initialiseResolver`:
+On the server side, `nodejs` already comes with the `zlib` built-in so we can just add it to the imports list and use it:
 
-1. The `compile` function expects a `main.nr` file as an entry point. If you need another one, just
-   pass it as a `entry_point` parameter to `compile`. Check the
-   [noir starter](https://github.com/signorecello/noir-starter) for an example on multiple files and
-   a non-default entry point.
-2. `initialiseResolver` needs to be synchronous
-3. Different frameworks use different ways of fetching files. It's beyond the scope of this guide to
-   explain why and how, but for reference,
-   [noir starter](https://github.com/signorecello/noir-starter) uses both Next.js and node.js for
-   testing.
+```ts
+import { gunzipSync } from 'zlib';
 
-Quick tip: an easy way to deal with `initialiseResolver` is just to prepare a
-`{fileName: "literally_the_code"}` object beforehand 
+const acirBuffer = Buffer.from(circuit.bytecode, 'base64');
+const acirBufferUncompressed = gunzipSync(acirBuffer);
+```
+
+### Decompressing on the browser
+
+On the browser, you can use the excellent `fflate` package to get the same result:
+
+```ts
+import { decompressSync } from 'fflate';
+
+const acirBuffer = Buffer.from(circuit.bytecode, 'base64');
+const acirBufferUncompressed = decompressSync(acirBuffer);
+
+```
+
+From here, it's highly recommended you store `acirBuffer` and `acirBufferUncompressed` close by, as they will be used for witness generation and proving.
+
+## Initializing BB.JS
+
+::: note
+
+This step will eventually be abstracted away as Noir tooling matures. For now, you should be fine just literally copy-pasting most of this into your own code.
 
 :::
 
-## ACIR
-
-Noir compiles to two properties:
-
-1. The ACIR, which is the intermediate language used by backends such as Barretenberg
-2. The ABI, which tells you which inputs are to be read
-
-Let's write a little function that gets us both, initializes the backend, and returns the ACIR as
-bytes:
+Before proving, `bb.js` needs to be initialized. We need to import some functions more:
 
 ```ts
-export const getAcir = async () => {
-  const { circuit, abi } = await compileCircuit();
-  await initialiseAztecBackend();
-
-  let acir_bytes = new Uint8Array(Buffer.from(circuit, 'hex'));
-  return acir_read_bytes(acir_bytes);
-};
+import {
+  Crs,
+  BarretenbergApiAsync,
+  newBarretenbergApiAsync,
+  RawBuffer,
+} from '@aztec/bb.js/dest/node';
 ```
 
-Calling `getAcir()` now should return us the ACIR of the circuit, ready to be used in proofs.
-
-## Initializing Prover & Verifier
-
-Prior to proving and verifying, the prover and verifier have to first be initialized by calling
-`barretenberg`'s `setup_generic_prover_and_verifier` with your Noir program's ACIR:
+and use them like:
 
 ```ts
-let [prover, verifier] = await setup_generic_prover_and_verifier(acir);
+
+const api = await newBarretenbergApiAsync(4);
+
+const [exact, total, subgroup] = await api.acirGetCircuitSizes(JSON.parse(circuit.bytecode));
+const subgroupSize = Math.pow(2, Math.ceil(Math.log2(circuitSize)));
+const crs = await Crs.new(subgroupSize + 1);
+await api.commonInitSlabAllocator(subgroupSize);
+await api.srsInitSrs(
+  new RawBuffer(crs.getG1Data()),
+  crs.numPoints,
+  new RawBuffer(crs.getG2Data()),
+);
+
+const acirComposer = await api.acirNewAcirComposer(subgroupSize);
+
 ```
 
-This is probably a good time to store this prover and verifier into your state like React Context,
-Redux, or others.
+We should take two very useful objects from here: `api` and `acirComposer`. Make sure to keep these close by!
+
+## Generating witnesses
+
+Witness generation is what allows us to prove with arbitrary inputs (like user inputs on a form, game, etc). Could be useful to wrap this on a callable function with your input. In this example, our input is a simple object with our circuit inputs `x` and `y`
+
+```ts
+import { ethers } from 'ethers'; // I'm lazy so I'm using ethers to pad my input
+import { executeCircuit, compressWitness } from '@noir-lang/acvm_js';
+
+async function generateWitness(input: any, acirBuffer: Buffer): Promise<Uint8Array> {
+  const initialWitness = new Map<number, string>();
+  initialWitness.set(1, ethers.utils.hexZeroPad(`0x${input.x.toString(16)}`, 32));
+  initialWitness.set(2, ethers.utils.hexZeroPad(`0x${input.y.toString(16)}`, 32));
+  initialWitness.set(3, ethers.utils.hexZeroPad(`0x${input.z.toString(16)}`, 32));
+
+  const witnessMap = await executeCircuit(acirBuffer, initialWitness, () => {
+    throw Error('unexpected oracle');
+  });
+
+  const witnessBuff = compressWitness(witnessMap);
+  return witnessBuff;
+}
+
+```
+
+::: note
+On the browser, you need to init the ACVM as well:
+
+```ts
+import initACVM, { executeCircuit, compressWitness } from '@noir-lang/acvm_js'; // modify your import to include initACVM
+
+async function generateWitness(input: any): Promise<Uint8Array> {
+    await initACVM();
+    // the rest of the code...
+}
+```
+
+:::
 
 ## Proving
 
-The Noir program can then be executed and proved by calling `barretenberg`'s `create_proof`
-function:
+Finally, we're ready to prove with our backend. Just like with the witness generation, could be useful to wrap it in its own function:
 
 ```ts
-const proof = await create_proof(prover, acir, abi);
-```
 
-On the browser, this proof can fail as it requires heavy loads to be run on worker threads. Here's a
-quick example of a worker:
+async function generateProof(witness: Uint8Array) {
+  const proof = await api.acirCreateProof(
+    acirComposer,
+    acirBufferUncompressed,
+    gunzipSync(witness), // you should use decompressSync or equivalent on the browser
+    false,
+  );
+  return proof;
+}
 
-```ts
-// worker.ts
-onmessage = async event => {
-  try {
-    await initializeAztecBackend();
-    const { acir, input } = event.data;
-    const [prover, verifier] = await setup_generic_prover_and_verifier(acir);
-    const proof = await create_proof(prover, acir, input);
-    postMessage(proof);
-  } catch (er) {
-    postMessage(er);
-  } finally {
-    close();
-  }
-};
-```
-
-Which would be called like this, for example:
-
-```ts
-// index.ts
-const worker = new Worker(new URL('./worker.ts', import.meta.url));
-worker.onmessage = e => {
-  if (e.data instanceof Error) {
-    // oh no!
-  } else {
-    // yey!
-  }
-};
-worker.postMessage({ acir, input: { x: 3, y: 4 } });
 ```
 
 ## Verifying
 
-The `proof` obtained can be verified by calling `barretenberg`'s `verify_proof` function:
+Our backend should also be ready to verify our proof:
 
 ```ts
-// 1_mul.ts
-const verified = await verify_proof(verifier, proof);
-```
-
-The function should return `true` if the entire process is working as intended, which can be
-asserted if you are writing a test script:
-
-```ts
-expect(verified).eq(true);
+async function verifyProof(proof: Uint8Array) {
+  await api.acirInitProvingKey(acirComposer, acirBufferUncompressed);
+  const verified = await api.acirVerifyProof(acirComposer, proof, false);
+  return verified;
+}
 ```
 
 ## Verifying with Smart Contract
@@ -226,37 +214,21 @@ TypeScript as well.
 This could be useful if the Noir program is designed to be decentrally verified and/or make use of
 decentralized states and logics that is handled at the smart contract level.
 
-To generate the verifier smart contract using typescript:
+This assumes you've already ran `nargo codegen-verifier`, got your smart contract, and deployed it with Hardhat, Foundry, or your tool of choice. You can then verify a Noir proof by simply calling it.
+
+Currently, `bb.js` appends the public inputs to the proof. However, these inputs need to be fed separately to the verifier contract. A simple solution is to just slice them from the resulting proof, like this:
 
 ```ts
-// generator.ts
-import { writeFileSync } from 'fs';
+import { ethers } from 'ethers'; // example using ethers v5
+import artifacts from '../artifacts/circuits/contract/plonk_vk.sol/UltraVerifier.json'; // I compiled using Hardhat, so I'm getting my abi from here
 
-const sc = verifier.SmartContract();
-syncWriteFile('../contracts/plonk_vk.sol', sc);
+const verifierAddress = "0x123455" // your verifier address
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+const signer = this.provider.getSigner();
 
-function syncWriteFile(filename: string, data: any) {
-  writeFileSync(join(__dirname, filename), data, {
-    flag: 'w',
-  });
-}
-```
+const contract = new ethers.Contract(verifierAddress, artifacts.abi, signer);
 
-You can then verify a Noir proof using the verifier contract, for example using Hardhat:
-
-```ts
-// verifier.ts
-import { ethers } from 'hardhat';
-import { Contract, ContractFactory, utils } from 'ethers';
-
-let Verifier: ContractFactory;
-let verifierContract: Contract;
-
-before(async () => {
-  Verifier = await ethers.getContractFactory('TurboVerifier');
-  verifierContract = await Verifier.deploy();
-});
-
-// Verify proof
-const sc_verified = await verifierContract.verify(proof);
+const publicInputs = proof.slice(0, 32);
+const slicedProof = proof.slice(32);
+await contract.verify(slicedProof, [publicInputs]);
 ```
