@@ -225,6 +225,22 @@ fn main() -> pub Field {
 }
 ```
 
+### Vectors
+
+A vector is a collection type similar to Rust's Vector type. It's convenient way to use slices as mutable arrays.
+
+Example:
+
+```rust
+use std::collections::vec::Vec;
+
+let mut vector: Vec<Field> = Vec::new();
+for i in 0..5 {
+    vector.push(i);
+}
+assert(vector.len() == 5);
+```
+
 ### Tuples
 
 A tuple collects multiple values like an array, but with the added ability to collect values of
