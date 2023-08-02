@@ -339,6 +339,32 @@ showcased in the `legs --> feet` binding in the example above.
 You can use Structs as inputs to the `main` function, but you can't output them
 :::
 
+### Type Aliases
+
+A type alias is a new name for an existing type. Type aliases are declared with the keyword `type`:
+
+```rust
+type Id = u8;
+
+fn main() {
+    let id: Id = 1;
+    let zero: u8 = 0;
+    assert(zero + 1 == id);
+}
+```
+
+type aliases can also be used with [generics](./06_generics.md):
+
+```rust
+type Id<Size> = Size;
+
+fn main() {
+    let id: Id<u32> = 1;
+    let zero: u32 = 0;
+    assert(zero + 1 == id);
+}
+```
+
 ### BigInt
 
 You can acheive BigInt functionality using the [Noir BigInt](https://github.com/shuklaayush/noir-bigint) library.
