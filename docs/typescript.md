@@ -32,6 +32,12 @@ This will install the `acvm-simulator` that will generate our witness, and the p
 
 We're also installing `ethers` because we're too lazy to write a function that pads public inputs with 32bytes, and `fflate` to help us decompress our circuit bytecode.
 
+Since we're with typescript and using `nodejs` types, we also recommend to install the `@types/node` package, otherwise your IDE will scream at you.
+
+```bash
+npm i --save-dev @types/node
+```
+
 :::note
 
 While Noir is in rapid development, some packages could interfere with others. For that reason, you
@@ -39,10 +45,9 @@ should use these specified versions. Let us know if for some reason you need to 
 
 :::
 
-As for the circuit, we will use a Standard Noir Example and place it in the `src` folder. Feel
-free to use any other, as long as you refactor the below examples accordingly.
+As for the circuit, run `nargo init` to create a new Noir project.
 
-This standard example is a program that multiplies input `x` with input `y` and returns the result:
+We will use a Standard Noir Example and place it in the `src` folder. This program simply multiplies input `x` with input `y` and returns the result `z`. The verifier doesn't know the value of `x`: we're proving that we know it without making it public.
 
 ```rust
 // src/main.nr
