@@ -353,7 +353,7 @@ fn main() {
 }
 ```
 
-type aliases can also be used with [generics](./06_generics.md):
+Type aliases can also be used with [generics](./06_generics.md):
 
 ```rust
 type Id<Size> = Size;
