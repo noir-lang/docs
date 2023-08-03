@@ -50,7 +50,7 @@ verifying the proof.
 
 The prover supplies the values for `x` and `y` in the _Prover.toml_ file.
 
-As for the program body, `constrain` ensures the satisfaction of the condition (e.g. `x != y`) is
+As for the program body, `assert` ensures the satisfaction of the condition (e.g. `x != y`) is
 constrained by the proof of the execution of said program (i.e. if the condition was not met, the
 verifier would reject the proof as an invalid proof).
 
@@ -69,7 +69,7 @@ y = "2"
 When the command `nargo prove my_proof` is executed, two processes happen:
 
 1. Noir creates a proof that `x` which holds the value of `1` and `y` which holds the value of `2`
-   is not equal. This not equal constraint is due to the line `constrain x != y`.
+   is not equal. This not equal constraint is due to the line `assert(x != y)`.
 
 2. Noir creates and stores the proof of this statement in the _proofs_ directory and names the proof
    file _my_proof_. Opening this file will display the proof in hex format.
