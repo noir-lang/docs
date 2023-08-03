@@ -22,7 +22,16 @@ start.
 
 ## Setup
 
-We're assuming you're using ES6 for both browser (for example with React), or nodejs. Install [Node.js](https://nodejs.org/en). Init a new project with `npm init`. Install Noir dependencies in your project by running:
+We're assuming you're using ES6 and ESM for both browser (for example with React), or nodejs. Install [Node.js](https://nodejs.org/en). Init a new project with `npm init` and add `"type": "module"` to your `package.json`, to let `node` know we're using the new ESM sytem:
+
+```json
+{
+  "type": "module",
+  // the rest of your package.json
+}
+```
+
+Install Noir dependencies in your project by running:
 
 ```bash
 npm i @aztec/bb.js github:noir-lang/acvm-simulator-wasm.git#c56eec56f67f90fef90126c5575b85190bdcd1e1 github:noir-lang/noir_wasm.git fflate ethers@5.7.2
