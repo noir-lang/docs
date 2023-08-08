@@ -22,34 +22,21 @@ keywords:
 The standard library provides a familiar `println` statement you can use. Despite being a limited
 implementation of rust's `println!` macro, this construct can be useful for debugging.
 
-The `println` statement only works for fields, integers and arrays (including strings).
+The `println` statement is unconstrained, so it works for outputting integers, fields, strings, and even structs or expressions. For example:
 
 ```rust
 use dep::std;
 
-fn main(string: pub str<5>) {
-    let x = 5;
-    std::println(x)
+struct Person {
+    age : Field,
+    height : Field,
 }
 
-```
+fn main(age : Field, height : Field) {
+    let person = Person { age : age, height : height };
+    std::println(person);
+    std::println(age + height);
+    std::println("Hello world!");
+}
 
-To view the output of the `println` statement you need to set the `--show-output` flag.
-
-```
-$ nargo prove --help
-Create proof for this program. The proof is returned as a hex encoded string
-
-Usage: nargo prove [OPTIONS] [PROOF_NAME] [CIRCUIT_NAME]
-
-Arguments:
-  [PROOF_NAME]    The name of the proof
-  [CIRCUIT_NAME]  The name of the circuit build files (ACIR, proving and verification keys)
-
-Options:
-  -v, --verify          Verify proof after proving
-  -s, --show-ssa        Emit debug information for the intermediate SSA IR
-  -d, --deny-warnings   Quit execution when warnings are emitted
-      --show-output     Display output of `println` statements during tests
-  -h, --help            Print help
 ```
