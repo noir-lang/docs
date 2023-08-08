@@ -67,17 +67,19 @@ fn main() {
 }
 ```
 
-Note that variables declared as mutable may not be comptime:
+Comptime variables can be mutuable, but must be known at compile time:
 
 ```rust
-fn main() {
-    // error: Cannot mark a comptime type as mutable
-    let mut a: comptime Field = 5;
+fn main(runtime_var: Field) -> pub Field {
+    let known_at_compile_time: comptime Field = 1;
 
-    // a inferred as a private Field here
-    let mut a = 5;
+    // The next line will cause an error
+    let bad_var: comptime Field = runtime_var;
+
 }
 ```
+
+As `runtime_var`` is a argument to the circuit it cannot be known at compile time and so assigning it to a comptime variable should fail. A circuit's arguments is the only way in which non-comptime variables can enter the circuit (excluding [brillig](./unconstrained) foreign calls).
 
 ## Globals
 

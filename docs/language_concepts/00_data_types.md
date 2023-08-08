@@ -197,6 +197,12 @@ fn main() {
 }
 ```
 
+You can instantiate a new array of a fixed size with the same value repeated for each element. The following example instantiates an array of length 32 where each element is of type Field and has the value 0.
+
+```rust
+let array: [Field; 32] = [0; 32];
+```
+
 #### Types
 
 You can create arrays of primitive types or structs. There is not yet support for nested arrays
@@ -217,6 +223,22 @@ fn main() -> pub Field {
     let mut new_slice = slice.push_back(6);
     new_slice.len()
 }
+```
+
+### Vectors
+
+A vector is a collection type similar to Rust's Vector type. It's convenient way to use slices as mutable arrays.
+
+Example:
+
+```rust
+use std::collections::vec::Vec;
+
+let mut vector: Vec<Field> = Vec::new();
+for i in 0..5 {
+    vector.push(i);
+}
+assert(vector.len() == 5);
 ```
 
 ### Tuples
@@ -316,6 +338,32 @@ showcased in the `legs --> feet` binding in the example above.
 :::note
 You can use Structs as inputs to the `main` function, but you can't output them
 :::
+
+### Type Aliases
+
+A type alias is a new name for an existing type. Type aliases are declared with the keyword `type`:
+
+```rust
+type Id = u8;
+
+fn main() {
+    let id: Id = 1;
+    let zero: u8 = 0;
+    assert(zero + 1 == id);
+}
+```
+
+Type aliases can also be used with [generics](./06_generics.md):
+
+```rust
+type Id<Size> = Size;
+
+fn main() {
+    let id: Id<u32> = 1;
+    let zero: u32 = 0;
+    assert(zero + 1 == id);
+}
+```
 
 ### BigInt
 
