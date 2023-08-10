@@ -45,6 +45,9 @@ const config = {
               label: 'dev',
               path: 'dev',
             },
+            "0.7.1": {
+              label: '0.7.1 / 0.8.0'
+            },
           },
           editUrl: ({ versionDocsDirPath, docPath }) =>
             `https://github.com/noir-lang/docs/edit/master/${versionDocsDirPath}/${docPath}`,
