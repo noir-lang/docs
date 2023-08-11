@@ -26,7 +26,7 @@ We're assuming you're using ES6 and ESM for both browser (for example with React
 
 ```json
 {
-  "type": "module",
+  "type": "module"
   // the rest of your package.json
 }
 ```
@@ -34,7 +34,7 @@ We're assuming you're using ES6 and ESM for both browser (for example with React
 Install Noir dependencies in your project by running:
 
 ```bash
-npm i @aztec/bb.js github:noir-lang/acvm-simulator-wasm.git#c56eec56f67f90fef90126c5575b85190bdcd1e1 github:noir-lang/noir_wasm.git fflate ethers@5.7.2
+npm i @aztec/bb.js github:noir-lang/acvm-simulator-wasm.git fflate ethers@5.7.2
 ```
 
 This will install the `acvm-simulator` that will generate our witness, and the proving backend barretenberg `bb.js`.
@@ -70,18 +70,18 @@ One valid scenario for proving could be `x = 3`, `y = 4` and `return = 12`
 
 ## Compiling
 
-In order to start proving, we need to compile our circuit into the intermediate representation used by our backend. As of today, you have to do that with `nargo`. Just hop to your circuits folder and run `nargo compile main`.
+In order to start proving, we need to compile our circuit into the intermediate representation used by our backend. As of today, you have to do that with `nargo`. Just hop to your circuits folder and run `nargo compile`.
 
 :::info
 
-At this time, you need to _specifically_ use version 0.9.0 of nargo. Using [noirup](./getting_started/00_nargo_installation.md#option-1-noirup) you can do this simply by running `noirup -v 0.9.0`.
+At this time, you need to use a nightly version of nargo. Using [noirup](./getting_started/00_nargo_installation.md#option-1-noirup) you can do this simply by running `noirup -n`.
 
 :::
 
-You should have a `json` file in `target/main.json` with your circuit's bytecode. You can then import that file normally.
+You should have a `json` file in `target/` with your circuit's bytecode. The json file is name based on the project name specified in Nargo.toml, so for a project named "test", it will be at `target/test.json`. You can then import that file normally.
 
 ```ts
-import circuit from "../target/main.json";
+import circuit from '../target/test.json' assert { type: 'json' };
 ```
 
 ## Decompressing the circuit
@@ -108,26 +108,17 @@ This step will eventually be abstracted away as Noir tooling matures. For now, y
 Before proving, `bb.js` needs to be initialized. We need to import some functions and use them
 
 ```ts
-import {
-  Crs,
-  newBarretenbergApiAsync,
-  RawBuffer,
-} from '@aztec/bb.js/dest/node';
+import { Crs, newBarretenbergApiAsync, RawBuffer } from '@aztec/bb.js/dest/node/index.js';
 
 const api = await newBarretenbergApiAsync(4);
 
-const [exact, total, subgroup] = await api.acirGetCircuitSizes(JSON.parse(circuit.bytecode));
+const [exact, circuitSize, subgroup] = await api.acirGetCircuitSizes(acirBufferUncompressed);
 const subgroupSize = Math.pow(2, Math.ceil(Math.log2(circuitSize)));
 const crs = await Crs.new(subgroupSize + 1);
 await api.commonInitSlabAllocator(subgroupSize);
-await api.srsInitSrs(
-  new RawBuffer(crs.getG1Data()),
-  crs.numPoints,
-  new RawBuffer(crs.getG2Data()),
-);
+await api.srsInitSrs(new RawBuffer(crs.getG1Data()), crs.numPoints, new RawBuffer(crs.getG2Data()));
 
 const acirComposer = await api.acirNewAcirComposer(subgroupSize);
-
 ```
 
 We should take two very useful objects from here: `api` and `acirComposer`. Make sure to keep these close by!
@@ -157,7 +148,6 @@ async function generateWitness(input: any, acirBuffer: Buffer): Promise<Uint8Arr
   const initialWitness = new Map<number, string>();
   initialWitness.set(1, ethers.utils.hexZeroPad(`0x${input.x.toString(16)}`, 32));
   initialWitness.set(2, ethers.utils.hexZeroPad(`0x${input.y.toString(16)}`, 32));
-  initialWitness.set(3, ethers.utils.hexZeroPad(`0x${input.z.toString(16)}`, 32));
 
   const witnessMap = await executeCircuit(acirBuffer, initialWitness, () => {
     throw Error('unexpected oracle');
@@ -201,15 +191,17 @@ async function verifyProof(proof: Uint8Array) {
 Let's call our functions, and destroy our API!
 
 ```ts
-const input = { x: 3, y: 4, z: 12 };
+const input = { x: 3, y: 4 };
 const witness = await generateWitness(input, acirBuffer);
-console.log("Witness generated!")
+console.log('Witness generated!');
 const proof = await generateProof(witness);
-console.log("Proof generated!")
+console.log('Proof generated!');
 await verifyProof(proof);
-console.log("Proof verified!")
+console.log('Proof verified!');
 api.destroy();
 ```
+
+You can use [this](https://gist.github.com/critesjosh/6f3ba19fdc9298b24e90ba4f736247dc) tsconfig.json. You can see the script [here](https://gist.github.com/critesjosh/4aa36e87a0cc3f09feaf1febb4d11348).
 
 ## Verifying with Smart Contract
 
@@ -227,7 +219,7 @@ Currently, `bb.js` appends the public inputs to the proof. However, these inputs
 import { ethers } from 'ethers'; // example using ethers v5
 import artifacts from '../artifacts/circuits/contract/plonk_vk.sol/UltraVerifier.json'; // I compiled using Hardhat, so I'm getting my abi from here
 
-const verifierAddress = "0x123455" // your verifier address
+const verifierAddress = '0x123455'; // your verifier address
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 const signer = this.provider.getSigner();
 
