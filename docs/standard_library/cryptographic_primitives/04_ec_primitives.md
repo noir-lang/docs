@@ -30,7 +30,7 @@ mixed coordinate representation is employed).
 ### Points
 
 (`std::ec::{tecurve,montcurve,swcurve}::{affine,curvegroup}::Point`), i.e. points lying on the
-elliptic curve. For a curve configuration `c` and a point `p`, it may be checked checked that `p`
+elliptic curve. For a curve configuration `c` and a point `p`, it may be checked that `p`
 does indeed lie on `c` by calling `c.contains(p1)`.
 
 ## Methods
