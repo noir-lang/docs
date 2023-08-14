@@ -79,7 +79,7 @@ fn main(runtime_var: Field) -> pub Field {
 }
 ```
 
-As `runtime_var`` is a argument to the circuit it cannot be known at compile time and so assigning it to a comptime variable should fail. A circuit's arguments is the only way in which non-comptime variables can enter the circuit (excluding [brillig](./unconstrained) foreign calls).
+As `runtime_var` is a argument to the circuit it cannot be known at compile time and so assigning it to a comptime variable should fail. A circuit's arguments is the only way in which non-comptime variables can enter the circuit (excluding [brillig](./unconstrained) foreign calls).
 
 ## Globals
 
