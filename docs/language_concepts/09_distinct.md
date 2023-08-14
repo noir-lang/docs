@@ -8,7 +8,7 @@ that the witnesses being returned as public inputs are all unique.
 The `distinct` keyword is only used for return values on program entry points (usually the `main()`
 function).
 
-When using `disctinct` and `pub` simultaneously, `distinct` comes first. See the example below.
+When using `distinct` and `pub` simultaneously, `distinct` comes first. See the example below.
 
 You can read more about the problem this solves
 [here](https://github.com/noir-lang/noir/issues/1183).
