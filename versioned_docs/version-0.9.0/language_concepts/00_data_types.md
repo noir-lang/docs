@@ -212,7 +212,7 @@ You can create arrays of primitive types or structs. There is not yet support fo
 
 A slice is a dynamically-sized view into a sequence of elements. They can be resized at runtime, but because they don't own the data, they cannot be returned from a circuit. You can treat slices as arrays without a constrained size.
 
-Slices are part of the [noir standard library](../standard_library/slice_methods) so you need to import the respetive module in order to work with it. For example:
+Slices are part of the [noir standard library](../standard_library/slice_methods) so you need to import the respective module in order to work with it. For example:
 
 ```rust
 use dep::std::slice;
