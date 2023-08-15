@@ -81,11 +81,6 @@
           "dirName": "modules_packages_crates"
         }
       ]
-    },
-    {
-      "type": "doc",
-      "id": "typescript",
-      "label": "Working with Typescript"
     }
   ]
 }
