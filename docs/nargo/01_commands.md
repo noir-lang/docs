@@ -22,8 +22,8 @@ keywords:
 
 ```
 Options:
-  -s, --show-ssa        Emit debug information for the intermediate SSA IR
-  -d, --deny-warnings   Quit execution when warnings are emitted
+  --show-ssa        Emit debug information for the intermediate SSA IR
+  --deny-warnings   Quit execution when warnings are emitted
   -h, --help            Print help
 ```
 
