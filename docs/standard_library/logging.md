@@ -17,8 +17,6 @@ keywords:
   ]
 ---
 
-# Logging
-
 The standard library provides a familiar `println` statement you can use. Despite being a limited
 implementation of rust's `println!` macro, this construct can be useful for debugging.
 
@@ -39,4 +37,22 @@ fn main(age : Field, height : Field) {
     std::println("Hello world!");
 }
 
+```
+
+You can print multiple different types in the same statement and string as well as a new "fmtstr" type. A `fmtstr` can be specified in the same way as a normal string it just should be prepended with an "f" character:
+
+```rust
+  let fmt_str = f"i: {i}, j: {j}";
+  std::println(fmt_str);
+
+  let s = myStruct { y: x, x: y };
+  std::println(s);
+
+  std::println(f"i: {i}, s: {s}");
+
+  std::println(x);
+  std::println([x, y]);
+
+  let foo = fooStruct { my_struct: s, foo: 15 };
+  std::println(f"s: {s}, foo: {foo}");
 ```
