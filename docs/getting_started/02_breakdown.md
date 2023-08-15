@@ -23,11 +23,40 @@ commands, you would get a minimal Nargo project of the following structure:
 The source directory _src_ holds the source code for your Noir program. By default only a _main.nr_
 file will be generated within it.
 
-_Prover.toml_ is used for specifying the input values for executing and proving the program. You can specify `toml` files with different names by using the `--prover-name` or `-p` flags, see the [Prover](#provertoml) section below. Optionally you may specify expected output values for prove-time checking as well. 
+### Prover.toml
+
+_Prover.toml_ is used for specifying the input values for executing and proving the program. You can specify `toml` files with different names by using the `--prover-name` or `-p` flags, see the [Prover](#provertoml) section below. Optionally you may specify expected output values for prove-time checking as well.
+
+### Verifier.toml
 
 _Verifier.toml_ contains public in/output values computed when executing the Noir program.
 
-_Nargo.toml_ contains the environmental options of your project.
+### Nargo.toml
+
+_Nargo.toml_ contains the environmental options of your project. It contains a "package" section and a "dependencies" section.
+
+#### Package section
+
+The package section requires a number of fields including:
+
+- name - the name of the package
+- type - can be "bin" or "lib" to specify whether its a binary or library
+- authors
+- compiler_version - specifies the version of the compiler to use
+
+For example:
+
+```toml
+[package]
+name = "noirstarter"
+type = "bin"
+authors = ["Alice"]
+compiler_version = "0.9.0"
+```
+
+#### Dependencies section
+
+This is where you will specify any dependencies for your project. See the [Dependencies page](../modules_packages_crates/dependencies) for more info.
 
 _proofs_ and _contract_ directories will not be immediately visible until you create a proof or
 verifier contract respectively.
@@ -119,7 +148,7 @@ nargo prove p
 This command looks for proof inputs in the custom **OtherProver.toml** and generates proof `pp`:
 
 ```bash
-nargo prove -p OtherProver pp 
+nargo prove -p OtherProver pp
 ```
 
 ## Verifying a Proof
