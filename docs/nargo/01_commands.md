@@ -123,6 +123,8 @@ _Arguments_
 Nargo will automatically compile and run any functions which have the decorator `#[test]` on them if
 you run `nargo test`.
 
+Takes an optional `--exact` flag which allows you to select tests based on an exact name.
+
 See an example on the [testing page](./testing).
 
 _Arguments_
