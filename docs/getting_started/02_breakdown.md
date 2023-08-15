@@ -42,7 +42,7 @@ The package section requires a number of fields including:
 - name - the name of the package
 - type - can be "bin" or "lib" to specify whether its a binary or library
 - authors
-- compiler_version - specifies the version of the compiler to use
+- compiler_version - specifies the version of the compiler to use. This is not currently enforced by the compiler, but will be in future versions.
 
 For example:
 
