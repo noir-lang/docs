@@ -40,7 +40,7 @@ _Nargo.toml_ contains the environmental options of your project. It contains a "
 The package section requires a number of fields including:
 
 - name - the name of the package
-- type - can be "bin" or "lib" to specify whether its a binary or library
+- type - can be "bin", "lib", or "contract" to specify whether its a binary, library or Aztec contract
 - authors
 - compiler_version - specifies the version of the compiler to use. This is not currently enforced by the compiler, but will be in future versions.
 
