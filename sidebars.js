@@ -63,7 +63,8 @@ const sidebars = {
         'standard_library/logging',
         'standard_library/merkle_trees',
         'standard_library/zeroed',
-        'standard_library/black_box_fns'
+        'standard_library/black_box_fns',
+        'standard_library/options'
       ],
     },
     {
