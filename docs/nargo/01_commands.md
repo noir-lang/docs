@@ -121,7 +121,7 @@ _Arguments_
 ## `nargo test <pattern>`
 
 Nargo will automatically compile and run any functions which have the decorator `#[test]` on them if
-you run `nargo test`.
+you run `nargo test`. To print `println` statements in tests, use the `--show-output` flag.
 
 See an example on the [testing page](./testing).
 
