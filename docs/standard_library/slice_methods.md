@@ -78,6 +78,18 @@ let (popped_slice, last_elem) = slice.pop_back();
 
 View the corresponding test file [here][test-file].
 
+## append
+
+Loops over a slice and adds it to the end of another.
+```rust
+fn append(mut self, other: Self) -> Self 
+```
+
+Example:
+
+```rust
+let append = [1, 2].append([3, 4, 5]);
+```
 ## insert
 
 Inserts an element at a specified index and shifts all following elements by 1.
