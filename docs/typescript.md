@@ -22,6 +22,12 @@ start.
 
 ## Setup
 
+Make sure you are using Noir version >= 0.10.1.
+
+You can check your current version by running `nargo --version`.
+
+See the [Installation page](./getting_started/nargo_installation) for more info.
+
 We're assuming you're using ES6 and ESM for both browser (for example with React), or nodejs. Install [Node.js](https://nodejs.org/en). Init a new project with `npm init` and add `"type": "module"` to your `package.json`, to let `node` know we're using the new ESM sytem:
 
 ```json
@@ -34,7 +40,7 @@ We're assuming you're using ES6 and ESM for both browser (for example with React
 Install Noir dependencies in your project by running:
 
 ```bash
-npm i @aztec/bb.js github:noir-lang/acvm-simulator-wasm.git fflate ethers@5.7.2
+npm i @aztec/bb.js@0.3.6 https://git@github.com/noir-lang/acvm-simulator-wasm.git#b9d9ca9dfc5140839f23998d9466307215607c42 fflate ethers@5.7.2
 ```
 
 This will install the `acvm-simulator` that will generate our witness, and the proving backend barretenberg `bb.js`.
