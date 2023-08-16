@@ -46,6 +46,10 @@ Returns true of the Option is Some.
 
 Asserts `self.is_some()` and returns the wrapped value.
 
+### unwrap_unchecked
+
+Returns the inner value without asserting `self.is_some()`. This method can be useful within an if condition when we already know that `option.is_some()`. If the option is None, there is no guarantee what value will be returned, only that it will be of type T for an `Option<T>`.
+
 ### unwrap_or
 
 Returns the wrapped value if `self.is_some()`. Otherwise, returns the given default value.
