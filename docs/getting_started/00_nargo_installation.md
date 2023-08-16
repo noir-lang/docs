@@ -200,6 +200,7 @@ nix profile install nixpkgs#direnv
 ```
 
 4. Add direnv to your shell following [their guide](https://direnv.net/docs/hook.html).
+   1. For bash or zshell, add `eval "$(direnv hook bash)"` or `eval "$(direnv hook zsh)"` to your ~/.bashrc or ~/.zshrc file, respectively.
 5. Restart your shell.
 
 #### Shell & editor experience
@@ -261,7 +262,7 @@ Advanced: If you aren't using direnv nor launching your editor within the subshe
 If you installed Noir with `noirup`, you can uninstall Noir by removing the files in `~/.nargo`, `~/nargo` and `~/noir_cache`.
 
 ```bash
-rm -r ~/.nargo 
+rm -r ~/.nargo
 rm -r ~/nargo
 rm -r ~/noir_cache
 ```
