@@ -35,24 +35,35 @@ _Verifier.toml_ contains public in/output values computed when executing the Noi
 
 _Nargo.toml_ contains the environmental options of your project. It contains a "package" section and a "dependencies" section.
 
+Example Nargo.toml:
+
+```yaml
+[package]
+name = "noirstarter"
+type = "bin"
+authors = ["Alice"]
+compiler_version = "0.9.0"
+
+[dependencies]
+ecrecover = {tag = "v0.9.0", git = "https://github.com/colinnielsen/ecrecover-noir.git"}
+```
+
+Nargo.toml for a workspace will look a bit different. For example:
+
+```yaml
+[workspace]
+members = ["crates/a", "crates/b"]
+default-member = "crates/a"
+```
+
 #### Package section
 
 The package section requires a number of fields including:
 
 - name - the name of the package
 - type - can be "bin", "lib", or "contract" to specify whether its a binary, library or Aztec contract
-- authors
+- authors - authors of the project
 - compiler_version - specifies the version of the compiler to use. This is not currently enforced by the compiler, but will be in future versions.
-
-For example:
-
-```toml
-[package]
-name = "noirstarter"
-type = "bin"
-authors = ["Alice"]
-compiler_version = "0.9.0"
-```
 
 #### Dependencies section
 
@@ -90,7 +101,7 @@ public).
 
 In our hello world program the _Prover.toml_ file looks like this:
 
-```toml
+```yaml
 x = "1"
 y = "2"
 ```
@@ -121,7 +132,7 @@ fn main(foos: [Foo; 3]) -> pub Field {
 
 Prover.toml:
 
-```toml
+```yaml
 [[foos]] # foos[0]
 bar = 0
 baz = 0
