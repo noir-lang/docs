@@ -23,7 +23,7 @@ commands, you would get a minimal Nargo project of the following structure:
 The source directory _src_ holds the source code for your Noir program. By default only a _main.nr_
 file will be generated within it.
 
-_Prover.toml_ is used for specifying the input values for executing and proving the program. You can specify `toml` files with different names by using the `--prover-name` or `-p` flags, see the [Prover](#provertoml) section below. Optionally you may specify expected output values for prove-time checking as well. 
+_Prover.toml_ is used for specifying the input values for executing and proving the program. You can specify `toml` files with different names by using the `--prover-name` or `-p` flags, see the [Prover](#provertoml) section below. Optionally you may specify expected output values for prove-time checking as well.
 
 _Verifier.toml_ contains public in/output values computed when executing the Noir program.
 
@@ -92,7 +92,7 @@ fn main(foos: [Foo; 3]) -> pub Field {
 
 Prover.toml:
 
-```toml
+```yaml
 [[foos]] # foos[0]
 bar = 0
 baz = 0
@@ -119,7 +119,7 @@ nargo prove p
 This command looks for proof inputs in the custom **OtherProver.toml** and generates proof `pp`:
 
 ```bash
-nargo prove -p OtherProver pp 
+nargo prove -p OtherProver pp
 ```
 
 ## Verifying a Proof

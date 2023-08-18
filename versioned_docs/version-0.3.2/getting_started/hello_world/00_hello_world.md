@@ -107,7 +107,7 @@ Now that the project is set up, we can create a proof of correct execution on ou
 
 Fill in input values for execution in the _Prover.toml_ file. For example:
 
-```toml
+```yaml
 x = "1"
 y = "2"
 ```
@@ -124,7 +124,7 @@ A new folder _proofs_ would then be generated in your project directory, contain
 The _Verifier.toml_ file would also be updated with the public values computed from program
 execution (in this case the value of `y`):
 
-```toml
+```yaml
 y = "0x0000000000000000000000000000000000000000000000000000000000000002"
 ```
 

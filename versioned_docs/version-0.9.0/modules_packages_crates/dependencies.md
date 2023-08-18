@@ -21,7 +21,7 @@ semver 2.0 guidelines.
 
 For example, to add the [ecrecover-noir library](https://github.com/colinnielsen/ecrecover-noir) to your project, add it to `Nargo.toml`:
 
-```toml
+```yaml
 # Nargo.toml
 
 [dependencies]
@@ -47,7 +47,7 @@ For example, this file structure has a library and binary crate
 
 Inside of the binary crate, you can specify:
 
-```toml
+```yaml
 # Nargo.toml
 
 [dependencies]

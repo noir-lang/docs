@@ -64,7 +64,7 @@ public).
 
 In our hello world program the _Prover.toml_ file looks like this:
 
-```toml
+```yaml
 x = "1"
 y = "2"
 ```
