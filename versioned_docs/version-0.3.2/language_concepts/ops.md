@@ -2,7 +2,7 @@
 title: Logical Operations
 description:
   Learn about the supported arithmetic and logical operations in the Noir programming language.
-  Discover how to perform operations on concealed types, integers, and booleans.
+  Discover how to perform operations on private input types, integers, and booleans.
 keywords:
   [
     Noir programming language,
@@ -22,12 +22,12 @@ keywords:
 
 | Operation |                          Description                           |                           Requirements |
 | :-------- | :------------------------------------------------------------: | -------------------------------------: |
-| +         |               Adds two concealed types together                |                Types must be concealed |
-| -         |             Subtracts two concealed types together             |                Types must be concealed |
-| \*        |            Multiplies two concealed types together             |                Types must be concealed |
-| /         |              Divides two concealed types together              |                Types must be concealed |
-| ^         |                XOR two concealed types together                |                  Types must be integer |
-| &         |                AND two concealed types together                |                  Types must be integer |
+| +         |             Adds two private input types together              |            Types must be private input |
+| -         |           Subtracts two private input types together           |            Types must be private input |
+| \*        |          Multiplies two private input types together           |            Types must be private input |
+| /         |            Divides two private input types together            |            Types must be private input |
+| ^         |              XOR two private input types together              |                  Types must be integer |
+| &         |              AND two private input types together              |                  Types must be integer |
 | <<        |        Left shift an integer by another integer amount         |                  Types must be integer |
 | >>        |        Right shift an integer by another integer amount        |                  Types must be integer |
 | !         |                     Bitwise not of a value                     |        Type must be integer or boolean |
