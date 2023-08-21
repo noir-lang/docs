@@ -113,7 +113,7 @@ y = "2"
 Prove the valid execution of your Noir program with your preferred proof name, for example `p`:
 
 ```sh
-nargo prove p
+nargo prove -p p
 ```
 
 A new folder _proofs_ would then be generated in your project directory, containing the proof file
