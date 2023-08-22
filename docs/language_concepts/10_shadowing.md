@@ -7,11 +7,22 @@ Noir allows for variable shadowing, similar to Rust, by default for local variab
 For example, the following function is valid Noir:
 
 ```rust
+use dep::std;
+
 fn main() {
     let x = 5;
-    let x = x + 1;
-    let x = x * 2;
-    std::println(x);
+
+    {
+        let x = x * 2;
+        assert (x == 10);
+    }
+
+    {
+        let x = 100;
+        assert (x == 100);
+    }
+
+    assert (x == 5);
 }
 ```
 
