@@ -31,3 +31,20 @@ The local scope that follows then shadows the original x, i.e. creates a local m
 The next local scope again shadows x, this time hard-coding the local mutable x to an initial value of 100.
 
 When we return to the main scope, x once again refers to just the original x, which stays at the value of 5.
+
+## Temporal mutability
+
+One way that shadowing is useful, in addition to ergonomics across scopes, is for temporarily mutating variables.
+
+```rust
+fn main() {
+    let age = 30;
+    // age = age + 5; // Would error as `age` is immutable by default.
+
+    let mut age = age + 5; // Temporarily mutates `age` with a new value.
+
+    let age = age; // Locks `age`'s mutability again.
+
+    assert (age == 35);
+}
+```
