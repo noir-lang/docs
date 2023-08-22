@@ -48,7 +48,7 @@ compiler_version = "0.9.0"
 ecrecover = {tag = "v0.9.0", git = "https://github.com/colinnielsen/ecrecover-noir.git"}
 ```
 
-Nargo.toml for a workspace will look a bit different. For example:
+Nargo.toml for a [workspace](../modules_packages_crates/workspaces) will look a bit different. For example:
 
 ```yaml
 [workspace]
