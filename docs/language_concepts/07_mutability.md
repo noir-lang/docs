@@ -50,47 +50,20 @@ fn helper(mut x: i32) {
 
 ## Comptime Values
 
-Comptime values are values that are known at compile-time. This is different to a witness
-which changes per proof. If a comptime value that is being used in your program is changed, then your
-circuit will also change.
+:::warning
 
-Comptime is slightly different from Rust's `const`. Namely, it is a bit more flexible in that normal functions can accept comptime parameters. For example, this is used to verify an array index is known at compile-time. Note that the "known at compile-time" here means "known after function inlining is performed while optimizing the program" and not "known during type-checking."
+The 'comptime' keyword was removed in version 0.10. The comptime keyword and syntax are currently still kept and parsed for backwards compatibility, but are now deprecated and will issue a warning when used. `comptime` has been removed because it is no longer needed for accessing arrays.
 
-Below we show how to declare a comptime value:
-
-```rust
-fn main() {
-    let a: comptime Field = 5;
-
-    // `comptime Field` can also be inferred:
-    let a = 5;
-}
-```
-
-Comptime variables can be mutuable, but must be known at compile time:
-
-```rust
-fn main(runtime_var: Field) -> pub Field {
-    let known_at_compile_time: comptime Field = 1;
-
-    // The next line will cause an error
-    let bad_var: comptime Field = runtime_var;
-
-}
-```
-
-As `runtime_var` is a argument to the circuit it cannot be known at compile time and so assigning it to a comptime variable should fail. A circuit's arguments is the only way in which non-comptime variables can enter the circuit (excluding [brillig](./unconstrained) foreign calls).
+:::
 
 ## Globals
 
-Noir also supports global variables. However, they must be compile-time variables. If `comptime` is
-not explicitly written in the type annotation the compiler will implicitly specify the declaration
-as compile-time. They can then be used like any other compile-time variable inside functions. The
+Noir also supports global variables. However, they must be known at compile-time. The
 global type can also be inferred by the compiler entirely. Globals can also be used to specify array
 annotations for function parameters and can be imported from submodules.
 
 ```rust
-global N: Field = 5; // Same as `global N: comptime Field = 5`
+global N: Field = 5; // Same as `global N: Field = 5`
 
 fn main(x : Field, y : [Field; N]) {
     let res = x * N;
@@ -106,7 +79,7 @@ mod mysubmodule {
 
     global N: Field = 10;
 
-    fn my_helper() -> comptime Field {
+    fn my_helper() -> Field {
         let x = N;
         x
     }

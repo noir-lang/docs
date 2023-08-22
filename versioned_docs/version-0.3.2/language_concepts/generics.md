@@ -1,7 +1,6 @@
 ---
 title: Generics
-description:
-  Learn how to use Generics in Noir
+description: Learn how to use Generics in Noir
 keywords: [Noir, Rust, generics, functions, structs]
 ---
 
@@ -28,7 +27,7 @@ struct will be of a certain generic type. In this case `value` is of type `T`.
 ```rust
 struct RepeatedValue<T> {
     value: T,
-    count: comptime Field,
+    count: Field,
 }
 
 impl<T> RepeatedValue<T> {
