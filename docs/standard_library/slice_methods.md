@@ -1,7 +1,6 @@
 ---
 title: Slice Methods
-description:
-  Learn about the commonly used methods available for slices in Noir, including push_back, len, srt, map, fold, reduce, all, and any.
+description: Learn about the commonly used methods available for slices in Noir, including push_back, len, srt, map, fold, reduce, all, and any.
 keywords: [rust, slice, methods, push_back, len, sort, fold, reduce, all, any]
 ---
 
@@ -81,8 +80,9 @@ View the corresponding test file [here][test-file].
 ## append
 
 Loops over a slice and adds it to the end of another.
+
 ```rust
-fn append(mut self, other: Self) -> Self 
+fn append(mut self, other: Self) -> Self
 ```
 
 Example:
@@ -90,6 +90,7 @@ Example:
 ```rust
 let append = [1, 2].append([3, 4, 5]);
 ```
+
 ## insert
 
 Inserts an element at a specified index and shifts all following elements by 1.
@@ -128,7 +129,7 @@ View the corresponding test file [here]([test-file].
 Returns the length of a slice
 
 ```rust
-fn len<T>(_slice: [T]) -> comptime Field
+fn len<T>(_slice: [T]) -> Field
 ```
 
 Example:
@@ -288,4 +289,3 @@ fn main() {
 ```
 
 [test-file]: https://github.com/noir-lang/noir/blob/f387ec1475129732f72ba294877efdf6857135ac/crates/nargo_cli/tests/test_data_ssa_refactor/slices/src/main.nr
-

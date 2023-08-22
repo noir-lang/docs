@@ -1,11 +1,8 @@
 ---
 title: Generics
-description:
-  Learn how to use Generics in Noir
+description: Learn how to use Generics in Noir
 keywords: [Noir, Rust, generics, functions, structs]
 ---
-
-# Generics
 
 Generics allow you to use the same functions with multiple different concrete data types. You can
 read more about the concept of generics in the Rust documentation
@@ -28,7 +25,7 @@ struct will be of a certain generic type. In this case `value` is of type `T`.
 ```rust
 struct RepeatedValue<T> {
     value: T,
-    count: comptime Field,
+    count: Field,
 }
 
 impl<T> RepeatedValue<T> {
