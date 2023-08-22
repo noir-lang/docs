@@ -1,12 +1,10 @@
 ---
-title: Understanding Modules
+title: Modules
 description:
   Learn how to organize your files using modules in Noir, following the same convention as Rust's
   module system. Examples included.
 keywords: [Noir, Rust, modules, organizing files, sub-modules]
 ---
-
-# Modules
 
 Noir's module system follows the same convention as the _newer_ version of Rust's module system.
 
@@ -51,7 +49,8 @@ crate
 ```
 
 ### Importing a module throughout the tree
-All modules are accessible from the ``crate::`` namespace.
+
+All modules are accessible from the `crate::` namespace.
 
 ```
 crate
@@ -60,7 +59,8 @@ crate
  └── main
 
 ```
-In the above snippet, if ``bar`` would like to use functions in ``foo``, it can do so by ``use crate::foo::function_name``.
+
+In the above snippet, if `bar` would like to use functions in `foo`, it can do so by `use crate::foo::function_name`.
 
 ### Sub-modules
 
