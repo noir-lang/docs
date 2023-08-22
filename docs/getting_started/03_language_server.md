@@ -23,6 +23,11 @@ The Client component is usually an editor plugin that launches the Server. It co
 
 Currently, Noir provides a Language Client for Visual Studio Code via the [vscode-noir](https://github.com/noir-lang/vscode-noir) extension. You can install it via the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=noir-lang.vscode-noir).
 
+When you language server is running correctly and the VSCode plugin is installed, you should see handy codelens buttons for compilation, execution, and tests:
+
+![Compile and Execute](./../../static/img/codelens_compile_execute.png)
+![Run test](../../static/img/codelens_run_test.png)
+
 ### Configuration
 
 * __Noir: Enable LSP__ - If checked, the extension will launch the Language Server via `nargo lsp` and communicate with it.
