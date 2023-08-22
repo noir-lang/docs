@@ -131,9 +131,17 @@ _Arguments_
 
 - `<pattern>` - a pattern to indicate to only run tests with names containing the pattern
 
-## `nargo gates`
+## `nargo info`
 
-Counts the occurrences of different gates in circuit
+Prints a table containing the information of the package.
+
+Currently the table provide
+
+1. The number of ACIR opcodes
+2. The final number gates in the circuit used by a backend
+
+If the file contains a contract the table will provide the
+above information about each function of the contract.
 
 ## `nargo lsp`
 
