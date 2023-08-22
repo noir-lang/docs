@@ -2,13 +2,11 @@
 title: Shadowing
 ---
 
-Noir allows for shadowing by default for local variables, similar to Rust, .
+Noir allows for inheriting variables' values and re-declaring them with the same name similar to Rust, known as shadowing.
 
 For example, the following function is valid in Noir:
 
 ```rust
-use dep::std;
-
 fn main() {
     let x = 5;
 
