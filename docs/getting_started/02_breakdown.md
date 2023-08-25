@@ -111,7 +111,7 @@ When the command `nargo prove` is executed, two processes happen:
 1. Noir creates a proof that `x` which holds the value of `1` and `y` which holds the value of `2`
    is not equal. This not equal constraint is due to the line `assert(x != y)`.
 
-2. Noir creates and stores the proof of this statement in the _proofs_ directory in a file called <your-project>.proof. So if your project is named "private_voting" (defined in the project Nargo.toml), the proof will be saved at `./proofs/private_voitng.proof`. Opening this file will display the proof in hex format.
+2. Noir creates and stores the proof of this statement in the _proofs_ directory in a file called your-project.proof. So if your project is named "private_voting" (defined in the project Nargo.toml), the proof will be saved at `./proofs/private_voting.proof`. Opening this file will display the proof in hex format.
 
 #### Arrays of Structs
 
