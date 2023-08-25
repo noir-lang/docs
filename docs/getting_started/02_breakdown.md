@@ -106,13 +106,12 @@ x = "1"
 y = "2"
 ```
 
-When the command `nargo prove my_proof` is executed, two processes happen:
+When the command `nargo prove` is executed, two processes happen:
 
 1. Noir creates a proof that `x` which holds the value of `1` and `y` which holds the value of `2`
    is not equal. This not equal constraint is due to the line `assert(x != y)`.
 
-2. Noir creates and stores the proof of this statement in the _proofs_ directory and names the proof
-   file _my_proof_. Opening this file will display the proof in hex format.
+2. Noir creates and stores the proof of this statement in the _proofs_ directory in a file called <your-project>.proof. So if your project is named "private_voting" (defined in the project Nargo.toml), the proof will be saved at `./proofs/private_voitng.proof`. Opening this file will display the proof in hex format.
 
 #### Arrays of Structs
 
@@ -150,23 +149,23 @@ baz = 2
 
 You can specify a `toml` file with a different name to use for proving by using the `--prover-name` or `-p` flags.
 
-This command looks for proof inputs in the default **Prover.toml** and generates proof `p`:
+This command looks for proof inputs in the default **Prover.toml** and generates the proof and saves it at `./proofs/<project-name>.proof`:
 
 ```bash
-nargo prove p
+nargo prove
 ```
 
-This command looks for proof inputs in the custom **OtherProver.toml** and generates proof `pp`:
+This command looks for proof inputs in the custom **OtherProver.toml** and generates proof and saves it at `./proofs/<project-name>.proof`:
 
 ```bash
-nargo prove -p OtherProver pp
+nargo prove -p OtherProver
 ```
 
 ## Verifying a Proof
 
-When the command `nargo verify my_proof` is executed, two processes happen:
+When the command `nargo verify` is executed, two processes happen:
 
-1. Noir checks in the _proofs_ directory for a file called _my_proof_
+1. Noir checks in the _proofs_ directory for a proof file with the project name (eg. test_project.proof)
 
 2. If that file is found, the proof's validity is checked
 

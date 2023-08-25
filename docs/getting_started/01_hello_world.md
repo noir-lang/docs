@@ -110,14 +110,14 @@ x = "1"
 y = "2"
 ```
 
-Prove the valid execution of your Noir program with your preferred proof name, for example `p`:
+Prove the valid execution of your Noir program:
 
 ```sh
-nargo prove p
+nargo prove
 ```
 
 A new folder _proofs_ would then be generated in your project directory, containing the proof file
-`p.proof`.
+`<project-name>.proof`, where the project name is defined in Nargo.toml.
 
 The _Verifier.toml_ file would also be updated with the public values computed from program
 execution (in this case the value of `y`):
@@ -133,10 +133,10 @@ y = "0x0000000000000000000000000000000000000000000000000000000000000002"
 Once a proof is generated, we can verify correct execution of our Noir program by verifying the
 proof file.
 
-Verify your proof of name `p` by running:
+Verify your proof by running:
 
 ```sh
-nargo verify p
+nargo verify
 ```
 
 The verification will complete in silence if it is successful. If it fails, it will log the
