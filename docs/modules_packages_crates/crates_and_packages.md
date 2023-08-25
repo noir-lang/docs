@@ -11,7 +11,7 @@ Crates can contain modules, and the modules may be defined in other files that g
 
 ### Crate Types
 
-A Noir crate can come in one of two forms: a binary crate or a library crate.
+A Noir crate can come in several forms: binaries, libraries or contracts.
 
 #### Binaries
 
@@ -20,6 +20,10 @@ _Binary crates_ are programs which you can compile to an ACIR circuit which you 
 #### Libraries
 
 _Library crates_ don't have a `main` function and they don't compile down to ACIR. Instead they define functionality intended to be shared with multiple projects, and eventually included in a binary crate.
+
+#### Contracts
+
+Contract crates are similar to binary crates in that they compile to ACIR which you can create proofs against. They are different in that they do not have a single `main` function, but are a collection of functions to be deployed to the [Aztec network](https://aztec.network). You can learn more about the technical details of Aztec in the [monorepo](https://github.com/AztecProtocol/aztec-packages) or contract [examples](https://github.com/AztecProtocol/aztec-packages/tree/master/yarn-project/noir-contracts/src/contracts).
 
 ### Crate Root
 
@@ -30,8 +34,6 @@ Every crate has a root, which is the source file that the compiler starts, this 
 A Nargo _package_ is a collection of one of more crates that provides a set of functionality. A package must include a Nargo.toml file.
 
 A package _must_ contain either a library or a binary crate, but not both.
-
-Binary packages (but not library packages) can be defined as a [workspace](./workspaces).
 
 ### Differences from Cargo Packages
 
