@@ -37,7 +37,7 @@ _Nargo.toml_ contains the environmental options of your project. It contains a "
 
 Example Nargo.toml:
 
-```yaml
+```toml
 [package]
 name = "noirstarter"
 type = "bin"
@@ -101,7 +101,7 @@ public).
 
 In our hello world program the _Prover.toml_ file looks like this:
 
-```yaml
+```toml
 x = "1"
 y = "2"
 ```
@@ -132,7 +132,7 @@ fn main(foos: [Foo; 3]) -> pub Field {
 
 Prover.toml:
 
-```yaml
+```toml
 [[foos]] # foos[0]
 bar = 0
 baz = 0
