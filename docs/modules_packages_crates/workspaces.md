@@ -24,7 +24,7 @@ For a project with the following structure:
 
 You can define a workspace in Nargo.toml like so:
 
-```yaml
+```toml
 [workspace]
 members = ["crates/a", "crates/b"]
 default-member = "crates/a"

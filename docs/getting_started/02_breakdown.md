@@ -43,6 +43,9 @@ name = "noirstarter"
 type = "bin"
 authors = ["Alice"]
 compiler_version = "0.9.0"
+description = "Getting started with Noir"
+entry = "circuit/main.nr"
+license = "MIT"
 
 [dependencies]
 ecrecover = {tag = "v0.9.0", git = "https://github.com/colinnielsen/ecrecover-noir.git"}
@@ -50,7 +53,7 @@ ecrecover = {tag = "v0.9.0", git = "https://github.com/colinnielsen/ecrecover-no
 
 Nargo.toml for a [workspace](../modules_packages_crates/workspaces) will look a bit different. For example:
 
-```yaml
+```toml
 [workspace]
 members = ["crates/a", "crates/b"]
 default-member = "crates/a"
@@ -60,16 +63,20 @@ default-member = "crates/a"
 
 The package section requires a number of fields including:
 
-- name - the name of the package
-- type - can be "bin", "lib", or "contract" to specify whether its a binary, library or Aztec contract
-- authors - authors of the project
-- compiler_version - specifies the version of the compiler to use. This is not currently enforced by the compiler, but will be in future versions.
+- `name` (**required**) - the name of the package
+- `type` (**required**) - can be "bin", "lib", or "contract" to specify whether its a binary, library or Aztec contract
+- `authors` (optional) - authors of the project
+- `compiler_version` (optional) - specifies the version of the compiler to use. This is not currently enforced by the compiler, but will be in future versions.
+- `description` (optional)
+- `entry` (optional) - a relative filepath to use as the entry point into your package (overrides the default of `src/lib.nr` or `src/main.nr`)
+- `backend` (optional)
+- `license` (optional)
 
 #### Dependencies section
 
 This is where you will specify any dependencies for your project. See the [Dependencies page](../modules_packages_crates/dependencies) for more info.
 
-_proofs_ and _contract_ directories will not be immediately visible until you create a proof or
+`./proofs/` and `./contract/` directories will not be immediately visible until you create a proof or
 verifier contract respectively.
 
 ### main.nr
