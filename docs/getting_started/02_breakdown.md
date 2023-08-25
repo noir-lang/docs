@@ -132,7 +132,7 @@ fn main(foos: [Foo; 3]) -> pub Field {
 
 Prover.toml:
 
-```yaml
+```toml
 [[foos]] # foos[0]
 bar = 0
 baz = 0
