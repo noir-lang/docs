@@ -34,4 +34,6 @@ default-member = "crates/a"
 
 `default-member` indicates which packages are included in the workspace by default. `default-members` can be particularly useful in scenarios where certain members of a workspace are auxiliary tools or infrequently-used components and you don't want them to be built or tested every time you work with the main components.
 
-Note that library packages cannot be defined as workspaces.
+Libraries can be defined in a workspace. We just don't have a way to consume libraries from inside a workspace as external dependencies right now.
+
+Inside a workspace, these are consumed as `{ path = "../to_lib" }` dependencies in Nargo.toml.

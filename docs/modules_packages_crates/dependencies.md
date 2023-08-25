@@ -34,7 +34,7 @@ You can also specify dependencies that are local to your machine.
 
 For example, this file structure has a library and binary crate
 
-```
+```tree
 ├── binary_crate
 │   ├── Nargo.toml
 │   └── src
@@ -47,7 +47,7 @@ For example, this file structure has a library and binary crate
 
 Inside of the binary crate, you can specify:
 
-```yaml
+```toml
 # Nargo.toml
 
 [dependencies]
@@ -78,6 +78,10 @@ can import multiple items in the same line by enclosing them in curly braces:
 ```rust
 use dep::std::ec::tecurve::affine::{Curve, Point};
 ```
+
+We don't have a way to consume libraries from inside a [workspace](./workspaces) as external dependencies right now.
+
+Inside a workspace, these are consumed as `{ path = "../to_lib" }` dependencies in Nargo.toml.
 
 ## Dependencies of Dependencies
 
