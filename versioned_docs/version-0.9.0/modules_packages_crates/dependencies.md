@@ -47,7 +47,7 @@ For example, this file structure has a library and binary crate
 
 Inside of the binary crate, you can specify:
 
-```yaml
+```toml
 # Nargo.toml
 
 [dependencies]
