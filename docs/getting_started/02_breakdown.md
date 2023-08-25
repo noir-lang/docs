@@ -37,7 +37,7 @@ _Nargo.toml_ contains the environmental options of your project. It contains a "
 
 Example Nargo.toml:
 
-```yaml
+```toml
 [package]
 name = "noirstarter"
 type = "bin"
