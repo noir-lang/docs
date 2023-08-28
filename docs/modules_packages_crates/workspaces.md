@@ -30,7 +30,7 @@ members = ["crates/a", "crates/b"]
 default-member = "crates/a"
 ```
 
-`members` indicates which packages are included in the workspace. This is used when the `--workspace` flag is used with various commands.
+`members` indicates which packages are included in the workspace. As such, all member packages of a workspace will be processed when the `--workspace` flag is used with various commands or if a `default-member` is not specified.
 
 `default-member` indicates which packages are included in the workspace by default. `default-members` can be particularly useful in scenarios where certain members of a workspace are auxiliary tools or infrequently-used components and you don't want them to be built or tested every time you work with the main components.
 
