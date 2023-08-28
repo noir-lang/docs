@@ -41,6 +41,8 @@ _Arguments_
 Generate the `Prover.toml` and `Verifier.toml` files for specifying prover and verifier in/output
 values of the Noir program respectively.
 
+This command will not write a Prover.toml file for contract packages.
+
 ## `nargo codegen-verifier`
 
 Generate a Solidity verifier smart contract for the program.

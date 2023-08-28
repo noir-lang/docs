@@ -1,7 +1,6 @@
 ---
 title: Crates and Packages
-description:
-  Learn how to use Crates and Packages in your Noir project
+description: Learn how to use Crates and Packages in your Noir project
 keywords: [Nargo, dependencies, package management, crates, package]
 ---
 
@@ -12,11 +11,19 @@ Crates can contain modules, and the modules may be defined in other files that g
 
 ### Crate Types
 
-A Noir crate can come in one of two forms: a binary crate or a library crate.
+A Noir crate can come in several forms: binaries, libraries or contracts.
+
+#### Binaries
 
 _Binary crates_ are programs which you can compile to an ACIR circuit which you can then create proofs against. Each must have a function called `main` that defines the ACIR circuit which is to be proved.
 
+#### Libraries
+
 _Library crates_ don't have a `main` function and they don't compile down to ACIR. Instead they define functionality intended to be shared with multiple projects, and eventually included in a binary crate.
+
+#### Contracts
+
+Contract crates are similar to binary crates in that they compile to ACIR which you can create proofs against. They are different in that they do not have a single `main` function, but are a collection of functions to be deployed to the [Aztec network](https://aztec.network). You can learn more about the technical details of Aztec in the [monorepo](https://github.com/AztecProtocol/aztec-packages) or contract [examples](https://github.com/AztecProtocol/aztec-packages/tree/master/yarn-project/noir-contracts/src/contracts).
 
 ### Crate Root
 
