@@ -72,12 +72,12 @@ let mut flag = 1;
 if (my_val > 6) | (my_val == 0) {
     flag = 0;
 }
-constrain flag == 1;
+assert(flag == 1);
 
 if (my_val != 10) & (my_val < 50) {
     flag = 0;
 }
-constrain flag == 0;
+assert(flag == 0);
 ```
 
 ### Shorthand operators
