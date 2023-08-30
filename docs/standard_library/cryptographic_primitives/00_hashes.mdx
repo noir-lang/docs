@@ -21,7 +21,7 @@ example:
 
 ```rust
 fn main() {
-    let x = [163, 117, 178, 149] // some random bytes
+    let x = [163, 117, 178, 149]; // some random bytes
     let hash = std::hash::sha256(x);
 }
 ```
@@ -40,7 +40,7 @@ example:
 
 ```rust
 fn main() {
-    let x = [163, 117, 178, 149] // some random bytes
+    let x = [163, 117, 178, 149]; // some random bytes
     let hash = std::hash::blake2s(x);
 }
 ```
@@ -59,7 +59,7 @@ example:
 
 ```rust
 fn main() {
-    let x = [163, 117, 178, 149] // some random bytes
+    let x = [163, 117, 178, 149]; // some random bytes
     let hash = std::hash::pedersen(x);
 }
 ```
@@ -80,7 +80,7 @@ example:
 
 ```rust
 fn main() {
-    let x = [163, 117, 178, 149] // some random bytes
+    let x = [163, 117, 178, 149]; // some random bytes
     let message_size = 4;
     let hash = std::hash::keccak256(x, message_size);
 }
@@ -129,7 +129,7 @@ example:
 ```rust
 
 fn main() {
-    let x = [163, 117, 178, 149] // some random bytes
+    let x = [163, 117, 178, 149]; // some random bytes
     let hash = std::hash::mimc_bn254(x);
 }
 ```
