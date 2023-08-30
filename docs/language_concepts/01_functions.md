@@ -86,3 +86,14 @@ follows:
 ```rust
 assert(MyStruct::sum(s) == 42);
 ```
+
+## Lambdas
+
+Lambdas are anonymous functions. They follow the syntax of rust - `|arguments| return_value`.
+
+```rust
+let add_50 = |val| val + 50;
+assert(add_50(100) == 150);
+```
+
+See [Lambdas](./lambdas) for more details.
