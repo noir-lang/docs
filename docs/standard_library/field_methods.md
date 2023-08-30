@@ -32,7 +32,7 @@ example:
 
 ```rust
 fn main() {
-    let field = 2
+    let field = 2;
     let bits = field.to_le_bits(32);
 }
 ```
@@ -49,7 +49,7 @@ example:
 
 ```rust
 fn main() {
-    let field = 2
+    let field = 2;
     let bits = field.to_be_bits(32);
 }
 ```
@@ -66,7 +66,7 @@ example:
 
 ```rust
 fn main() {
-    let field = 2
+    let field = 2;
     let bytes = field.to_le_bytes(4);
 }
 ```
@@ -83,7 +83,7 @@ example:
 
 ```rust
 fn main() {
-    let field = 2
+    let field = 2;
     let bytes = field.to_be_bytes(4);
 }
 ```
@@ -100,7 +100,7 @@ example:
 
 ```rust
 fn main() {
-    let field = 2
+    let field = 2;
     let radix = field.to_le_radix(256, 4);
 }
 ```
@@ -117,7 +117,7 @@ example:
 
 ```rust
 fn main() {
-    let field = 2
+    let field = 2;
     let radix = field.to_be_radix(256, 4);
 }
 ```

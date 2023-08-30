@@ -102,7 +102,7 @@ fn insert(_self: Self, _index: Field, _elem: T) -> Self
 Example:
 
 ```rust
- new_slice = rest_of_slice.insert(2, 100);
+new_slice = rest_of_slice.insert(2, 100);
 assert(new_slice[2] == 100);
 ```
 
@@ -136,7 +136,7 @@ Example:
 
 ```rust
 fn main() {
-    let slic = [42, 42]
+    let slic = [42, 42];
     assert(slic.len() == 2);
 }
 ```
@@ -156,7 +156,7 @@ Example:
 
 ```rust
 fn main() {
-    let slic = [42, 32]
+    let slic = [42, 32];
     let sorted = slic.sort();
     assert(sorted == [32, 42]);
 }
@@ -174,7 +174,7 @@ Example:
 
 ```rust
 fn main() {
-    let slic = [42, 32]
+    let slic = [42, 32];
     let sorted_ascending = slic.sort_via(|a, b| a < b);
     assert(sorted_ascending == [32, 42]); // verifies
 
@@ -195,7 +195,7 @@ Example:
 
 ```rust
 let a = [1, 2, 3];
-let b = a.map(|a| a * 2) // b is now [2, 4, 6]
+let b = a.map(|a| a * 2); // b is now [2, 4, 6]
 ```
 
 ## fold
@@ -216,9 +216,9 @@ let a2 = [1, 2];
 let a3 = [1, 2, 3];
 
 let f = |a, b| a - b;
-a1.fold(10, f)  //=> f(10, 1)
-a2.fold(10, f)  //=> f(f(10, 1), 2)
-a3.fold(10, f)  //=> f(f(f(10, 1), 2), 3)
+a1.fold(10, f); //=> f(10, 1)
+a2.fold(10, f); //=> f(f(10, 1), 2)
+a3.fold(10, f); //=> f(f(f(10, 1), 2), 3)
 ```
 
 Example:
@@ -226,7 +226,7 @@ Example:
 ```rust
 
 fn main() {
-    let slic = [2,2,2,2,2]
+    let slic = [2,2,2,2,2];
     let folded = slic.fold(0, |a, b| a + b);
     assert(folded == 10);
 }
@@ -245,7 +245,7 @@ Example:
 
 ```rust
 fn main() {
-    let slic = [2,2,2,2,2]
+    let slic = [2,2,2,2,2];
     let reduced = slic.reduce(|a, b| a + b);
     assert(reduced == 10);
 }
@@ -263,7 +263,7 @@ Example:
 
 ```rust
 fn main() {
-    let slic = [2,2,2,2,2]
+    let slic = [2,2,2,2,2];
     let all = slic.all(|a| a == 2);
     assert(all);
 }
@@ -281,7 +281,7 @@ Example:
 
 ```rust
 fn main() {
-    let slic = [2,2,2,2,5]
+    let slic = [2,2,2,2,5];
     let any = slic.any(|a| a == 5);
     assert(any);
 }
