@@ -29,7 +29,7 @@ c = 13; // OK
 d = 14; // OK
 
 // etc.
-let MyStruct { x: mut y } = MyStruct { x: a }
+let MyStruct { x: mut y } = MyStruct { x: a };
 // y is now in scope
 ```
 

@@ -35,16 +35,7 @@ _Verifier.toml_ contains public in/output values computed when executing the Noi
 
 _Nargo.toml_ contains the environmental options of your project. It contains a "package" section and a "dependencies" section.
 
-#### Package section
-
-The package section requires a number of fields including:
-
-- name - the name of the package
-- type - can be "bin", "lib", or "contract" to specify whether its a binary, library or Aztec contract
-- authors
-- compiler_version - specifies the version of the compiler to use. This is not currently enforced by the compiler, but will be in future versions.
-
-For example:
+Example Nargo.toml:
 
 ```toml
 [package]
@@ -52,13 +43,40 @@ name = "noirstarter"
 type = "bin"
 authors = ["Alice"]
 compiler_version = "0.9.0"
+description = "Getting started with Noir"
+entry = "circuit/main.nr"
+license = "MIT"
+
+[dependencies]
+ecrecover = {tag = "v0.9.0", git = "https://github.com/colinnielsen/ecrecover-noir.git"}
 ```
+
+Nargo.toml for a [workspace](../modules_packages_crates/workspaces) will look a bit different. For example:
+
+```toml
+[workspace]
+members = ["crates/a", "crates/b"]
+default-member = "crates/a"
+```
+
+#### Package section
+
+The package section requires a number of fields including:
+
+- `name` (**required**) - the name of the package
+- `type` (**required**) - can be "bin", "lib", or "contract" to specify whether its a binary, library or Aztec contract
+- `authors` (optional) - authors of the project
+- `compiler_version` (optional) - specifies the version of the compiler to use. This is not currently enforced by the compiler, but will be in future versions.
+- `description` (optional)
+- `entry` (optional) - a relative filepath to use as the entry point into your package (overrides the default of `src/lib.nr` or `src/main.nr`)
+- `backend` (optional)
+- `license` (optional)
 
 #### Dependencies section
 
 This is where you will specify any dependencies for your project. See the [Dependencies page](../modules_packages_crates/dependencies) for more info.
 
-_proofs_ and _contract_ directories will not be immediately visible until you create a proof or
+`./proofs/` and `./contract/` directories will not be immediately visible until you create a proof or
 verifier contract respectively.
 
 ### main.nr
@@ -95,13 +113,12 @@ x = "1"
 y = "2"
 ```
 
-When the command `nargo prove my_proof` is executed, two processes happen:
+When the command `nargo prove` is executed, two processes happen:
 
 1. Noir creates a proof that `x` which holds the value of `1` and `y` which holds the value of `2`
    is not equal. This not equal constraint is due to the line `assert(x != y)`.
 
-2. Noir creates and stores the proof of this statement in the _proofs_ directory and names the proof
-   file _my_proof_. Opening this file will display the proof in hex format.
+2. Noir creates and stores the proof of this statement in the _proofs_ directory in a file called your-project.proof. So if your project is named "private_voting" (defined in the project Nargo.toml), the proof will be saved at `./proofs/private_voting.proof`. Opening this file will display the proof in hex format.
 
 #### Arrays of Structs
 
@@ -139,23 +156,23 @@ baz = 2
 
 You can specify a `toml` file with a different name to use for proving by using the `--prover-name` or `-p` flags.
 
-This command looks for proof inputs in the default **Prover.toml** and generates proof `p`:
+This command looks for proof inputs in the default **Prover.toml** and generates the proof and saves it at `./proofs/<project-name>.proof`:
 
 ```bash
-nargo prove p
+nargo prove
 ```
 
-This command looks for proof inputs in the custom **OtherProver.toml** and generates proof `pp`:
+This command looks for proof inputs in the custom **OtherProver.toml** and generates proof and saves it at `./proofs/<project-name>.proof`:
 
 ```bash
-nargo prove -p OtherProver pp
+nargo prove -p OtherProver
 ```
 
 ## Verifying a Proof
 
-When the command `nargo verify my_proof` is executed, two processes happen:
+When the command `nargo verify` is executed, two processes happen:
 
-1. Noir checks in the _proofs_ directory for a file called _my_proof_
+1. Noir checks in the _proofs_ directory for a proof file with the project name (eg. test_project.proof)
 
 2. If that file is found, the proof's validity is checked
 
