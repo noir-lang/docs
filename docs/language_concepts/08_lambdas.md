@@ -6,7 +6,7 @@ keywords: [Noir programming language, lambda, closure, function, anonymous funct
 
 ## Introduction
 
-Lambdas are anonymous functions. The syntax is `|arguments| return_value`.
+Lambdas are anonymous functions. The syntax is `|arg1, arg2, ..., argN| return_expression`.
 
 ```rust
 let add_50 = |val| val + 50;

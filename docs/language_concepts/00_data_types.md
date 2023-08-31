@@ -426,4 +426,4 @@ fn main() {
 ```
 
 A function type also has an optional capture environment - this is necessary to support closures.
-See [Lambdas](./lambdas) for more details.
+See [Lambdas](./08_lambdas.md) for more details.
