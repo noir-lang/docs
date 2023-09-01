@@ -54,7 +54,13 @@ fn main() {
 
 The reason is that the closure's capture environment affects its type - we have a closure that captures two Fields and `foo`
 expects a regular function as an argument - those are incompatible.
+:::note
 
+Variables contained within the `||` are the closure's parameters, and the expression that follows it is the closure's body. The capture environment is comprised of any variables used in the closure's body that are not parameters.
+
+E.g. in |x| x + y, y would be a captured variable, but x would not be, since it is a parameter of the closure.
+
+:::
 The syntax for the type of a closure is `fn[env](args) -> ret_type`, where `env` is the capture environment of the closure -
 in this example that's `(Field, Field)`.
 
