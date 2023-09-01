@@ -246,7 +246,7 @@ A vector is a collection type similar to Rust's Vector type. It's convenient way
 Example:
 
 ```rust
-use std::collections::vec::Vec;
+use dep::std::collections::vec::Vec;
 
 let mut vector: Vec<Field> = Vec::new();
 for i in 0..5 {
