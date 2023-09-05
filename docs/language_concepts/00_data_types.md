@@ -142,9 +142,11 @@ statements. More about conditionals is covered in the [Control Flow](./control_f
 The string type is a fixed length value defined with `str<N>`.
 
 You can use strings in `assert()` functions or print them with
-`std::println()`.
+`std::println()`. See more about [Logging](../standard_library/logging).
 
 ```rust
+use dep::std;
+
 fn main(message : pub str<11>, hex_as_string : str<4>) {
     std::println(message);
     assert(message == "hello world");
