@@ -28,6 +28,15 @@ For example, to add the [ecrecover-noir library](https://github.com/colinnielsen
 ecrecover = {tag = "v0.8.0", git = "https://github.com/colinnielsen/ecrecover-noir"}
 ```
 
+If the module is in a subdirectory, you can define a subdirectory in your git repository, for example:
+
+```toml
+# Nargo.toml
+
+[dependencies]
+easy_private_token_contract = {tag ="v0.1.0-alpha62", git = "https://github.com/AztecProtocol/aztec-packages", directory = "yarn-project/noir-contracts/src/contracts/easy_private_token_contract"}
+```
+
 ## Specifying a local dependency
 
 You can also specify dependencies that are local to your machine.
