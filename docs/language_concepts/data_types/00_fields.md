@@ -1,26 +1,42 @@
 ---
-title: Field Methods
+title: Fields
 description:
-  Learn about common methods on Noir Field, including to_le_bits, to_le_bytes, to_le_radix,
-  to_be_radix, pow_32, etc, and see code examples.
+  Dive deep into the Field data type in Noir. Understand its methods, practical examples, and best practices to effectively use Fields in your Noir programs.
 keywords:
   [
-    Noir Field,
-    to_le_bits,
-    to_le_bytes,
-    to_le_radix,
-    to_be_radix,
-    pow_32,
-    Little Endian,
-    Big Endian,
-    Vector,
-    Exponent,
+    noir,
+    field type,
+    methods,
+    examples,
+    best practices,
   ]
 ---
 
+The field type corresponds to the native field type of the proving backend.
+
+The size of a Noir field depends on the elliptic curve's finite field for the proving backend
+adopted. For example, a field would be a 254-bit integer when paired with the default backend that
+spans the Grumpkin curve.
+
+Fields support integer arithmetic and are often used as the default numeric type in Noir:
+
+```rust
+fn main(x : Field, y : Field)  {
+    let z = x + y;
+}
+```
+
+`x`, `y` and `z` are all private fields in this example. Using the `let` keyword we defined a new
+private value `z` constrained to be equal to `x + y`.
+
+If proving efficiency is of priority, fields should be used as a default for solving problems.
+Smaller integer types (e.g. `u64`) incur extra range constraints.
+
+## Methods
+
 After declaring a Field, you can use these common methods on it:
 
-## to_le_bits
+### to_le_bits
 
 Transforms the field into an array of bits, Little Endian.
 
@@ -37,7 +53,7 @@ fn main() {
 }
 ```
 
-## to_be_bits
+### to_be_bits
 
 Transforms the field into an array of bits, Big Endian.
 
@@ -54,7 +70,7 @@ fn main() {
 }
 ```
 
-## to_le_bytes
+### to_le_bytes
 
 Transforms into an array of bytes, Little Endian
 
@@ -71,7 +87,7 @@ fn main() {
 }
 ```
 
-## to_be_bytes
+### to_be_bytes
 
 Transforms into an array of bytes, Big Endian
 
@@ -88,7 +104,7 @@ fn main() {
 }
 ```
 
-## to_le_radix
+### to_le_radix
 
 Decomposes into a vector over the specified base, Little Endian
 
@@ -105,7 +121,7 @@ fn main() {
 }
 ```
 
-## to_be_radix
+### to_be_radix
 
 Decomposes into a vector over the specified base, Big Endian
 
@@ -122,7 +138,7 @@ fn main() {
 }
 ```
 
-## pow_32
+### pow_32
 
 Returns the value to the power of the specified exponent
 
@@ -140,7 +156,7 @@ fn main() {
 }
 ```
 
-## sgn0
+### sgn0
 
 Parity of (prime) Field element, i.e. sgn0(x mod p) = 0 if x ∈ {0, ..., p-1} is even, otherwise sgn0(x mod p) = 1.
 
