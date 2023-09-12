@@ -26,6 +26,10 @@ fn main() -> pub Field {
 }
 ```
 
+View the corresponding test file [here]([test-file].
+
+[test-file]: https://github.com/noir-lang/noir/blob/f387ec1475129732f72ba294877efdf6857135ac/crates/nargo_cli/tests/test_data_ssa_refactor/slices/src/main.nr
+
 ## Methods
 
 For convenience, the STD provides some ready-to-use, common methods for slices:
@@ -145,7 +149,3 @@ Example:
 ```rust
 let (remove_slice, removed_elem) = slice.remove(3);
 ```
-
-View the corresponding test file [here]([test-file].
-
-[test-file]: https://github.com/noir-lang/noir/blob/f387ec1475129732f72ba294877efdf6857135ac/crates/nargo_cli/tests/test_data_ssa_refactor/slices/src/main.nr
