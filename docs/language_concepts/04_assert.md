@@ -9,9 +9,7 @@ keywords: [Noir programming language, assert statement, predicate expression, co
 
 Noir includes a special `assert` function which will explicitly constrain the predicate/comparison
 expression that follows to be true. If this expression is false at runtime, the program will fail to
-be proven.
-
-### Example
+be proven. Example:
 
 ```rust
 fn main(x : Field, y : Field) {
@@ -19,16 +17,10 @@ fn main(x : Field, y : Field) {
 }
 ```
 
-The above snippet compiles because `==` is a predicate operation. Conversely, the following will not
-compile:
+You can optionally provide a message to be logged when the assertion fails:
 
 ```rust
-// INCORRECT
-
-fn main(x : Field, y : Field) {
-    assert(x + y);
-}
+assert(x == y, "x and y are not equal");
 ```
 
-> The rationale behind this not compiling is due to ambiguity. It is not clear if the above should
-> equate to `x + y == 0` or if it should check the truthiness of the result.
+> Assertions only work for predicate operations, such as `==`. If there's any ambiguity on the operation, the program will fail to compile. For example, it is unclear if `assert(x + y)` would check for `x + y == 0` or simply would return `true`.
