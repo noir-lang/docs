@@ -27,6 +27,16 @@ Running `nargo test` will test that the `test_add` function can be executed whil
 the contraints which allows you to test that add returns the expected values. Test functions can't
 have any arguments currently.
 
-This is much faster compared to testing in Typescript but the only downside is that you can't
-explicitly test that a certain set of inputs are invalid. i.e. you can't say that you want
-add(2^64-1, 2^64-1) to fail.
+### Test fail
+
+You can write tests that are expected to fail by using the decorator `#[test(should_fail)]`. For example:
+
+```rust
+fn add(x: u64, y: u64) -> u64 {
+    x + y
+}
+#[test(should_fail)]
+fn test_add() {
+    assert(add(2,2) == 5);
+}
+```
