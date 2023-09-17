@@ -33,7 +33,7 @@ Inside the body of a lambda, you can use variables defined in the enclosing func
 fn main() {
   let x = 100;
   let closure = || x + 150;
-  assert(closure() == 150);
+  assert(closure() == 250);
 }
 ```
 
