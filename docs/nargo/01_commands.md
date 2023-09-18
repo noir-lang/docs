@@ -24,7 +24,7 @@ keywords:
 Options:
   --show-ssa        Emit debug information for the intermediate SSA IR
   --deny-warnings   Quit execution when warnings are emitted
-  -h, --help            Print help
+  -h, --help        Print help
 ```
 
 ## `nargo help [subcommand]`
@@ -35,12 +35,33 @@ _Arguments_
 
 - `<subcommand>` - The subcommand whose help message to display
 
+## `nargo backend`
+
+Installs and selects custom backends used to generate and verify proofs.
+
+### Commands
+
+```
+  current    Prints the name of the currently active backend
+  ls         Prints the list of currently installed backends
+  use        Select the backend to use
+  install    Install a new backend from a URL
+  uninstall  Uninstalls a backend
+  help       Print this message or the help of the given subcommand(s)
+```
+
+### Options
+
+```
+-h, --help Print help
+```
+
 ## `nargo check`
 
 Generate the `Prover.toml` and `Verifier.toml` files for specifying prover and verifier in/output
 values of the Noir program respectively.
 
-**Options**
+### Options
 
 ```
     --package <PACKAGE>  The name of the package to check
@@ -50,11 +71,11 @@ values of the Noir program respectively.
 -h, --help Print help
 ```
 
-## `nargo codegen-verifier`
+### `nargo codegen-verifier`
 
 Generate a Solidity verifier smart contract for the program.
 
-**Options**
+### Options
 
 ```
     --package <PACKAGE>  The name of the package to codegen
@@ -71,7 +92,7 @@ of the circuit. This build artifact can then be used to generate and verify proo
 
 You can also use "build" as an alias for compile (e.g. `nargo build`).
 
-**Options**
+### Options
 
 ```
     --include-keys       Include Proving and Verification keys in the build artifacts
@@ -92,7 +113,7 @@ Creates a new Noir project in a new folder.
 <PATH>  The path to save the new project
 ```
 
-**Options**
+### Options
 
 ```
     --name <NAME>  Name of the package [default: package directory name]
@@ -106,7 +127,7 @@ Creates a new Noir project in a new folder.
 
 Creates a new Noir project in the current directory.
 
-**Options**
+### Options
 
 ```
     --name <NAME>  Name of the package [default: current directory name]
@@ -126,7 +147,7 @@ Runs the Noir program and prints its return value.
 [WITNESS_NAME]  Write the execution witness to named file
 ```
 
-**Options**
+### Options
 
 ```
 -p, --prover-name <PROVER_NAME>  The name of the toml file which contains the inputs for the prover [default: Prover]
@@ -156,7 +177,7 @@ To save the witness to file, run the command with a value for the `WITNESS_NAME`
 
 Creates a proof for the program.
 
-**Options**
+### Options
 
 ```
 -p, --prover-name <PROVER_NAME>      The name of the toml file which contains the inputs for the prover [default: Prover]
@@ -173,7 +194,7 @@ Creates a proof for the program.
 
 Given a proof and a program, verify whether the proof is valid.
 
-**Options**
+### Options
 
 ```
 -v, --verifier-name <VERIFIER_NAME>  The name of the toml file which contains the inputs for the verifier [default: Verifier]
@@ -193,7 +214,7 @@ Takes an optional `--exact` flag which allows you to select tests based on an ex
 
 See an example on the [testing page](./testing).
 
-**Options**
+### Options
 
 ```
     --show-output        Display output of `println` statements
