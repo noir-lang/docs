@@ -1,33 +1,27 @@
 ---
 title: Scalar multiplication
-description:
-  See how you can perform scalar multiplications over a fixed base in Noir
-keywords:
-  [
-    cryptographic primitives,
-    Noir project,
-    scalar multiplication,
-  ]
+description: See how you can perform scalar multiplications over a fixed base in Noir
+keywords: [cryptographic primitives, Noir project, scalar multiplication]
 ---
 
-import BlackBoxInfo from './common/\_blackbox.mdx';
+import BlackBoxInfo from './common/_blackbox.mdx';
 
-## scalar_mul::fixed_base
+## scalar_mul::fixed_base_embedded_curve
 
 Performs scalar multiplication over the embedded curve whose coordinates are defined by the
 configured noir field. For the BN254 scalar field, this is BabyJubJub or Grumpkin.
 
 ```rust
-fn fixed_base(_input : Field) -> [Field; 2]
+fn fixed_base_embedded_curve(_input : Field) -> [Field; 2]
 ```
 
 example
 
 ```rust
 fn main(x : Field) {
-    let scal = std::scalar_mul::fixed_base(x);
+    let scal = std::scalar_mul::fixed_base_embedded_curve(x);
     std::println(scal);
 }
 ```
 
-<BlackBoxInfo/>
+<BlackBoxInfo />
