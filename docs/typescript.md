@@ -13,10 +13,12 @@ You can check the complete code for this tutorial here: [browser with next.js](h
 
 :::note
 
-You may find unexpected errors working with some frameworks such as `vite`. This is due to the
-nature of `wasm` files and the way Noir uses web workers. As we figure it out, we suggest using
+You may find unexpected errors working with some frameworks. This is due to the
+nature of `wasm` files and the way Noir uses web workers. We suggest using
 [Create React App](https://create-react-app.dev/), or [Next.js](https://nextjs.org/) for a quick
 start.
+
+You should also check [awesome noir](https://github.com/noir-lang/awesome-noir#boilerplates) for some community-built templates for Nuxt, Vite, and others.
 
 :::
 
