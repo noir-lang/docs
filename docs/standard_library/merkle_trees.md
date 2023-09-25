@@ -39,7 +39,7 @@ example:
  */
 fn main(index: Field, priv_key: Field, secret: Field, note_hash_path: [Field; 3]) {
 
-    let pubkey = std::scalar_mul::fixed_base(priv_key);
+    let pubkey = std::scalar_mul::fixed_base_embedded_curve(priv_key);
     let pubkey_x = pubkey[0];
     let pubkey_y = pubkey[1];
     let note_commitment = std::hash::pedersen([pubkey_x, pubkey_y, secret]);

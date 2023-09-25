@@ -77,7 +77,7 @@ You can also import only the specific parts of dependency that you want to use, 
 
 ```rust
 use dep::std::hash::sha256;
-use dep::std::scalar_mul::fixed_base;
+use dep::std::scalar_mul::fixed_base_embedded_curve;
 ```
 
 Lastly, as demonstrated in the
