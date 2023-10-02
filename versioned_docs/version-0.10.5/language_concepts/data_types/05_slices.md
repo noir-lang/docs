@@ -12,6 +12,12 @@ keywords:
   ]
 ---
 
+:::caution
+
+This feature is experimental. You should expect it to change in future versions,
+cause unexpected behavior, or simply not work at all.
+
+:::
 
 A slice is a dynamically-sized view into a sequence of elements. They can be resized at runtime, but because they don't own the data, they cannot be returned from a circuit. You can treat slices as arrays without a constrained size.
 

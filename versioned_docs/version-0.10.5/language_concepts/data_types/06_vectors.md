@@ -12,6 +12,13 @@ keywords:
   ]
 ---
 
+:::caution
+
+This feature is experimental. You should expect it to change in future versions,
+cause unexpected behavior, or simply not work at all.
+
+:::
+
 A vector is a collection type similar to Rust's Vector type. It's convenient way to use slices as mutable arrays.
 
 Example:
