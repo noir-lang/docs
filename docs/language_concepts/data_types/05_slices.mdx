@@ -1,17 +1,12 @@
 ---
 title: Slices
-description:
-  Explore the Slice data type in Noir. Understand its methods, see real-world examples, and learn how to effectively use Slices in your Noir programs.
-keywords:
-  [
-    noir,
-    slice type,
-    methods,
-    examples,
-    subarrays,
-  ]
+description: Explore the Slice data type in Noir. Understand its methods, see real-world examples, and learn how to effectively use Slices in your Noir programs.
+keywords: [noir, slice type, methods, examples, subarrays]
 ---
 
+import Experimental from '../../../src/components/Notes/_experimental.mdx';
+
+<Experimental />
 
 A slice is a dynamically-sized view into a sequence of elements. They can be resized at runtime, but because they don't own the data, they cannot be returned from a circuit. You can treat slices as arrays without a constrained size.
 
