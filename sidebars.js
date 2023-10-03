@@ -128,11 +128,6 @@ const sidebars = {
     },
     {
       type: 'doc',
-      id: 'typescript',
-      label: 'Working with Typescript',
-    },
-    {
-      type: 'doc',
       id: 'migration_notes',
       label: 'Migration notes',
     },
