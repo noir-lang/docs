@@ -48,6 +48,13 @@ Since we're on the dependency world, we may as well define a nice starting scrip
   "start": "vite --open"
 ```
 
+If you want do build a static website, you can also add some build and preview scripts:
+
+```json
+    "build": "vite build",
+    "preview": "vite preview"
+```
+
 ## Vite plugins
 
 Vite is great, but support from `wasm` doesn't work out-of-the-box. We're gonna write a quick plugin and use another one. Just copy and paste this into a file named `vite.config.js`. You don't need to understand it, just trust me bro.
@@ -64,27 +71,32 @@ const wasmContentTypePlugin = {
   server.middlewares.use(async (req, res, next) => {
    if (req.url.endsWith(".wasm")) {
     res.setHeader("Content-Type", "application/wasm");
-    const newPath = req.url.replace("deps", "dist");
-    const targetPath = path.join(__dirname, newPath);
-    const wasmContent = fs.readFileSync(targetPath);
-    return res.end(wasmContent);
+                const newPath = req.url.replace("deps", "dist");
+                const targetPath = path.join(__dirname, newPath);
+                const wasmContent = fs.readFileSync(targetPath);
+                return res.end(wasmContent);
    }
-    next();
+            next();
   });
  },
 };
 
-export default defineConfig({
- plugins: [
-  copy({
-    targets: [
-        { src: 'node_modules/**/*.wasm', dest: 'node_modules/.vite/dist' },
-    ],
-    copySync: true,
-    hook: "buildStart"
-  }),
-  wasmContentTypePlugin,
-  ],
+export default defineConfig(({ command }) => {
+    if (command === "serve") {
+        return {
+            plugins: [
+            copy({
+                targets: [
+                    { src: 'node_modules/**/*.wasm', dest: 'node_modules/.vite/dist' },
+                ],
+                copySync: true,
+                hook: "buildStart"
+            }),
+            command === "serve" ? wasmContentTypePlugin : []
+        ]}
+    }
+    
+    return {}
 });
 ```
 
