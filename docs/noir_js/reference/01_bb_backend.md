@@ -42,7 +42,7 @@ constructor(acirCircuit, numberOfThreads = 1)
 
 - `acirCircuit`
   type: Object
-  A circuit represented in a `json` format, containing the ABI and bytecode Tipically obtained by running [`nargo compile`](../../nargo/01_commands.md). This is the same circuit expected to be passed to [the Noir class](./02_noirjs)
+  A circuit represented in a `json` format, containing the ABI and bytecode Tipically obtained by running [`nargo compile`](../../nargo/01_commands.md). This is the same circuit expected to be passed to [the Noir class](02_noirjs.md)
 - `numberOfThreads`
   Number, (optional)
   The number of threads to be used by the backend. Defaults to 1.

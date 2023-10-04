@@ -166,13 +166,6 @@ must be filled in.
 To save the witness to file, run the command with a value for the `WITNESS_NAME` argument. A
 `<WITNESS_NAME>.tr` file will then be saved in the `./target` folder.
 
-> **Info:** The `.tr` file is the witness file. The witness file can be considered as program inputs
-> parsed for your program's ACIR.
->
-> This file can be passed along with circuit's ACIR into a TypeScript project for proving and
-> verification. See the [TypeScript](../typescript#proving-and-verifying-externally-compiled-files)
-> section to learn more.
-
 ## `nargo prove`
 
 Creates a proof for the program.

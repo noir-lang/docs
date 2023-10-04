@@ -10,7 +10,7 @@ keywords: [Nargo, command line tool, Noir programs, installation guide, how to u
 `nargo` is a command line tool for interacting with Noir programs (e.g. compiling, proving,
 verifying and more).
 
-Alternatively, the interactions can also be performed in [TypeScript](../typescript).
+Alternatively, the interactions can also be performed in [NoirJS](../noir_js/noir_js.md).
 
 ### UltraPlonk
 
@@ -275,11 +275,4 @@ If you installed Noir with Nix or from source, you can remove the binary located
 rm ~/.nix-profile/bin/nargo
 ```
 
-[git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-[rust]: https://www.rust-lang.org/tools/install
 [noir vs code extension]: https://marketplace.visualstudio.com/items?itemName=noir-lang.vscode-noir
-[homebrew]: https://brew.sh/
-[cmake]: https://cmake.org/install/
-[llvm]: https://llvm.org/docs/GettingStarted.html
-[openmp]: https://openmp.llvm.org/
-[barretenberg]: https://github.com/AztecProtocol/barretenberg
