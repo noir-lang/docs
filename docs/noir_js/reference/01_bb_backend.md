@@ -11,66 +11,43 @@ keywords:
     browser,
     class,
     reference,
-    noir_js
+    noir_js,
   ]
 ---
 
 ## Table of Contents
 
 - [Constructor](#constructor)
-- [instantiate Method](#instantiate)
-- [generateFinalProof Method](#generatefinalproof)
-- [generateIntermediateProof Method](#generateintermediateproof)
-- [generateProof Method](#generateproof)
-- [generateIntermediateProofArtifacts Method](#generateintermediateproofartifacts)
-- [verifyFinalProof Method](#verifyfinalproof)
-- [verifyIntermediateProof Method](#verifyintermediateproof)
-- [verifyProof Method](#verifyproof)
-- [destroy Method](#destroy)
+- [generateFinalProof](#generatefinalproof)
+- [generateIntermediateProof](#generateintermediateproof)
+- [generateProof](#generateproof)
+- [generateIntermediateProofArtifacts](#generateintermediateproofartifacts)
+- [verifyFinalProof](#verifyfinalproof)
+- [verifyIntermediateProof](#verifyintermediateproof)
+- [verifyProof](#verifyproof)
+- [destroy](#destroy)
 
-## Constructor
+## `constructor`
 
 The `constructor` is a method used to create and initialize objects created within the `BarretenbergBackend` class. In this class, you should pass at least one argument for the `circuit`.
 
 ### Syntax
 
 ```js
-constructor(acirCircuit, numberOfThreads = 1)
+constructor(acirCircuit, (numberOfThreads = 1));
 ```
 
 ### Parameters
 
-- `acirCircuit`
-  type: Object
-  A circuit represented in a `json` format, containing the ABI and bytecode Tipically obtained by running [`nargo compile`](../../nargo/01_commands.md). This is the same circuit expected to be passed to [the Noir class](02_noirjs.md)
-- `numberOfThreads`
-  Number, (optional)
-  The number of threads to be used by the backend. Defaults to 1.
+| Parameter         | Type              | Description                                                                                                                                                                                                                             |
+| ----------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `acirCircuit`     | Object            | A circuit represented in a `json` format, containing the ABI and bytecode Tipically obtained by running [`nargo compile`](../../nargo/01_commands.md). This is the same circuit expected to be passed to [the Noir class](02_noirjs.md) |
+| `numberOfThreads` | Number (optional) | The number of threads to be used by the backend. Defaults to 1.                                                                                                                                                                         |
 
 ### Usage
 
 ```js
 const backend = new BarretenbergBackend(acirCircuit);
-```
-
-## instantiate
-
-This async method is called by the Noir class. It allocates resources, decompresses the bytecode, and inits the SRS. Developers can't call this method directly, as it's private.
-
-### Syntax
-
-```js
-private async instantiate()
-```
-
-### Parameters
-
-This method takes no parameters.
-
-### Usage
-
-```js
-await backend.instantiate();
 ```
 
 ## generateFinalProof
@@ -85,15 +62,15 @@ async generateFinalProof(decompressedWitness)
 
 ### Parameters
 
-- `decompressedWitness`
-  type: Object
-  The decompressed witness for generating the final proof.
+| Parameter             | Type   | Description                                              |
+| --------------------- | ------ | -------------------------------------------------------- |
+| `decompressedWitness` | Object | The decompressed witness for generating the final proof. |
 
 ### Returns
 
-- `proof`
-  type: Promise\<Uint8Array\>
-  An array with the byte representation of the final proof
+| Return value | Type                 | Description                                               |
+| ------------ | -------------------- | --------------------------------------------------------- |
+| `proof`      | Promise<Uint8Array\> | An array with the byte representation of the final proof. |
 
 ### Usage
 
@@ -113,15 +90,15 @@ async generateIntermediateProof(witness)
 
 ### Parameters
 
-- `witness`
-  type: Object
-  The witness for generating the intermediate proof.
+| Parameter | Type   | Description                                        |
+| --------- | ------ | -------------------------------------------------- |
+| `witness` | Object | The witness for generating the intermediate proof. |
 
 ### Returns
 
-- `proof`
-  type: Promise\<Uint8Array\>
-  An array with the byte representation of the intermediate proof
+| Return value | Type                 | Description                                                     |
+| ------------ | -------------------- | --------------------------------------------------------------- |
+| `proof`      | Promise<Uint8Array\> | An array with the byte representation of the intermediate proof |
 
 ### Usage
 
@@ -141,18 +118,16 @@ async generateProof(decompressedWitness, makeEasyToVerifyInCircuit)
 
 ### Parameters
 
-- `decompressedWitness`
-  type: Object
-  The decompressed witness for generating the proof.
-- `makeEasyToVerifyInCircuit`
-  type: Boolean
-  A flag indicating whether to generate proof components for easy verification within a circuit.
+| Parameter                   | Type    | Description                                                                                    |
+| --------------------------- | ------- | ---------------------------------------------------------------------------------------------- |
+| `decompressedWitness`       | Object  | The decompressed witness for generating the proof.                                             |
+| `makeEasyToVerifyInCircuit` | Boolean | A flag indicating whether to generate proof components for easy verification within a circuit. |
 
 ### Returns
 
-- `proof`
-  type: Promise\<Uint8Array\>
-  An array with the byte representation of the proof
+| Return value | Type                 | Description                                        |
+| ------------ | -------------------- | -------------------------------------------------- |
+| `proof`      | Promise<Uint8Array\> | An array with the byte representation of the proof |
 
 ### Usage
 
@@ -172,24 +147,18 @@ async generateIntermediateProofArtifacts(proof, numOfPublicInputs = 0)
 
 ### Parameters
 
-- `proof`
-  type: Object
-  The proof object.
-- `numOfPublicInputs`
-  type: Number (optional)
-  The number of public inputs in the inner proof, defaulting to 0.
+| Parameter           | Type              | Description                                                      |
+| ------------------- | ----------------- | ---------------------------------------------------------------- |
+| `proof`             | Object            | The proof object.                                                |
+| `numOfPublicInputs` | Number (optional) | The number of public inputs in the inner proof, defaulting to 0. |
 
 ### Returns
 
-- `proofAsFields`
-  type: string[]
-  An array of strings with the hexadecimal representation of the [Fields](../../language_concepts/data_types/00_fields.md) that make up a proof
-- `vkAsFields`
-  type: string[]
-  An array of strings with the hexadecimal representation of the [Fields](../../language_concepts/data_types/00_fields.md) that make up the verification key
-- `vkHash`
-  type: string
-  A pedersen hash of the verification key
+| Return value    | Type     | Description                                                                                                                                                |
+| --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `proofAsFields` | string[] | An array of strings with the hexadecimal representation of the [Fields](../../language_concepts/data_types/00_fields.md) that make up a proof              |
+| `vkAsFields`    | string[] | An array of strings with the hexadecimal representation of the [Fields](../../language_concepts/data_types/00_fields.md) that make up the verification key |
+| `vkHash`        | string   | A pedersen hash of the verification key                                                                                                                    |
 
 ### Usage
 
@@ -209,15 +178,15 @@ async verifyFinalProof(proof)
 
 ### Parameters
 
-- `proof`
-  type: Object
-  The proof object to verify.
+| Parameter | Type   | Description                 |
+| --------- | ------ | --------------------------- |
+| `proof`   | Object | The proof object to verify. |
 
 ### Returns
 
-- `verified`
-  type: Promise\<boolean\>
-  A boolean for whether the proof was verified
+| Return value | Type               | Description                                  |
+| ------------ | ------------------ | -------------------------------------------- |
+| `verified`   | Promise <boolean\> | A boolean for whether the proof was verified |
 
 ### Usage
 
@@ -237,15 +206,15 @@ async verifyIntermediateProof(proof)
 
 ### Parameters
 
-- `proof`
-  type: Object
-  The intermediate proof object to verify.
+| Parameter | Type   | Description                              |
+| --------- | ------ | ---------------------------------------- |
+| `proof`   | Object | The intermediate proof object to verify. |
 
 ### Returns
 
-- `verified`
-  type: Promise\<boolean\>
-  A boolean for whether the proof was verified
+| Return value | Type               | Description                                  |
+| ------------ | ------------------ | -------------------------------------------- |
+| `verified`   | Promise <boolean\> | A boolean for whether the proof was verified |
 
 ### Usage
 
@@ -265,18 +234,16 @@ async verifyProof(proof, makeEasyToVerifyInCircuit)
 
 ### Parameters
 
-- `proof`
-  type: Object
-  The proof object to verify.
-- `makeEasyToVerifyInCircuit`
-  type: Boolean
-  A flag indicating whether the proof is intermediate or final
+| Parameter                   | Type    | Description                                                  |
+| --------------------------- | ------- | ------------------------------------------------------------ |
+| `proof`                     | Object  | The proof object to verify                                   |
+| `makeEasyToVerifyInCircuit` | Boolean | A flag indicating whether the proof is intermediate or final |
 
 ### Returns
 
-- `verified`
-  type: Promise\<boolean\>
-  A boolean for whether the proof was verified
+| Parameter  | Type               | Description                                  |
+| ---------- | ------------------ | -------------------------------------------- |
+| `verified` | Promise\<boolean\> | A boolean for whether the proof was verified |
 
 ### Usage
 
