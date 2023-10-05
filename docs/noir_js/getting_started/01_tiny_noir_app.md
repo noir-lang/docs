@@ -8,7 +8,7 @@ Noir JS works both on the browser and on the server, and works for both ESM and 
 
 ## Before we start
 
-Make sure you have Node installed on your machine by opening a terminal and executing `node --version`. If you don't see a version, you should install [node](https://nodejs.org/en/download). You can also use `yarn` if you prefer that package manager over npm (which comes with node).
+Make sure you have Node installed on your machine by opening a terminal and executing `node --version`. If you don't see a version, you should install [node](https://github.com/nvm-sh/nvm). You can also use `yarn` if you prefer that package manager over npm (which comes with node).
 
 First of all, follow the the [Nargo guide](../../getting_started/00_nargo_installation.md) to install nargo and create a new project with `nargo new circuit`. Once there, `cd` into the `circuit` folder. You should then be able to compile your circuit into `json` format and see it inside the `target` folder:
 
