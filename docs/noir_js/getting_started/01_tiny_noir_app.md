@@ -18,7 +18,7 @@ nargo compile
 
 Your folder structure should look like:
 
-```
+```tree
 .
 └── circuit
     ├── Nargo.toml
