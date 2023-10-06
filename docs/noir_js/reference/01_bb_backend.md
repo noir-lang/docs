@@ -11,41 +11,38 @@ keywords:
     browser,
     class,
     reference,
-    noir_js
+    noir_js,
   ]
 ---
 
 ## Table of Contents
 
-- [Constructor](#constructor)
-- [instantiate Method](#instantiate)
-- [generateFinalProof Method](#generatefinalproof)
-- [generateIntermediateProof Method](#generateintermediateproof)
-- [generateProof Method](#generateproof)
-- [generateIntermediateProofArtifacts Method](#generateintermediateproofartifacts)
-- [verifyFinalProof Method](#verifyfinalproof)
-- [verifyIntermediateProof Method](#verifyintermediateproof)
-- [verifyProof Method](#verifyproof)
-- [destroy Method](#destroy)
+- [constructor](#constructor)
+- [generateFinalProof](#generatefinalproof)
+- [generateIntermediateProof](#generateintermediateproof)
+- [generateProof](#generateproof)
+- [generateIntermediateProofArtifacts](#generateintermediateproofartifacts)
+- [verifyFinalProof](#verifyfinalproof)
+- [verifyIntermediateProof](#verifyintermediateproof)
+- [verifyProof](#verifyproof)
+- [destroy](#destroy)
 
-## Constructor
+## `constructor`
 
 The `constructor` is a method used to create and initialize objects created within the `BarretenbergBackend` class. In this class, you should pass at least one argument for the `circuit`.
 
 ### Syntax
 
 ```js
-constructor(acirCircuit, numberOfThreads = 1)
+constructor(acirCircuit, (numberOfThreads = 1));
 ```
 
 ### Parameters
 
-- `acirCircuit`
-  type: Object
-  A circuit represented in a `json` format, containing the ABI and bytecode Tipically obtained by running [`nargo compile`](../../nargo/01_commands.md). This is the same circuit expected to be passed to [the Noir class](02_noirjs.md)
-- `numberOfThreads`
-  Number, (optional)
-  The number of threads to be used by the backend. Defaults to 1.
+| Parameter         | Type              | Description                                                                                                                                                                                                                             |
+| ----------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `acirCircuit`     | Object            | A circuit represented in a `json` format, containing the ABI and bytecode Tipically obtained by running [`nargo compile`](../../nargo/01_commands.md). This is the same circuit expected to be passed to [the Noir class](02_noirjs.md) |
+| `numberOfThreads` | Number (optional) | The number of threads to be used by the backend. Defaults to 1.                                                                                                                                                                         |
 
 ### Usage
 
@@ -53,27 +50,7 @@ constructor(acirCircuit, numberOfThreads = 1)
 const backend = new BarretenbergBackend(acirCircuit);
 ```
 
-## instantiate
-
-This async method is called by the Noir class. It allocates resources, decompresses the bytecode, and inits the SRS. Developers can't call this method directly, as it's private.
-
-### Syntax
-
-```js
-private async instantiate()
-```
-
-### Parameters
-
-This method takes no parameters.
-
-### Usage
-
-```js
-await backend.instantiate();
-```
-
-## generateFinalProof
+## `generateFinalProof`
 
 An async wrapper around the [generateProof](#generateproof) method that passes a `false` flag. Usually called by the Noir class.
 
@@ -85,15 +62,15 @@ async generateFinalProof(decompressedWitness)
 
 ### Parameters
 
-- `decompressedWitness`
-  type: Object
-  The decompressed witness for generating the final proof.
+| Parameter             | Type   | Description                                              |
+| --------------------- | ------ | -------------------------------------------------------- |
+| `decompressedWitness` | Object | The decompressed witness for generating the final proof. |
 
 ### Returns
 
-- `proof`
-  type: Promise\<Uint8Array\>
-  An array with the byte representation of the final proof
+| Return value | Type                 | Description                                               |
+| ------------ | -------------------- | --------------------------------------------------------- |
+| `proof`      | Promise<Uint8Array\> | An array with the byte representation of the final proof. |
 
 ### Usage
 
@@ -101,7 +78,7 @@ async generateFinalProof(decompressedWitness)
 const finalProof = await backend.generateFinalProof(decompressedWitness);
 ```
 
-## generateIntermediateProof
+## `generateIntermediateProof`
 
 An async wrapper around the [generateProof](#generateproof) method that passes a `true` flag. It's not currently being used by the Noir class, but developers can call this method directly to use Noir's recursive features.
 
@@ -113,15 +90,15 @@ async generateIntermediateProof(witness)
 
 ### Parameters
 
-- `witness`
-  type: Object
-  The witness for generating the intermediate proof.
+| Parameter | Type   | Description                                        |
+| --------- | ------ | -------------------------------------------------- |
+| `witness` | Object | The witness for generating the intermediate proof. |
 
 ### Returns
 
-- `proof`
-  type: Promise\<Uint8Array\>
-  An array with the byte representation of the intermediate proof
+| Return value | Type                 | Description                                                     |
+| ------------ | -------------------- | --------------------------------------------------------------- |
+| `proof`      | Promise<Uint8Array\> | An array with the byte representation of the intermediate proof |
 
 ### Usage
 
@@ -129,7 +106,7 @@ async generateIntermediateProof(witness)
 const intermediateProof = await backend.generateIntermediateProof(witness);
 ```
 
-## generateProof
+## `generateProof`
 
 This async method generates a proof. Takes the witness generated by ACVM, and a boolean that evaluates to `true` when the proof _is_ meant to be verified in another circuit. Not currently used by the Noir class.
 
@@ -141,18 +118,16 @@ async generateProof(decompressedWitness, makeEasyToVerifyInCircuit)
 
 ### Parameters
 
-- `decompressedWitness`
-  type: Object
-  The decompressed witness for generating the proof.
-- `makeEasyToVerifyInCircuit`
-  type: Boolean
-  A flag indicating whether to generate proof components for easy verification within a circuit.
+| Parameter                   | Type    | Description                                                                                    |
+| --------------------------- | ------- | ---------------------------------------------------------------------------------------------- |
+| `decompressedWitness`       | Object  | The decompressed witness for generating the proof.                                             |
+| `makeEasyToVerifyInCircuit` | Boolean | A flag indicating whether to generate proof components for easy verification within a circuit. |
 
 ### Returns
 
-- `proof`
-  type: Promise\<Uint8Array\>
-  An array with the byte representation of the proof
+| Return value | Type                 | Description                                        |
+| ------------ | -------------------- | -------------------------------------------------- |
+| `proof`      | Promise<Uint8Array\> | An array with the byte representation of the proof |
 
 ### Usage
 
@@ -160,7 +135,7 @@ async generateProof(decompressedWitness, makeEasyToVerifyInCircuit)
 const proof = await backend.generateProof(decompressedWitness, makeEasyToVerifyInCircuit);
 ```
 
-## generateIntermediateProofArtifacts
+## `generateIntermediateProofArtifacts`
 
 This async method returns the artifacts needed to verify the intermediate proof in another circuit. It's not currently being used by the Noir class, but developers can call this method directly to use Noir's recursive features.
 
@@ -172,24 +147,18 @@ async generateIntermediateProofArtifacts(proof, numOfPublicInputs = 0)
 
 ### Parameters
 
-- `proof`
-  type: Object
-  The proof object.
-- `numOfPublicInputs`
-  type: Number (optional)
-  The number of public inputs in the inner proof, defaulting to 0.
+| Parameter           | Type              | Description                                                      |
+| ------------------- | ----------------- | ---------------------------------------------------------------- |
+| `proof`             | Object            | The proof object.                                                |
+| `numOfPublicInputs` | Number (optional) | The number of public inputs in the inner proof, defaulting to 0. |
 
 ### Returns
 
-- `proofAsFields`
-  type: string[]
-  An array of strings with the hexadecimal representation of the [Fields](../../language_concepts/data_types/00_fields.md) that make up a proof
-- `vkAsFields`
-  type: string[]
-  An array of strings with the hexadecimal representation of the [Fields](../../language_concepts/data_types/00_fields.md) that make up the verification key
-- `vkHash`
-  type: string
-  A pedersen hash of the verification key
+| Return value    | Type     | Description                                                                                                                                                |
+| --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `proofAsFields` | string[] | An array of strings with the hexadecimal representation of the [Fields](../../language_concepts/data_types/00_fields.md) that make up a proof              |
+| `vkAsFields`    | string[] | An array of strings with the hexadecimal representation of the [Fields](../../language_concepts/data_types/00_fields.md) that make up the verification key |
+| `vkHash`        | string   | A pedersen hash of the verification key                                                                                                                    |
 
 ### Usage
 
@@ -197,7 +166,7 @@ async generateIntermediateProofArtifacts(proof, numOfPublicInputs = 0)
 const artifacts = await backend.generateIntermediateProofArtifacts(proof, numOfPublicInputs);
 ```
 
-## verifyFinalProof
+## `verifyFinalProof`
 
 An async wrapper around [verifyProof](#verifyproof) that sets the `false` flag. Usually called by the Noir class.
 
@@ -209,15 +178,15 @@ async verifyFinalProof(proof)
 
 ### Parameters
 
-- `proof`
-  type: Object
-  The proof object to verify.
+| Parameter | Type   | Description                 |
+| --------- | ------ | --------------------------- |
+| `proof`   | Object | The proof object to verify. |
 
 ### Returns
 
-- `verified`
-  type: Promise\<boolean\>
-  A boolean for whether the proof was verified
+| Return value | Type               | Description                                  |
+| ------------ | ------------------ | -------------------------------------------- |
+| `verified`   | Promise <boolean\> | A boolean for whether the proof was verified |
 
 ### Usage
 
@@ -225,7 +194,7 @@ async verifyFinalProof(proof)
 const isValidFinal = await backend.verifyFinalProof(proof);
 ```
 
-## verifyIntermediateProof
+## `verifyIntermediateProof`
 
 An async wrapper around [verifyProof](#verifyproof) that sets the `true` flag. It's not currently being used by the Noir class, but developers can call this method directly to use Noir's recursive features.
 
@@ -237,15 +206,15 @@ async verifyIntermediateProof(proof)
 
 ### Parameters
 
-- `proof`
-  type: Object
-  The intermediate proof object to verify.
+| Parameter | Type   | Description                              |
+| --------- | ------ | ---------------------------------------- |
+| `proof`   | Object | The intermediate proof object to verify. |
 
 ### Returns
 
-- `verified`
-  type: Promise\<boolean\>
-  A boolean for whether the proof was verified
+| Return value | Type               | Description                                  |
+| ------------ | ------------------ | -------------------------------------------- |
+| `verified`   | Promise <boolean\> | A boolean for whether the proof was verified |
 
 ### Usage
 
@@ -253,7 +222,7 @@ async verifyIntermediateProof(proof)
 const isValidIntermediate = await backend.verifyIntermediateProof(proof);
 ```
 
-## verifyProof
+## `verifyProof`
 
 This async method verifies a proof. Takes the proof, and a boolean that evaluates to `true` when the proof is intermediate.
 
@@ -265,18 +234,16 @@ async verifyProof(proof, makeEasyToVerifyInCircuit)
 
 ### Parameters
 
-- `proof`
-  type: Object
-  The proof object to verify.
-- `makeEasyToVerifyInCircuit`
-  type: Boolean
-  A flag indicating whether the proof is intermediate or final
+| Parameter                   | Type    | Description                                                  |
+| --------------------------- | ------- | ------------------------------------------------------------ |
+| `proof`                     | Object  | The proof object to verify                                   |
+| `makeEasyToVerifyInCircuit` | Boolean | A flag indicating whether the proof is intermediate or final |
 
 ### Returns
 
-- `verified`
-  type: Promise\<boolean\>
-  A boolean for whether the proof was verified
+| Parameter  | Type               | Description                                  |
+| ---------- | ------------------ | -------------------------------------------- |
+| `verified` | Promise\<boolean\> | A boolean for whether the proof was verified |
 
 ### Usage
 
@@ -284,7 +251,7 @@ async verifyProof(proof, makeEasyToVerifyInCircuit)
 const isValid = await backend.verifyProof(proof, makeEasyToVerifyInCircuit);
 ```
 
-## destroy
+## `destroy`
 
 This method destroys the resources allocated in the [instantiate](#instantiate) method. Noir doesn't currently call this method, but it's highly recommended that developers do so in order to save resources.
 
