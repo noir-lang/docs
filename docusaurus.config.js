@@ -45,8 +45,8 @@ const config = {
               label: 'dev',
               path: 'dev',
             },
-            "0.7.1": {
-              label: '0.7.1 / 0.8.0'
+            '0.7.1': {
+              label: '0.7.1 / 0.8.0',
             },
           },
           editUrl: ({ versionDocsDirPath, docPath }) =>
@@ -107,8 +107,8 @@ const config = {
               },
               {
                 label: 'Discord',
-                href: 'https://discord.gg/JtqzkdeQ6G'
-              }
+                href: 'https://discord.gg/JtqzkdeQ6G',
+              },
             ],
           },
           {
@@ -150,6 +150,32 @@ const config = {
         indexName: 'noir-lang',
       },
     }),
+  plugins: [
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        entryPoints: [
+          '../../Repos/noir/tooling/noir_js',
+          '../../Repos/noir/tooling/noir_js_backend_barretenberg',
+        ],
+        entryPointStrategy: 'packages',
+        out: 'noir_js/reference',
+        plugin: ['typedoc-plugin-markdown', 'typedoc-plugin-merge-modules'],
+        mergeModulesRenameDefaults: true,
+        mergeModulesMergeMode: 'project',
+        readme: 'none',
+        hideInPageTOC: true,
+        hideBreadcrumbs: true,
+        frontmatter: {
+          hide_title: true,
+        },
+        categorizeByGroup: true,
+        sidebar: {
+          categoryLabel: 'NoirJS',
+        },
+      },
+    ],
+  ],
 };
 
 module.exports = config;
