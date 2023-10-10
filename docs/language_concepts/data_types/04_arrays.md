@@ -63,6 +63,13 @@ let array: [Field; 32] = [0; 32];
 let sl = array.as_slice()
 ```
 
+You can define multidimensional arrays:
+
+```rust
+let array : [[Field; 2]; 2];
+let element = array[0][0];
+```
+
 ## Types
 
 You can create arrays of primitive types or structs. There is not yet support for nested arrays
