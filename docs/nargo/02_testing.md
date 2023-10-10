@@ -40,3 +40,22 @@ fn test_add() {
     assert(add(2,2) == 5);
 }
 ```
+
+You can be more specific and make it fail with a specific reason by using `should_fail_with = "<the reason for failure>`:
+
+```rust
+fn main(african_swallow_avg_speed : Field) {
+    assert(african_swallow_avg_speed == 65, "What is the airspeed velocity of an unladen swallow");
+}
+
+#[test]
+fn test_king_arthur() {
+    main(65);
+}
+
+#[test(should_fail_with = "What is the airspeed velocity of an unladen swallow")]
+fn test_bridgekeeper() {
+    main(32);
+}
+
+```
