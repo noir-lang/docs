@@ -59,5 +59,5 @@ Example:
 
 ```rust
 let s = "Hello \"world" // prints "Hello "world"
-let s = "hey \tyou"; // prints "Hello   world"
+let s = "hey \tyou"; // prints "hey   you"
 ```
