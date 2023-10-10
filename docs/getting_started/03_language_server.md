@@ -28,6 +28,10 @@ When you language server is running correctly and the VSCode plugin is installed
 ![Compile and Execute](./../../static/img/codelens_compile_execute.png)
 ![Run test](../../static/img/codelens_run_test.png)
 
+You should also see your tests in the `testing` panel:
+
+![Testing panel](./../../static/img/codelens_testing_panel.png)
+
 ### Configuration
 
 * __Noir: Enable LSP__ - If checked, the extension will launch the Language Server via `nargo lsp` and communicate with it.
