@@ -155,7 +155,9 @@ Commands:
 
 ### Option 3: Compile from Source
 
-Due to the large number of native dependencies, Noir projects uses [Nix](https://nixos.org/) and [direnv](https://direnv.net/) to streamline the development experience.
+Due to the large number of native dependencies, Noir projects uses [Nix](https://nixos.org/) and [direnv](https://direnv.net/) to streamline the development experience. It helps mitigating ssues commonly associated with dependency management, such as conflicts between required package versions for different projects (often referred to as "dependency hell").
+
+Combined with direnv, which automatically sets or unsets environment variables based on the directory, it further simplifies the development process by seamlessly integrating with the developer's shell, facilitating an efficient and reliable workflow for managing and deploying Noir projects with multiple dependencies.
 
 #### Setting up your environment
 
