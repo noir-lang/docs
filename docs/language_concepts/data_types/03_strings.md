@@ -44,7 +44,7 @@ fn main() {
 
 ## Escape characters
 
-You can use escape characters for your strings, as much as escape sequences:
+You can use escape characters for your strings:
 
 | Escape Sequence | Description     |
 |-----------------|-----------------|
