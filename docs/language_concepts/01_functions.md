@@ -14,6 +14,12 @@ To declare a function the `fn` keyword is used.
 fn foo() {}
 ```
 
+By default, functions are visible only within the package they are defined. To make them visible outside of that package (for example, as part of a [library](../modules_packages_crates/crates_and_packages.md#libraries)), you should mark them as `pub`:
+
+```rust
+pub fn foo() {}
+```
+
 All parameters in a function must have a type and all types are known at compile time. The parameter
 is pre-pended with a colon and the parameter type. Multiple parameters are separated using a comma.
 

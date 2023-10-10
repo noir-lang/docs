@@ -19,6 +19,8 @@ for i in 0..10 {
 };
 ```
 
+The index for loops is of type `u64`.
+
 ## If Expressions
 
 Noir supports `if-else` statements. The syntax is most similar to Rust's where it is not required

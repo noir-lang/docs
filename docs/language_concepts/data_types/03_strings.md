@@ -41,3 +41,23 @@ fn main() {
     assert(message_bytes[0] == message_vec.get(0));
 }
 ```
+
+## Escape characters
+
+You can use escape characters for your strings:
+
+| Escape Sequence | Description     |
+|-----------------|-----------------|
+| `\r`            | Carriage Return |
+| `\n`            | Newline         |
+| `\t`            | Tab             |
+| `\0`            | Null Character  |
+| `\"`            | Double Quote    |
+| `\\`            | Backslash       |
+
+Example:
+
+```rust
+let s = "Hello \"world" // prints "Hello "world"
+let s = "hey \tyou"; // prints "hey   you"
+```
