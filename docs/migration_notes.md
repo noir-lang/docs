@@ -6,6 +6,16 @@ keywords: [Noir, notes, migration, updating, upgrading]
 
 Noir is in full-speed development. Things break fast, wild, and often. This page attempts to leave some notes on errors you might encounter when upgrading and how to resolve them until proper patches are built.
 
+## ≥0.14
+
+The index of the [for loops](./language_concepts/02_control_flow.md#loops) is now of type `u64` instead of `Field`. An example refactor would be:
+
+```rust
+for i in 0..10 {
+    let i = i as Field;
+}
+```
+
 ## ≥v0.11.0 and Nargo backend
 
 From this version onwards, Nargo starts managing backends through the `nargo backend` command. Upgrading to the versions per usual steps might lead to:
@@ -60,7 +70,7 @@ nargo backend install acvm-backend-barretenberg https://github.com/noir-lang/bar
 
 This downloads and installs a specific bb.js based version of barretenberg binary from GitHub.
 
-The gzipped filed is running this bash script: https://github.com/noir-lang/barretenberg-js-binary/blob/master/run-bb-js.sh, where we need to gzip it as the Nargo currently expect the backend to be zipped up.
+The gzipped filed is running this bash script: <https://github.com/noir-lang/barretenberg-js-binary/blob/master/run-bb-js.sh>, where we need to gzip it as the Nargo currently expect the backend to be zipped up.
 
 Then run:
 
