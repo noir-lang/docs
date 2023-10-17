@@ -63,6 +63,7 @@ const sidebars = {
         'language_concepts/comments',
         'language_concepts/distinct',
         'language_concepts/shadowing',
+        'language_concepts/traits',
       ],
     },
     {
