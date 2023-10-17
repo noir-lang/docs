@@ -1,3 +1,6 @@
+
+## This repository is archived as part of the monorepo integration. Please consider making changes to [noir-lang/noir](https://github.com/noir-lang/noir) instead
+
 # Noir Docs
 
 This is the source code for the Noir documentation site at [noir-lang.org](https://noir-lang.org).
